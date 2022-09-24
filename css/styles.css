@@ -1,7 +1,67 @@
+/* Website - General Selectors */
 html {
   box-sizing: border-box;
 }
 
 *, *::after, *::before {
   box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 45px;
+}
+
+/* WebSite Main Header */
+.main-header {
+  background-color: #1F2937;
+  display: flex;
+  padding: 0 20%;
+  flex-wrap: wrap;
+}
+
+.header {
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  display: flex;
+  width: 100%;
+  list-style: none;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+}
+
+.logo {
+  width: 75px;
+  height: 75px;
+}
+
+.move-elements {
+  margin-left: auto;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px 0;
+  gap: 30px
+}
+
+.main-image {
+  border-radius: 31px;
+  width: 250px;
+  height: 250px;
+}
+
+.page-titular {
+  color: white;
 }

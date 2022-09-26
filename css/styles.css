@@ -96,6 +96,7 @@ h2 {
 
 .facts-boxes {
   display: flex;
+  flex-wrap: wrap;
   gap: 50px;
 }
 

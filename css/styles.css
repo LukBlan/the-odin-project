@@ -14,15 +14,18 @@ body {
 }
 
 h1 {
-  font-weight: bold;
+  color: #F9FAF8;
+  font-family: sans-serif;
+  font-weight: 700;
   font-size: 45px;
+  margin-top: 0;
 }
 
 /* WebSite Main Header */
 .main-header {
   background-color: #1F2937;
   display: flex;
-  padding: 0 20%;
+  padding: 0 20% 20px 20%;
   flex-wrap: wrap;
 }
 
@@ -64,4 +67,13 @@ h1 {
 
 .page-titular {
   color: white;
+}
+
+.blue-button {
+  background-color: #3882F6;
+  border: #3882F6;
+  color: white;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 5px;
 }

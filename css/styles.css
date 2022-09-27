@@ -74,7 +74,7 @@ h1 {
   border: #3882F6;
   color: white;
   font-weight: bold;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 5px;
 }
 
@@ -114,5 +114,26 @@ h2 {
   color: #6a6a72;
 }
 
+/* Website - Quote section */
+.quote-section {
+  background-color: #E5E7EB;
+  color: #1F2937;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 60px 20% 10px 20%;
+}
+
+.quote-text {
+  font-family: light-italic, sans-serif;
+  font-size: 38px;
+  width: 100%;
+}
+
+.quote-author {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: auto;
+}
 
 

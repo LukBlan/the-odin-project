@@ -27,28 +27,19 @@ function validateUserOption(playerOption, options) {
 }
 
 function chooseWinner(playerOption, computerOption) {
-  // 0:Rock, 1:Paper, 2:Scissors
   const playerPositionInArray = getPositionInArray(playerOption);
   const computerPositionInArray = getPositionInArray(computerOption);
 
-  // Player:Row Computer:Column
-  let arrayOfResults = [
-    ["draw", "You Loose!, Rock lost to Paper", "You Won!, Rock beats Scissors"],
-    ["You Won!, Paper beats Rock", "draw", "You Loose!, Paper lost to Rock"],
-    ["You Loose!, Scissors lost to Rock", "", "draw"]
+  // Player:Row  Computer:Column
+  let arrayOfResults = [ //Paper                      Scissors                               Rock
+    [                          "draw", "You Loose!, Paper Lost to Scissors", "You Won!, Paper beats Rock"],
+    ["You Won!, Scissors beats Paper", "draw",                               "You Loose!, Scissors lost to Rock"],
+    ["You Loose!, Rock lost to Paper", "You won Rock Beats Scissors",        "draw"]
   ]
   return arrayOfResults[playerPositionInArray][computerPositionInArray];
 }
 
-//Returns 0:Rock 1:Paper 2:Scissors
+//Returns a number based on word length 0:Paper  1:Scissors  2:Rock - with this you don't need if conditionals
 function getPositionInArray(option) {
-  let finalOption;
-  let optionLength = option.length;
-
-  if (optionLength > 6) {
-    finalOption = optionLength / 4;
-  } else {
-    finalOption = optionLength - 4;
-  }
-  return finalOption;
+  return Math.round(option.length / 2) % 3;
 }

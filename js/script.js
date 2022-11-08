@@ -1,10 +1,6 @@
 game();
 
-function game() {
-  for (let i = 0; i <= 5; i++) {
-    playRound();
-  }
-}
+playRound();
 
 function playRound() {
   const options = ["rock", "paper", "scissors"];

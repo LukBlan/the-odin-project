@@ -1,25 +1,12 @@
-game();
+addEventToButtons()
 
-playRound();
-
-function playRound() {
+function playRound(playerOption) {
   const options = ["rock", "paper", "scissors"];
-  let playerOption = prompt("Rock Paper or Scissors?").toLowerCase();
-
-  playerOption = validateUserOption(playerOption, options);
-  alert(chooseWinner(playerOption, getComputerChoice(options)))
+  displayResult(chooseWinner(playerOption, getComputerChoice(options)));
 }
 
 function getComputerChoice(options) {
   return options[Math.round(Math.random() * (options.length - 1))];
-}
-
-function validateUserOption(playerOption, options) {
-  let newOption = playerOption;
-  while(!options.includes(newOption)) {
-    newOption = prompt("Wrong Option, Rock Paper or Scissors?").toLowerCase();
-  }
-  return newOption;
 }
 
 function chooseWinner(playerOption, computerOption) {
@@ -30,7 +17,7 @@ function chooseWinner(playerOption, computerOption) {
   let arrayOfResults = [ //Paper                      Scissors                               Rock
     [                          "draw", "You Loose!, Paper Lost to Scissors", "You Won!, Paper beats Rock"],
     ["You Won!, Scissors beats Paper", "draw",                               "You Loose!, Scissors lost to Rock"],
-    ["You Loose!, Rock lost to Paper", "You won Rock Beats Scissors",        "draw"]
+    ["You Loose!, Rock lost to Paper", "You Won! Rock Beats Scissors",        "draw"]
   ]
   return arrayOfResults[playerPositionInArray][computerPositionInArray];
 }
@@ -38,4 +25,23 @@ function chooseWinner(playerOption, computerOption) {
 //Returns a number based on word length 0:Paper  1:Scissors  2:Rock - with this you don't need if conditionals
 function getPositionInArray(option) {
   return Math.round(option.length / 2) % 3;
+}
+
+function addEventToButtons() {
+  const playerButton = document.getElementById("player-hand");
+  playerButton.childNodes.forEach(element => {
+    element.addEventListener("click", () => playRound(element.innerText));
+  })
+}
+
+function displayResult(text) {
+  const resultScreen = document.querySelector("p");
+  resultScreen.innerText = text;
+  if (text.includes("Won")) {
+    resultScreen.style.color = "blue";
+  } else if (text.includes("Loose")) {
+    resultScreen.style.color = "red";
+  } else {
+    resultScreen.style.color = "orange";
+  }
 }

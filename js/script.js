@@ -1,4 +1,6 @@
-addEventToButtons()
+addEventToPlayerHand()
+addScaleEventInPlayerHand()
+removeScaleEvent()
 
 function playRound(playerOption) {
   const options = ["rock", "paper", "scissors"];
@@ -27,18 +29,34 @@ function getPositionInArray(option) {
   return Math.round(option.length / 2) % 3;
 }
 
-function addEventToButtons() {
+function addEventToPlayerHand() {
   const playerButton = document.getElementById("player-hand");
   playerButton.childNodes.forEach(element => {
     element.addEventListener("click", () => playRound(element.innerText));
   })
 }
 
+function addScaleEventInPlayerHand() {
+  const playerButton = document.getElementById("player-hand");
+  playerButton.childNodes.forEach(element => element.addEventListener("mouseover", scalePlayerOption))
+}
+
+function removeScaleEvent() {
+  const playerButton = document.getElementById("player-hand");
+  playerButton.childNodes.forEach(element => element.addEventListener("mouseout", () => {
+    element.classList.remove("mouseOverCard");
+  }))
+}
+
+function scalePlayerOption() {
+  this.classList.add("mouseOverCard")
+}
+
 function displayResult(text) {
   const resultScreen = document.querySelector("p");
   resultScreen.innerText = text;
   if (text.includes("Won")) {
-    resultScreen.style.color = "blue";
+    resultScreen.style.color = "green";
   } else if (text.includes("Loose")) {
     resultScreen.style.color = "red";
   } else {

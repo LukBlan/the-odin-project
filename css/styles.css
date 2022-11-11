@@ -42,9 +42,15 @@ h2 {
   text-align: center;
 }
 
+p {
+  margin: 0;
+}
+
 #computer {
+  width: 100%;
   display: flex;
   margin-left: auto;
+  justify-self: flex-end;
 }
 
 #player {
@@ -56,11 +62,11 @@ h2 {
   justify-content: center;
   gap: 20px;
   padding: 30px 0;
+  width: 100%;
 }
 
-#computer-hand div, #player-hand div {
-  padding: 2px;
-  border: 2px solid black;
+#computer-hand {
+  justify-content: flex-end;
 }
 
 #navbar {
@@ -73,16 +79,26 @@ h2 {
 }
 
 #result-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  text-align: center;
+}
+
+#round-result {
   width: 20%;
   background-color: rgba(151, 193, 238, 0.85);
   border: black solid 1px;
-  margin: 0 36.7%;
-  display: flex;
+  align-items: center;
 }
 
-#result-screen p {
-  width: 100%;
-  text-align: center;
+.result-box {
+  border: solid 1px black;
+  background-color: white;
+  padding: 9px;
+  font-weight: bold;
 }
 
 h1 {

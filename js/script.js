@@ -74,13 +74,13 @@ function changePlayerMouseOnHover() {
 }
 
 function displayResult(text) {
-  const resultScreen = document.querySelector("p");
-  resultScreen.innerText = text;
+  const roundText = document.getElementById("round-text");
+  roundText.innerText = text;
   if (text.includes("Won")) {
-    resultScreen.style.color = "green";
+    roundText.style.color = "green";
   } else if (text.includes("Loose")) {
-    resultScreen.style.color = "red";
+    roundText.style.color = "red";
   } else {
-    resultScreen.style.color = "orange";
+    roundText.style.color = "orange";
   }
 }

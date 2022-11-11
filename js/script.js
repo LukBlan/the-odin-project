@@ -1,4 +1,6 @@
 let rounds = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 addEventToPlayerHand()
 addScaleEventInPlayerHand()
@@ -78,9 +80,30 @@ function displayResult(text) {
   roundText.innerText = text;
   if (text.includes("Won")) {
     roundText.style.color = "green";
+    playerScore++;
+    updateScores();
   } else if (text.includes("Loose")) {
     roundText.style.color = "red";
+    computerScore++;
+    updateScores();
   } else {
     roundText.style.color = "orange";
+  }
+}
+
+function updateScores() {
+  const computer = document.getElementById("computer-result");
+  const player = document.getElementById("player-result");
+  computer.innerText = computerScore.toString();
+  player.innerText = playerScore.toString();
+  if (computerScore > playerScore) {
+    computer.style.color = "green";
+    player.style.color = "red";
+  } else if (computerScore < playerScore) {
+    computer.style.color = "red";
+    player.style.color = "green";
+  } else {
+    computer.style.color = "yellow";
+    player.style.color = "yellow";
   }
 }

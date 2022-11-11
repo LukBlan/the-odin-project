@@ -1,3 +1,5 @@
+let rounds = 0;
+
 addEventToPlayerHand()
 addScaleEventInPlayerHand()
 removeScaleEvent()
@@ -31,9 +33,11 @@ function getPositionInArray(option) {
 
 function addEventToPlayerHand() {
   const playerButton = document.getElementById("player-hand");
-  playerButton.childNodes.forEach(element => {
-    element.addEventListener("click", () => playRound(element.innerText));
-  })
+  playerButton.childNodes.forEach(element => element.addEventListener("click", () => {
+      let stringOption = element.src.split("/")[5].split(".")[0];
+      playRound(stringOption)
+    })
+  )
 }
 
 function addScaleEventInPlayerHand() {

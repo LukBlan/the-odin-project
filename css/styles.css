@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 70%;
-  margin: 0 15%;
+  margin: 20px 15%;
 }
 
 .player-image {
@@ -42,11 +42,20 @@ h2 {
   text-align: center;
 }
 
+#computer {
+  display: flex;
+  margin-left: auto;
+}
+
+#player {
+  display: flex;
+}
+
 #computer-hand, #player-hand {
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding: 30px;
+  padding: 30px 0;
 }
 
 #computer-hand div, #player-hand div {
@@ -59,11 +68,12 @@ h2 {
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 70px;
+  height: 100px;
   background-color: orange;
 }
 
 #result-screen {
+  width: 20%;
   background-color: rgba(151, 193, 238, 0.85);
   border: black solid 1px;
   margin: 0 36.7%;
@@ -83,4 +93,10 @@ h1 {
 
 .mouseOverCard {
   transform: scale(1.1);
+}
+
+#footer {
+  background-color: blue;
+  margin-top: auto;
+  height: 50px;
 }

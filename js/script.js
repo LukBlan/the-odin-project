@@ -3,6 +3,8 @@ let rounds = 0;
 addEventToPlayerHand()
 addScaleEventInPlayerHand()
 removeScaleEvent()
+changeComputerMouseOnHover()
+changePlayerMouseOnHover()
 
 function playRound(playerOption) {
   const options = ["rock", "paper", "scissors"];
@@ -41,19 +43,34 @@ function addEventToPlayerHand() {
 }
 
 function addScaleEventInPlayerHand() {
-  const playerButton = document.getElementById("player-hand");
-  playerButton.childNodes.forEach(element => element.addEventListener("mouseover", scalePlayerOption))
+  const playerButton = document.querySelectorAll(".card-img");
+  playerButton.forEach(element => element.addEventListener("mouseover", scalePlayerOption))
 }
 
 function removeScaleEvent() {
-  const playerButton = document.getElementById("player-hand");
-  playerButton.childNodes.forEach(element => element.addEventListener("mouseout", () => {
+  const playerButton = document.querySelectorAll(".card-img");
+  playerButton.forEach(element => element.addEventListener("mouseout", () => {
     element.classList.remove("mouseOverCard");
   }))
 }
 
 function scalePlayerOption() {
   this.classList.add("mouseOverCard")
+}
+
+function changeMouse(elementId, mouseStyle) {
+  const playerButton = document.getElementById(elementId);
+  playerButton.childNodes.forEach(element => element.addEventListener("mouseover", () => {
+    element.style.cursor = mouseStyle
+  }));
+}
+
+function changeComputerMouseOnHover() {
+  changeMouse("computer-hand", "not-allowed");
+}
+
+function changePlayerMouseOnHover() {
+  changeMouse("player-hand", "pointer");
 }
 
 function displayResult(text) {

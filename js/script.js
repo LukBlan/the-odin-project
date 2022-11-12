@@ -1,16 +1,26 @@
-let rounds = 0;
 let playerScore = 0;
 let computerScore = 0;
 
-addEventToPlayerHand()
-addScaleEventInPlayerHand()
-removeScaleEvent()
-changeComputerMouseOnHover()
-changePlayerMouseOnHover()
+addEventToPlayerHand();
+addScaleEventInPlayerHand();
+removeScaleEvent();
+changeComputerMouseOnHover();
+changePlayerMouseOnHover();
+showStartGameButton()
+
+function playGame() {
+  changeDisplay("flex");
+  deleteNewGameButton();
+  resetScore();
+}
 
 function playRound(playerOption) {
   const options = ["rock", "paper", "scissors"];
-  displayResult(chooseWinner(playerOption, getComputerChoice(options)));
+  let computerChoice = getComputerChoice(options)
+  let resultText = chooseWinner(playerOption, computerChoice)
+  displayResult(resultText);
+  updateScores();
+  checkWinner();
 }
 
 function getComputerChoice(options) {
@@ -80,12 +90,10 @@ function displayResult(text) {
   roundText.innerText = text;
   if (text.includes("Won")) {
     roundText.style.color = "green";
-    playerScore++;
-    updateScores();
+    ++playerScore;
   } else if (text.includes("Loose")) {
     roundText.style.color = "red";
-    computerScore++;
-    updateScores();
+    ++computerScore;
   } else {
     roundText.style.color = "orange";
   }
@@ -106,4 +114,40 @@ function updateScores() {
     computer.style.color = "yellow";
     player.style.color = "yellow";
   }
+}
+
+function resetScore() {
+  computerScore = 0;
+  playerScore = 0;
+  updateScores();
+}
+
+function checkWinner() {
+  if (computerScore === 5) {
+    alert("You loose this game");
+    showStartGameButton()
+
+  } else if (playerScore === 5) {
+    console.log("you won this game")
+    showStartGameButton()
+  }
+}
+
+function showStartGameButton() {
+  changeDisplay("none");
+  const newGameButton = document.createElement("button");
+  newGameButton.innerText = "Start Game";
+  newGameButton.addEventListener("click", playGame);
+  document.getElementById("game-section").append(newGameButton);
+}
+
+function changeDisplay(text) {
+  document.getElementById("computer").style.display = text;
+  document.getElementById("player").style.display = text;
+  document.getElementById("result-screen").style.display = text;
+}
+
+function deleteNewGameButton() {
+  const newGameButton = document.querySelector("button");
+  newGameButton.parentElement.removeChild(newGameButton);
 }

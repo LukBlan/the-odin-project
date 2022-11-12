@@ -131,6 +131,7 @@ function checkWinner() {
 
   } else if (playerScore === 5) {
     console.log("you won this game")
+    removeDisplay("display-flex")
     showStartGameButton()
   }
 }

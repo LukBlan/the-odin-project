@@ -9,7 +9,8 @@ changePlayerMouseOnHover();
 showStartGameButton()
 
 function playGame() {
-  changeDisplay("flex");
+  changeDisplay("display-flex");
+  removeDisplay("display-none");
   deleteNewGameButton();
   resetScore();
 }
@@ -125,7 +126,8 @@ function resetScore() {
 function checkWinner() {
   if (computerScore === 5) {
     alert("You loose this game");
-    showStartGameButton()
+    removeDisplay("display-flex")
+    showStartGameButton("display-flex");
 
   } else if (playerScore === 5) {
     console.log("you won this game")
@@ -134,7 +136,7 @@ function checkWinner() {
 }
 
 function showStartGameButton() {
-  changeDisplay("none");
+  changeDisplay("display-none");
   const newGameButton = document.createElement("button");
   newGameButton.innerText = "Start Game";
   newGameButton.addEventListener("click", playGame);
@@ -142,12 +144,18 @@ function showStartGameButton() {
 }
 
 function changeDisplay(text) {
-  document.getElementById("computer").style.display = text;
-  document.getElementById("player").style.display = text;
-  document.getElementById("result-screen").style.display = text;
+  document.querySelector(".computer").classList.add(text)
+  document.querySelector(".player").classList.add(text)
+  document.querySelector(".result-screen").classList.add(text)
 }
 
 function deleteNewGameButton() {
   const newGameButton = document.querySelector("button");
   newGameButton.parentElement.removeChild(newGameButton);
+}
+
+function removeDisplay(text) {
+  document.querySelector(".computer").classList.remove(text)
+  document.querySelector(".player").classList.remove(text)
+  document.querySelector(".result-screen").classList.remove(text)
 }

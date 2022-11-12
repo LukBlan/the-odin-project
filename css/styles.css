@@ -26,7 +26,6 @@ body {
 }
 
 .player-image {
-  align-self: center;
   width: 90px;
   height: 90px;
 }
@@ -46,20 +45,22 @@ p {
   margin: 0;
 }
 
-#computer {
+.computer {
   width: 100%;
   display: flex;
   margin-left: auto;
   justify-self: flex-end;
+  align-items: center;
 }
 
-#player {
+.player {
+  width: 100%;
   display: flex;
+  align-items: center;
 }
 
 #computer-hand, #player-hand {
   display: flex;
-  justify-content: center;
   gap: 20px;
   padding: 30px 0;
   width: 100%;
@@ -78,7 +79,7 @@ p {
   background-color: #0f0f0f;
 }
 
-#result-screen {
+.result-screen {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,4 +122,8 @@ h1 {
 
 .display-none {
   display: none;
+}
+
+.display-flex {
+  display: flex;
 }

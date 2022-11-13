@@ -1,3 +1,4 @@
+let round = 1;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -9,10 +10,13 @@ changePlayerMouseOnHover();
 showStartGameButton()
 
 function playGame() {
+
+  round = 1;
   changeDisplay("display-flex");
   removeDisplay("display-none");
   deleteNewGameButton();
   resetScore();
+  updateRound();
 }
 
 function playRound(playerOption) {
@@ -22,6 +26,13 @@ function playRound(playerOption) {
   displayResult(resultText);
   updateScores();
   checkWinner();
+  round++;
+  updateRound();
+}
+
+function updateRound() {
+  let roundTracker = document.querySelector("#round-counter");
+  roundTracker.innerText = "Round " + round.toString();
 }
 
 function getComputerChoice(options) {
@@ -87,16 +98,10 @@ function changePlayerMouseOnHover() {
 }
 
 function displayResult(text) {
-  const roundText = document.getElementById("round-text");
-  roundText.innerText = text;
   if (text.includes("Won")) {
-    roundText.style.color = "green";
     ++playerScore;
   } else if (text.includes("Loose")) {
-    roundText.style.color = "red";
     ++computerScore;
-  } else {
-    roundText.style.color = "orange";
   }
 }
 
@@ -106,14 +111,14 @@ function updateScores() {
   computer.innerText = computerScore.toString();
   player.innerText = playerScore.toString();
   if (computerScore > playerScore) {
-    computer.style.color = "green";
-    player.style.color = "red";
+    computer.style.backgroundColor = "green";
+    player.style.backgroundColor = "red";
   } else if (computerScore < playerScore) {
-    computer.style.color = "red";
-    player.style.color = "green";
+    computer.style.backgroundColor = "red";
+    player.style.backgroundColor = "green";
   } else {
-    computer.style.color = "yellow";
-    player.style.color = "yellow";
+    computer.style.backgroundColor = "yellow";
+    player.style.backgroundColor = "yellow";
   }
 }
 
@@ -125,12 +130,10 @@ function resetScore() {
 
 function checkWinner() {
   if (computerScore === 5) {
-    alert("You loose this game");
     removeDisplay("display-flex")
     showStartGameButton("display-flex");
 
   } else if (playerScore === 5) {
-    console.log("you won this game")
     removeDisplay("display-flex")
     showStartGameButton()
   }

@@ -80,22 +80,32 @@ p {
 }
 
 .result-screen {
+  border: solid 2px black;
+  flex-wrap: wrap;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  gap: 20px;
   text-align: center;
+  width: 130px;
 }
 
-#round-result {
-  width: 20%;
-  background-color: rgba(151, 193, 238, 0.85);
+#round-state {
+  display: flex;
+  background-color: #e6e6e6;
   border: black solid 1px;
   align-items: center;
 }
 
+#round-counter {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  width: 100%;
+  font-size: 30px;
+}
+
 .result-box {
+  flex-grow: 1;
   border: solid 1px black;
   background-color: white;
   padding: 9px;

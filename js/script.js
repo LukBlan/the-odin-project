@@ -3,14 +3,9 @@ let playerScore = 0;
 let computerScore = 0;
 
 addEventToPlayerHand();
-addScaleEventInPlayerHand();
-removeScaleEvent();
-changeComputerMouseOnHover();
-changePlayerMouseOnHover();
 showStartGameButton()
 
 function playGame() {
-
   round = 1;
   changeDisplay("display-flex");
   removeDisplay("display-none");
@@ -66,40 +61,13 @@ function addEventToPlayerHand() {
   )
 }
 
-function addScaleEventInPlayerHand() {
-  const playerButton = document.querySelectorAll(".card-img");
-  playerButton.forEach(element => element.addEventListener("mouseover", scalePlayerOption))
-}
-
-function removeScaleEvent() {
-  const playerButton = document.querySelectorAll(".card-img");
-  playerButton.forEach(element => element.addEventListener("mouseout", () => {
-    element.classList.remove("mouseOverCard");
-  }))
-}
-
-function scalePlayerOption() {
-  this.classList.add("mouseOverCard")
-}
-
-function changeMouse(elementId, mouseStyle) {
-  const playerButton = document.getElementById(elementId);
-  playerButton.childNodes.forEach(element => element.addEventListener("mouseover", () => {
-    element.style.cursor = mouseStyle
-  }));
-}
-
-function changeComputerMouseOnHover() {
-  changeMouse("computer-hand", "not-allowed");
-}
-
-function changePlayerMouseOnHover() {
-  changeMouse("player-hand", "pointer");
-}
-
 function displayResult(text) {
   if (text.includes("Won")) {
     ++playerScore;
+    let newP = document.createElement("p");
+    newP.innerText = "test";
+    const playerOption = document.querySelector("#player-option")
+    playerOption.parentElement.replaceChild(newP, playerOption);
   } else if (text.includes("Loose")) {
     ++computerScore;
   }

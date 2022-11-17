@@ -9,6 +9,7 @@ function playGame() {
   round = 1;
   changeDisplay("display-flex");
   removeDisplay("display-none");
+  resetOptionImage();
   deleteNewGameButton();
   resetScore();
   updateRound();
@@ -148,4 +149,13 @@ function removeDisplay(text) {
   document.querySelector(".computer").classList.remove(text)
   document.querySelector(".player").classList.remove(text)
   document.querySelector(".result-section").classList.remove(text)
+}
+
+function resetOptionImage() {
+  let playerImage = document.querySelector("#player-choice");
+  let computerImage = document.querySelector("#computer-choice");
+  playerImage.src = "/img/question-mark.svg"
+  computerImage.src = "/img/question-mark.svg"
+  playerImage.style.backgroundColor = ""
+  computerImage.style.backgroundColor = ""
 }

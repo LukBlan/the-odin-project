@@ -15,10 +15,10 @@ function playGame() {
 }
 
 function playRound(playerOption) {
-  const options = ["rock", "paper", "scissors"];
+  const options = ["paper", "scissors", "rock"];
   let computerChoice = getComputerChoice(options)
   let resultText = chooseWinner(playerOption, computerChoice)
-  displayResult(resultText);
+  displayResult(resultText, playerOption, computerChoice, options);
   updateScores();
   checkWinner();
   round++;
@@ -61,16 +61,34 @@ function addEventToPlayerHand() {
   )
 }
 
-function displayResult(text) {
+function displayResult(text, playerOption, computerChoice, options) {
+  changeImage(computerChoice,options,"computer-choice");
+  changeImage(playerOption,options,"player-choice");
   if (text.includes("Won")) {
     ++playerScore;
-    let newP = document.createElement("p");
-    newP.innerText = "test";
-    const playerOption = document.querySelector("#player-option")
-    playerOption.parentElement.replaceChild(newP, playerOption);
+    changeColorImage("green", "red");
   } else if (text.includes("Loose")) {
     ++computerScore;
+    changeColorImage("red", "green");
+  } else {
+    changeColorImage("yellow", "yellow");
   }
+}
+
+function changeColorImage(playerColor, computerColor) {
+  let playerImage = document.querySelector("#player-choice");
+  let computerImage = document.querySelector("#computer-choice");
+  playerImage.style.backgroundColor = playerColor;
+  computerImage.style.backgroundColor = computerColor;
+}
+
+function changeImage(playerOption, options, idSelector) {
+  let currentImage = document.getElementById(idSelector);
+  let imgChoice = document.createElement("img");
+  imgChoice.src="/img/" + options[getPositionInArray(playerOption)] + ".png";
+  imgChoice.id = idSelector;
+  imgChoice.classList.add("card-img");
+  currentImage.parentElement.replaceChild(imgChoice, currentImage);
 }
 
 function updateScores() {
@@ -118,7 +136,7 @@ function showStartGameButton() {
 function changeDisplay(text) {
   document.querySelector(".computer").classList.add(text)
   document.querySelector(".player").classList.add(text)
-  document.querySelector(".result-screen").classList.add(text)
+  document.querySelector(".result-section").classList.add(text)
 }
 
 function deleteNewGameButton() {
@@ -129,5 +147,5 @@ function deleteNewGameButton() {
 function removeDisplay(text) {
   document.querySelector(".computer").classList.remove(text)
   document.querySelector(".player").classList.remove(text)
-  document.querySelector(".result-screen").classList.remove(text)
+  document.querySelector(".result-section").classList.remove(text)
 }

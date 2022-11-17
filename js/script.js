@@ -21,9 +21,9 @@ function playRound(playerOption) {
   let resultText = chooseWinner(playerOption, computerChoice)
   displayResult(resultText, playerOption, computerChoice, options);
   updateScores();
-  checkWinner();
   round++;
   updateRound();
+  checkWinner();
 }
 
 function updateRound() {
@@ -56,8 +56,8 @@ function getPositionInArray(option) {
 function addEventToPlayerHand() {
   const playerButton = document.getElementById("player-hand");
   playerButton.childNodes.forEach(element => element.addEventListener("click", () => {
-      let stringOption = element.src.split("/")[5].split(".")[0];
-      playRound(stringOption)
+    let stringOption = element.src.match(/(?:[a-z])+.png/);
+      playRound(stringOption.join("").split(".")[0])
     })
   )
 }

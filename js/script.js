@@ -84,7 +84,7 @@ function changeColorImage(playerColor, computerColor) {
 function changeImage(playerOption, options, idSelector) {
   let currentImage = document.getElementById(idSelector);
   let imgChoice = document.createElement("img");
-  imgChoice.src="/img/" + options[getPositionInArray(playerOption)] + ".png";
+  imgChoice.src="./img/" + options[getPositionInArray(playerOption)] + ".png";
   imgChoice.id = idSelector;
   imgChoice.classList.add("card-img");
   currentImage.parentElement.replaceChild(imgChoice, currentImage);

@@ -1,2 +1,2 @@
 ## [Rock Paper Scissors Game](https://lukblan.github.io/rock-paper-scissors)
-Console game (until implemented user interface)
+Basic implementation of the Rock Paper Scissors Game with flexbox and js

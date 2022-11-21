@@ -124,8 +124,8 @@ function checkWinner() {
 function resetOptionImage() {
   let playerImage = document.querySelector("#player-choice");
   let computerImage = document.querySelector("#computer-choice");
-  playerImage.src = "/img/question-mark.svg"
-  computerImage.src = "/img/question-mark.svg"
+  playerImage.src = "./img/question-mark.svg"
+  computerImage.src = "./img/question-mark.svg"
   playerImage.style.backgroundColor = ""
   computerImage.style.backgroundColor = ""
 }

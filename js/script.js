@@ -2,15 +2,13 @@ let round = 1;
 let playerScore = 0;
 let computerScore = 0;
 
-addEventToPlayerHand();
-showStartGameButton()
+playGame()
 
 function playGame() {
+  addEventToPlayerHand();
+  removeExtraElements();
   round = 1;
-  changeDisplay("display-flex");
-  removeDisplay("display-none");
   resetOptionImage();
-  deleteNewGameButton();
   resetScore();
   updateRound();
 }
@@ -48,7 +46,7 @@ function chooseWinner(playerOption, computerOption) {
   return arrayOfResults[playerPositionInArray][computerPositionInArray];
 }
 
-//Returns a number based on word length 0:Paper  1:Scissors  2:Rock - with this you don't need if conditionals
+// Returns a number based on word length 0:Paper  1:Scissors  2:Rock - with this you don't need if conditionals
 function getPositionInArray(option) {
   return Math.round(option.length / 2) % 3;
 }
@@ -117,38 +115,10 @@ function resetScore() {
 
 function checkWinner() {
   if (computerScore === 5) {
-    removeDisplay("display-flex")
-    showStartGameButton("display-flex");
-
+    resultScreen("You Loose!!");
   } else if (playerScore === 5) {
-    removeDisplay("display-flex")
-    showStartGameButton()
+    resultScreen("You Won!!")
   }
-}
-
-function showStartGameButton() {
-  changeDisplay("display-none");
-  const newGameButton = document.createElement("button");
-  newGameButton.innerText = "Start Game";
-  newGameButton.addEventListener("click", playGame);
-  document.getElementById("game-section").append(newGameButton);
-}
-
-function changeDisplay(text) {
-  document.querySelector(".computer").classList.add(text)
-  document.querySelector(".player").classList.add(text)
-  document.querySelector(".result-section").classList.add(text)
-}
-
-function deleteNewGameButton() {
-  const newGameButton = document.querySelector("button");
-  newGameButton.parentElement.removeChild(newGameButton);
-}
-
-function removeDisplay(text) {
-  document.querySelector(".computer").classList.remove(text)
-  document.querySelector(".player").classList.remove(text)
-  document.querySelector(".result-section").classList.remove(text)
 }
 
 function resetOptionImage() {
@@ -158,4 +128,56 @@ function resetOptionImage() {
   computerImage.src = "/img/question-mark.svg"
   playerImage.style.backgroundColor = ""
   computerImage.style.backgroundColor = ""
+}
+
+function removeEvents() {
+  const playerButton = document.getElementById("player-hand");
+  playerButton.childNodes.forEach(element => {
+    let newElement = element.cloneNode();
+    element.parentElement.replaceChild(newElement, element);
+  })
+}
+
+function resultScreen(text) {
+  showWinner(text);
+  removeEvents();
+  displayNewGameButton();
+}
+
+function showWinner(text) {
+  const gameSection = document.querySelector("#game-section");
+  const paragraph = document.createElement("p");
+  paragraph.innerText = text;
+  if (text.includes("Won")) {
+    paragraph.classList.add("result-win");
+    paragraph.id = "result";
+  } else {
+    paragraph.classList.add("result-loose");
+    paragraph.id = "result";
+  }
+  paragraph.classList.add("margin");
+  gameSection.insertBefore(paragraph, gameSection.firstChild);
+
+}
+
+function displayNewGameButton() {
+  const gameSection = document.querySelector("#game-section");
+  const button = document.createElement("button");
+  button.innerText = "New Game";
+  button.addEventListener("click", playGame);
+  button.classList.add("margin");
+  gameSection.append(button);
+}
+
+function removeExtraElements() {
+  const button = document.querySelector("button");
+  const resultText = document.querySelector("#result");
+
+  if (button !== null) {
+    button.parentElement.removeChild(button);
+  }
+
+  if (resultText !== null) {
+    resultText.parentElement.removeChild(resultText);
+  }
 }

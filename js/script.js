@@ -2,20 +2,25 @@ addCleanEventToButton();
 addCreateEventToButton();
 
 function createDivs(number) {
-  const sketchArea = document.querySelector("#sketch-area");
-  for (let i = 0; i < number; i++) {
-    let newDiv = document.createElement("div");
-    newDiv.classList.add("newDiv");
-    for (let j = 0; j < number; j++) {
-      let innerDiv = document.createElement("div");
-      innerDiv.classList.add("innerDiv");
-      innerDiv.addEventListener("mouseover", () => {
-        innerDiv.style.backgroundColor = "black";
-      })
-      newDiv.append(innerDiv)
+  if (number > 0 && number <= 100) {
+    const sketchArea = document.querySelector("#sketch-area");
+    for (let i = 0; i < number; i++) {
+      let newDiv = document.createElement("div");
+      newDiv.classList.add("newDiv");
+      for (let j = 0; j < number; j++) {
+        let innerDiv = document.createElement("div");
+        innerDiv.classList.add("innerDiv");
+        innerDiv.addEventListener("mouseover", () => {
+          innerDiv.style.backgroundColor = "black";
+        })
+        newDiv.append(innerDiv);
+      }
+      sketchArea.append(newDiv);
     }
-    sketchArea.append(newDiv)
+  } else {
+    alert("You need to input a Positive Number less or equals to 100");
   }
+
 }
 
 function replaceSketchArea() {

@@ -64,3 +64,8 @@ h2 {
   flex-grow: 1;
 }
 
+label {
+  font-weight: bold;
+  background-color: grey;
+  border: 1px solid black;
+}

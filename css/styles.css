@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  background-color: #DCDFE5;
+  background-color: #303036;
 }
 
 *, *::after, *::before {
@@ -15,17 +15,42 @@ body {
 
 header {
   display: flex;
-  background-color: #BFD9EE;
+  background-color: #CDCDCD;
   justify-content: center;
 }
 
+h2 {
+  background-color: #191923;
+  color: white;
+  font-weight: bold;
+  margin: 0;
+}
+
+#main-section {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  padding: 20px;
+}
+
 #sketch-area {
+  background-color: white;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
   width: 500px;
   height: 500px;
-  margin: 20px auto;
+}
+
+#config-section {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  background-color: #93939F;
+  gap: 20px;
+  border: 1px solid black;
+  border-radius: 80px;
+  padding-top: 70px;
 }
 
 .newDiv {
@@ -38,3 +63,4 @@ header {
   border: 0.25px solid gray;
   flex-grow: 1;
 }
+

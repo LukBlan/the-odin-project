@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  background-color: #303036;
+  background-color: #dcdada;
 }
 
 *, *::after, *::before {
@@ -15,12 +15,16 @@ body {
 
 header {
   display: flex;
-  background-color: #CDCDCD;
+  background-color: black;
   justify-content: center;
 }
 
+h1 {
+  color: white;
+  font-weight: bold;
+}
+
 h2 {
-  background-color: #191923;
   color: white;
   font-weight: bold;
   margin: 0;
@@ -43,13 +47,13 @@ h2 {
 }
 
 #config-section {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  background-color: #93939F;
-  gap: 20px;
+  background-color: black;
   border: 1px solid black;
   border-radius: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
   padding-top: 70px;
 }
 
@@ -65,9 +69,10 @@ h2 {
 }
 
 label {
+  background-color: black;
+  color: white;
   font-weight: bold;
-  background-color: grey;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 img {
@@ -81,4 +86,9 @@ img {
 img:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+#input-section {
+  display: flex;
+  flex-direction: column;
 }

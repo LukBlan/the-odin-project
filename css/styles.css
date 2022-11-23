@@ -69,3 +69,16 @@ label {
   background-color: grey;
   border: 1px solid black;
 }
+
+img {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}

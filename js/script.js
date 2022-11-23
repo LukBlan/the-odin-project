@@ -1,5 +1,6 @@
 addCleanEventToButton();
 addCreateEventToButton();
+addBombEventToButton();
 
 function createDivs(number) {
   if (number > 0 && number <= 100) {
@@ -31,7 +32,7 @@ function replaceSketchArea() {
 }
 
 function addCleanEventToButton() {
-  const cleanButton = document.querySelector("#clean");
+  const cleanButton = document.querySelector("#eraser");
   const inputNumber = getUserGridSize();
   cleanButton.addEventListener("click", () => {
     replaceSketchArea()
@@ -41,11 +42,16 @@ function addCleanEventToButton() {
 }
 
 function addCreateEventToButton() {
-  const createButton = document.querySelector("#create");
+  const createButton = document.querySelector("#new");
   createButton.addEventListener("click", () => {
     replaceSketchArea();
     createDivs(getUserGridSize());
   })
+}
+
+function addBombEventToButton() {
+  const createButton = document.querySelector("#bomb");
+  createButton.addEventListener("click", replaceSketchArea);
 }
 
 function getUserGridSize() {

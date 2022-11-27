@@ -1,6 +1,7 @@
 let gridSize = 32;
 let currentPosition;
 
+diplayGridValue()
 addCleanEventToButton();
 addCreateEventToButton();
 addBombEventToButton();
@@ -39,7 +40,7 @@ function addCleanEventToButton() {
   const cleanButton = document.querySelector("#eraser");
   cleanButton.addEventListener("click", () => {
     replaceSketchArea()
-    createDivs(getUserGridSize());
+    createDivs(gridSize);
   });
 }
 
@@ -47,17 +48,13 @@ function addCreateEventToButton() {
   const createButton = document.querySelector("#new");
   createButton.addEventListener("click", () => {
     replaceSketchArea();
-    createDivs(getUserGridSize());
+    createDivs(gridSize);
   })
 }
 
 function addBombEventToButton() {
   const createButton = document.querySelector("#bomb");
   createButton.addEventListener("click", replaceSketchArea);
-}
-
-function getUserGridSize() {
-  return document.querySelector("input").value
 }
 
 function moveBall() {
@@ -78,4 +75,12 @@ function changeBallPosition(event) {
   let ballRightPosition = Math.min(this.getBoundingClientRect().left + dist, barMaxWidth);
   let ballLeftPosition = Math.max(ballRightPosition, this.parentElement.getBoundingClientRect().left)
   this.style.left = ballLeftPosition + "px";
+  let number = (currentPosition - this.parentElement.getBoundingClientRect().left) / (this.parentElement.offsetWidth / 64)
+  gridSize = Math.max(Math.min(Math.round(number), 64), 2);
+  diplayGridValue()
+}
+
+function diplayGridValue() {
+  const textDiv = document.getElementById("grid-size-display");
+  textDiv.innerText = gridSize.toString() + "x" + gridSize.toString();
 }

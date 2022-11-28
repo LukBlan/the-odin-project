@@ -105,13 +105,22 @@ img:hover {
 }
 
 #grid-size-display {
-  color: white;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  margin: 30px;
+  border-radius: 10px;
 }
 
 #ball {
   position: absolute;
   background-color: grey;
-  width: 23px;
-  height: 23px;
-  border-radius: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 20px;
 }
+
+.active {
+  background-color: #338BC1;
+}
+

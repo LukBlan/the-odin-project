@@ -1,32 +1,43 @@
 let gridSize = 32;
 let currentPosition;
 
+
+randomColor()
 diplayGridValue()
 addCleanEventToButton();
 addCreateEventToButton();
 addBombEventToButton();
-moveBall()
+moveBall();
+addSwitchButtonTuRainbow()
 
 function createDivs(number) {
-  if (number > 0 && number <= 100) {
-    const sketchArea = document.querySelector("#sketch-area");
-    for (let i = 0; i < number; i++) {
-      let newDiv = document.createElement("div");
-      newDiv.classList.add("newDiv");
-      for (let j = 0; j < number; j++) {
-        let innerDiv = document.createElement("div");
-        innerDiv.classList.add("innerDiv");
-        innerDiv.addEventListener("mouseover", () => {
-          innerDiv.style.backgroundColor = "black";
-        })
-        newDiv.append(innerDiv);
-      }
-      sketchArea.append(newDiv);
-    }
-  } else {
-    alert("You need to input a Positive Number less or equals to 100");
-  }
+  const rainbowReference = document.getElementById("rainbow");
+  let rainBowIsActive = rainbowReference.classList.contains("active");
+  const sketchArea = document.querySelector("#sketch-area");
 
+  for (let i = 0; i < number; i++) {
+    let newDiv = document.createElement("div");
+    newDiv.classList.add("newDiv");
+    for (let j = 0; j < number; j++) {
+      let innerDiv = createInnerDiv(rainBowIsActive);
+      newDiv.append(innerDiv);
+    }
+    sketchArea.append(newDiv);
+  }
+}
+
+function createInnerDiv(rainBowIsActive) {
+  const innerDiv = document.createElement("div");
+  innerDiv.classList.add("innerDiv");
+  if (rainBowIsActive) {
+    addRandomColorEventToElement(innerDiv, randomColor());
+  } else {
+    innerDiv.addEventListener("mouseover", () => {
+      innerDiv.style.backgroundColor = "black";
+    })
+    removeEventColorEventToElement(innerDiv)
+  }
+  return innerDiv;
 }
 
 function replaceSketchArea() {
@@ -84,3 +95,62 @@ function diplayGridValue() {
   const textDiv = document.getElementById("grid-size-display");
   textDiv.innerText = gridSize.toString() + "x" + gridSize.toString();
 }
+
+function addSwitchButtonTuRainbow() {
+  const rainbowButton = document.getElementById("rainbow");
+  rainbowButton.addEventListener("click", switchRainbow)
+}
+
+function switchRainbow() {
+  if (this.classList.length) {
+    this.classList.remove("active")
+    removeRandomColorEvent()
+    changeColorToBlackToAllElements();
+  } else {
+    this.classList.add("active")
+    addRainbowColorToDiv(this);
+  }
+}
+
+function addRainbowColorToDiv() {
+  const sketchArea = document.querySelector("#sketch-area");
+  sketchArea.childNodes.forEach(element => {
+    element.childNodes.forEach(innerElement => addRandomColorEventToElement(innerElement, randomColor()))
+  })
+}
+
+function removeRandomColorEvent() {
+  const sketchArea = document.querySelector("#sketch-area");
+  sketchArea.childNodes.forEach(element => {
+    element.childNodes.forEach(innerElement => innerElement.removeEventListener("mouseover", changeToRandomColor))
+  })
+}
+
+function addRandomColorEventToElement(element) {
+  element.addEventListener("mouseover", changeToRandomColor);
+}
+
+function removeEventColorEventToElement(element) {
+  element.removeEventListener("mouseover", changeToRandomColor);
+}
+
+function changeToRandomColor(event) {
+  event.target.style.backgroundColor = randomColor();
+}
+
+function changeToBlack(event) {
+  event.target.style.backgroundColor = "black";
+}
+
+function randomColor() {
+  let number = (Math.floor(Math.random() * 16777214)).toString(16);
+  return "#" + number;
+}
+
+function changeColorToBlackToAllElements() {
+  const sketchArea = document.querySelector("#sketch-area");
+  sketchArea.childNodes.forEach(element => {
+    element.childNodes.forEach(innerElement => innerElement.addEventListener("mouseover", changeToBlack))
+  })
+}
+

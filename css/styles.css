@@ -1,4 +1,4 @@
-/* Website - General Selectors */
+/* General Selectors */
 html {
   box-sizing: border-box;
 }
@@ -147,6 +147,11 @@ h2 {
   color: #6a6a72;
 }
 
+#fact-boxes div p:hover {
+  cursor: pointer;
+  color: black;
+}
+
 /* Website - Quote */
 #quote {
   background-color: #E5E7EB;
@@ -173,29 +178,24 @@ h2 {
 #adopt-bar {
   background-color: #3882F6;
   border-radius: 10px;
-  padding: 10px;
-  width: 60%;
-  margin: 50px 20% 50px 20%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 10px;
+  margin: 50px 20% 50px 20%;
+  gap: 10px;
 }
 
-.adopt-bar-title {
-  font-weight: bold;
-}
-
-#adopt-bar div {
-  padding: 20px;
-}
-
-.adopt-bar-text {
-  color: #E5E7EB;
-}
-
-#adopt-bar div p {
+#adopt-text {
   color: white;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#adopt-bar-title {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .white-border-button {
@@ -214,12 +214,12 @@ h2 {
   cursor: pointer;
 }
 
-#footer {
+footer {
   background-color: #1F2937;
   color: white;
-  height: 70px;
-  margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 70px;
+  margin-top: auto;
 }

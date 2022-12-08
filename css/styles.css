@@ -1,22 +1,21 @@
-html {
-  box-sizing: border-box;
-  background-color: #dcdada;
-}
-
 *, *::after, *::before {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  background-color: #dcdada;
   display: flex;
   flex-direction: column;
-  margin: 0;
 }
 
 header {
   display: flex;
   background-color: black;
   justify-content: center;
+  align-items: center;
+  height: 80px;
 }
 
 h1 {
@@ -27,7 +26,6 @@ h1 {
 h2 {
   color: white;
   font-weight: bold;
-  margin: 0;
 }
 
 #main-section {

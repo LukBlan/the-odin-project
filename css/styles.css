@@ -5,6 +5,8 @@ html {
 
 *, *::after, *::before {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -12,6 +14,43 @@ body {
   display: flex;
   flex-direction: column;
   margin: auto;
+}
+
+/* Navbar */
+nav {
+  padding: 20px;
+  background-color: #1F2937;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px white solid;
+}
+
+#links {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  list-style: none;
+}
+
+#links li {
+  border-bottom: 1px #1F2937 solid;
+}
+
+#links li:hover {
+  cursor: pointer;
+  border-bottom-color: white;
+}
+
+/* Main Section  */
+#main-section {
+  background-color: #1F2937;
+  display: flex;
+  justify-content: center;
+  padding: 60px 20% 60px 20%;
+  gap: 60px;
 }
 
 h1 {
@@ -22,42 +61,9 @@ h1 {
   margin-top: 0;
 }
 
-/* WebSite Main Header */
-#main-header {
-  background-color: #1F2937;
-  display: flex;
-  padding: 0 20% 20px 20%;
-  flex-wrap: wrap;
-}
-
-.header {
-  color: white;
-  font-weight: bold;
-  font-size: 17px;
-  display: flex;
-  width: 100%;
-  list-style: none;
-  align-items: center;
-  gap: 40px;
-  margin: 0;
-}
-
 .logo {
   width: 75px;
   height: 75px;
-}
-
-.move-elements {
-  margin-left: auto;
-}
-
-.body {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
-  padding: 20px 0;
-  gap: 30px;
 }
 
 .main-image {
@@ -66,18 +72,29 @@ h1 {
   height: 250px;
 }
 
-.page-titular {
+#section-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   color: white;
 }
 
 .blue-button {
   background-color: #3882F6;
-  border: #3882F6;
+  border: 1px #3882F6 solid;
   color: white;
   font-weight: bold;
   padding: 8px 14px;
   border-radius: 5px;
 }
+
+.blue-button:hover {
+  background-color: #1F2937;
+  border-color: white;
+}
+
 
 /* Website - Gallery */
 #gallery {
@@ -173,6 +190,12 @@ h2 {
   font-weight: bold;
   border: 2px white solid;
   border-radius: 5px;
+}
+
+.white-border-button:hover {
+  background-color: white;
+  color: #1F2937;
+  border-color: #1F2937;
 }
 
 #footer {

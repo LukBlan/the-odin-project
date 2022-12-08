@@ -120,21 +120,21 @@ h2 {
   gap: 50px;
 }
 
-#facts-boxes div {
+#fact-boxes div {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 5px;
 }
 
-#facts-boxes div img {
+#fact-boxes div img {
   border: 4px #3882F6 solid;
   border-radius: 15px;
   width: 150px;
   height: 150px;
 }
 
-#facts-boxes div p {
+#fact-boxes div p {
   font-family: sans-serif;
   font-size: 18px;
   font-weight: bold;

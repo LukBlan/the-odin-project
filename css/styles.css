@@ -93,39 +93,47 @@ h1 {
 .blue-button:hover {
   background-color: #1F2937;
   border-color: white;
+  cursor: pointer;
 }
-
 
 /* Website - Gallery */
 #gallery {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px;
 }
 
 h2 {
-  width: 100%;
   color: #1F2937;
   font-size: 36px;
   font-family: Hero, sans-serif;
   font-weight: 800;
 }
 
-.facts-boxes {
+#facts-boxes {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 50px;
 }
 
-.facts-boxes div img {
+#facts-boxes div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#facts-boxes div img {
   border: 4px #3882F6 solid;
   border-radius: 15px;
   width: 150px;
   height: 150px;
 }
 
-.facts-boxes div p {
+#facts-boxes div p {
   font-family: sans-serif;
   font-size: 18px;
   font-weight: bold;
@@ -196,6 +204,7 @@ h2 {
   background-color: white;
   color: #1F2937;
   border-color: #1F2937;
+  cursor: pointer;
 }
 
 #footer {

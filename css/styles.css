@@ -23,7 +23,7 @@ body {
 header {
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   height: 100px;
   background-color: var(--main-page);
 }
@@ -101,8 +101,8 @@ h2 {
   color: white;
   font-weight: bold;
   border-bottom: 2px solid black;
-  width: 100%;
   font-size: 30px;
+  flex-grow: 1;
 }
 
 .result-box {
@@ -117,8 +117,6 @@ h1 {
   color: white;
   font-family: Hero, sans-serif;
   align-self: center;
-  margin: 0;
-  width: 100%;
 }
 
 .mouseOverCard {

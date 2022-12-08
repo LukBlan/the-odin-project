@@ -128,10 +128,16 @@ h2 {
 }
 
 #fact-boxes div img {
-  border: 4px #3882F6 solid;
+  border: 3px #3882F6 solid;
   border-radius: 15px;
   width: 150px;
   height: 150px;
+}
+
+#fact-boxes div img:hover {
+  border: 4px #3882F6 solid;
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 #fact-boxes div p {
@@ -146,21 +152,21 @@ h2 {
   background-color: #E5E7EB;
   color: #1F2937;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap;
-  padding: 60px 20% 10px 20%;
+  gap: 20px;
+  padding: 50px 20% 50px 20%;
 }
 
 #quote-text {
   font-family: light-italic, sans-serif;
   font-size: 38px;
-  width: 100%;
 }
 
 #quote-author {
   font-size: 20px;
   font-weight: bold;
-  margin-left: auto;
+  align-self: flex-end;
 }
 
 /* Website - Adopt bar */

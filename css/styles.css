@@ -80,11 +80,17 @@ img {
   border-radius: 10px;
   width: 50px;
   height: 50px;
+  box-shadow: 2px 1px 1px white;
 }
 
 img:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(0.95);
+}
+
+img:active {
+  box-shadow: 0 0 0 white;
+  transform: scale(0.90);
 }
 
 #grid-size-section {
@@ -120,5 +126,12 @@ img:hover {
 
 .active {
   background-color: #338BC1;
+}
+
+#options {
+  padding: 10px;
+  gap: 6px;
+  display: flex;
+  flex-wrap: wrap;
 }
 

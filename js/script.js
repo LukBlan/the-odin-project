@@ -1,16 +1,35 @@
-let round = 1;
-let playerScore = 0;
-let computerScore = 0;
+let gameRound = {
+  round: 1,
+  playerScore: 0,
+  computerScore: 0,
 
-playGame()
+  resetRound: function () {
+    this.round = 1;
+    this.playerScore = 0;
+    this.computerScore = 0;
+  },
+
+  displayGameState: function () {
+    const roundCounter = document.getElementById("round-counter");
+    const playerResult = document.getElementById("player-result");
+    const computerResult = document.getElementById("computer-result");
+
+    computerResult.innerText = this.computerScore;
+    playerResult.innerText = this.playerScore;
+    roundCounter.innerText = "Round " + this.round;
+  }
+};
+
+addEventToNewGameButton();
+playGame();
+
 
 function playGame() {
   addEventToPlayerHand();
-  removeExtraElements();
-  round = 1;
+  gameRound.resetRound();
   resetOptionImage();
   resetScore();
-  updateRound();
+  gameRound.displayGameState();
 }
 
 function playRound(playerOption) {
@@ -19,14 +38,8 @@ function playRound(playerOption) {
   let resultText = chooseWinner(playerOption, computerChoice)
   displayResult(resultText, playerOption, computerChoice, options);
   updateScores();
-  round++;
-  updateRound();
+  gameRound.displayGameState();
   checkWinner();
-}
-
-function updateRound() {
-  let roundTracker = document.querySelector("#round-counter");
-  roundTracker.innerText = "Round " + round.toString();
 }
 
 function getComputerChoice(options) {
@@ -64,10 +77,10 @@ function displayResult(text, playerOption, computerChoice, options) {
   changeImage(computerChoice,options,"computer-choice");
   changeImage(playerOption,options,"player-choice");
   if (text.includes("Won")) {
-    ++playerScore;
+    gameRound.playerScore++;
     changeColorImage("green", "red");
   } else if (text.includes("Loose")) {
-    ++computerScore;
+    gameRound.computerScore++;
     changeColorImage("red", "green");
   } else {
     changeColorImage("yellow", "yellow");
@@ -158,26 +171,4 @@ function showWinner(text) {
   paragraph.classList.add("margin");
   gameSection.insertBefore(paragraph, gameSection.firstChild);
 
-}
-
-function displayNewGameButton() {
-  const gameSection = document.querySelector("#game-section");
-  const button = document.createElement("button");
-  button.innerText = "New Game";
-  button.addEventListener("click", playGame);
-  button.classList.add("margin");
-  gameSection.append(button);
-}
-
-function removeExtraElements() {
-  const button = document.querySelector("button");
-  const resultText = document.querySelector("#result");
-
-  if (button !== null) {
-    button.parentElement.removeChild(button);
-  }
-
-  if (resultText !== null) {
-    resultText.parentElement.removeChild(resultText);
-  }
 }

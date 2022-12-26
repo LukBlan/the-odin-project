@@ -21,11 +21,15 @@ body {
 }
 
 header {
+
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100px;
   background-color: var(--main-page);
+}
+
+button {
 }
 
 #game-section {
@@ -114,6 +118,7 @@ h2 {
 }
 
 h1 {
+  margin: 0 auto;
   color: white;
   font-family: Hero, sans-serif;
   align-self: center;

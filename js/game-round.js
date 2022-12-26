@@ -28,9 +28,10 @@ let gameRound = {
 
 function playRound(playerOption) {
   const options = ["paper", "scissors", "rock"];
-  let computerChoice = getComputerChoice(options)
-  let resultText = chooseWinner(playerOption, computerChoice)
-  displayResult(resultText, playerOption, computerChoice, options);
+  const computerChoice = getComputerChoice(options)
+  let roundResult = getRoundResult(playerOption, computerChoice)
+
+  displayResult(roundResult, playerOption, computerChoice, options);
   updateScores();
   gameRound.displayGameState();
   checkWinner();
@@ -40,31 +41,23 @@ function getComputerChoice(options) {
   return options[Math.round(Math.random() * (options.length - 1))];
 }
 
-function chooseWinner(playerOption, computerOption) {
+function getRoundResult(playerOption, computerOption) {
   const playerPositionInArray = getPositionInArray(playerOption);
   const computerPositionInArray = getPositionInArray(computerOption);
-
   // Player:Row  Computer:Column
-  let arrayOfResults = [ //Paper                      Scissors                               Rock
+  const arrayOfResults =
+  [//Paper                            Scissors                              Rock
     [                          "draw", "You Loose!, Paper Lost to Scissors", "You Won!, Paper beats Rock"],
     ["You Won!, Scissors beats Paper", "draw",                               "You Loose!, Scissors lost to Rock"],
     ["You Loose!, Rock lost to Paper", "You Won! Rock Beats Scissors",        "draw"]
   ]
+
   return arrayOfResults[playerPositionInArray][computerPositionInArray];
 }
 
-// Returns a number based on word length 0:Paper  1:Scissors  2:Rock - with this you don't need if conditionals
+// Returns a number based on word length 0:Paper  1:Scissors  2:Rock, that is used in above array
 function getPositionInArray(option) {
   return Math.round(option.length / 2) % 3;
-}
-
-function addEventToPlayerHand() {
-  const playerButton = document.getElementById("player-hand");
-  playerButton.childNodes.forEach(element => element.addEventListener("click", () => {
-    let stringOption = element.src.match(/(?:[a-z])+.png/);
-      playRound(stringOption.join("").split(".")[0])
-    })
-  )
 }
 
 function displayResult(text, playerOption, computerChoice, options) {

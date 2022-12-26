@@ -1,0 +1,2 @@
+addEventToNewGameButton();
+addEventToPlayerHand();

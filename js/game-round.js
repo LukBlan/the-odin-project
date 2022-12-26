@@ -3,10 +3,16 @@ let gameRound = {
   playerScore: 0,
   computerScore: 0,
 
-  resetRound: function () {
+  resetGame: function () {
+    const roundChoices = document.querySelectorAll(".result-section > img");
+
     this.round = 1;
     this.playerScore = 0;
     this.computerScore = 0;
+    Array.from(roundChoices).forEach(img => {
+      img.src = "./img/question-mark.svg";
+      img.style.backgroundColor = "";
+    })
   },
 
   displayGameState: function () {
@@ -19,18 +25,6 @@ let gameRound = {
     roundCounter.innerText = "Round " + this.round;
   }
 };
-
-addEventToNewGameButton();
-playGame();
-
-
-function playGame() {
-  addEventToPlayerHand();
-  gameRound.resetRound();
-  resetOptionImage();
-  resetScore();
-  gameRound.displayGameState();
-}
 
 function playRound(playerOption) {
   const options = ["paper", "scissors", "rock"];
@@ -106,12 +100,12 @@ function changeImage(playerOption, options, idSelector) {
 function updateScores() {
   const computer = document.getElementById("computer-result");
   const player = document.getElementById("player-result");
-  computer.innerText = computerScore.toString();
-  player.innerText = playerScore.toString();
-  if (computerScore > playerScore) {
+  computer.innerText = gameRound.computerScore.toString();
+  player.innerText = gameRound.playerScore.toString();
+  if (gameRound.computerScore > gameRound.playerScore) {
     computer.style.backgroundColor = "green";
     player.style.backgroundColor = "red";
-  } else if (computerScore < playerScore) {
+  } else if (gameRound.computerScore < gameRound.playerScore) {
     computer.style.backgroundColor = "red";
     player.style.backgroundColor = "green";
   } else {
@@ -120,41 +114,12 @@ function updateScores() {
   }
 }
 
-function resetScore() {
-  computerScore = 0;
-  playerScore = 0;
-  updateScores();
-}
-
 function checkWinner() {
-  if (computerScore === 5) {
-    resultScreen("You Loose!!");
-  } else if (playerScore === 5) {
-    resultScreen("You Won!!")
+  if (gameRound.computerScore === 5) {
+    gameRound.resultScreen("You Loose!!");
+  } else if (gameRound.playerScore === 5) {
+    gameRound.resultScreen("You Won!!")
   }
-}
-
-function resetOptionImage() {
-  let playerImage = document.querySelector("#player-choice");
-  let computerImage = document.querySelector("#computer-choice");
-  playerImage.src = "./img/question-mark.svg"
-  computerImage.src = "./img/question-mark.svg"
-  playerImage.style.backgroundColor = ""
-  computerImage.style.backgroundColor = ""
-}
-
-function removeEvents() {
-  const playerButton = document.getElementById("player-hand");
-  playerButton.childNodes.forEach(element => {
-    let newElement = element.cloneNode();
-    element.parentElement.replaceChild(newElement, element);
-  })
-}
-
-function resultScreen(text) {
-  showWinner(text);
-  removeEvents();
-  displayNewGameButton();
 }
 
 function showWinner(text) {
@@ -170,5 +135,4 @@ function showWinner(text) {
   }
   paragraph.classList.add("margin");
   gameSection.insertBefore(paragraph, gameSection.firstChild);
-
 }

@@ -4,19 +4,12 @@ let gameRound = {
   computerScore: 0,
 
   resetGame: function () {
-    const roundChoices = document.querySelectorAll(".result-section > img");
-    const resultBox = document.querySelector('[class^="box-message-"]');
-    addEventToPlayerHand()
+    deleteResultBoxMessage();
+    addEventToPlayerHand();
+    resetImageContent();
     this.round = 1;
     this.playerScore = 0;
     this.computerScore = 0;
-    Array.from(roundChoices).forEach(img => {
-      img.src = "./img/question-mark.svg";
-      img.style.backgroundColor = "";
-    })
-    if (resultBox !== null) {
-      resultBox.parentElement.removeChild(resultBox);
-    }
   },
 
   displayGameState: function () {
@@ -45,6 +38,21 @@ let gameRound = {
       gameSection.appendChild(newMessageBox)
   }
 };
+
+function resetImageContent() {
+  const roundChoices = document.querySelectorAll(".result-section > img");
+  Array.from(roundChoices).forEach(img => {
+    img.src = "./img/question-mark.svg";
+    img.style.backgroundColor = "";
+  })
+}
+
+function deleteResultBoxMessage() {
+  const resultBox = document.querySelector('[class^="box-message-"]');
+  if (resultBox !== null) {
+    resultBox.parentElement.removeChild(resultBox);
+  }
+}
 
 function playRound(playerOption) {
   const options = ["paper", "scissors", "rock"];
@@ -111,8 +119,6 @@ function changeImage(playerOption, options, idSelector) {
 function updateScores() {
   const computer = document.getElementById("computer-result");
   const player = document.getElementById("player-result");
-  computer.innerText = gameRound.computerScore.toString();
-  player.innerText = gameRound.playerScore.toString();
   if (gameRound.computerScore > gameRound.playerScore) {
     computer.style.backgroundColor = "green";
     player.style.backgroundColor = "red";

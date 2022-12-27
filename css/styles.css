@@ -30,7 +30,15 @@ header {
   background-color: var(--main-page);
 }
 
-button {
+#new-game-button {
+  background-color: white;
+  padding: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#new-game-button:active {
+  transform: scale(0.9);
 }
 
 #game-section {
@@ -153,16 +161,4 @@ footer {
 
 .box-message-win {
   background-color: green;
-}
-
-#result {
-  border: 1px black solid;
-  color: white;
-  font-weight: bold;
-  padding: 2px;
-  border-radius: 8px;
-}
-
-.margin {
-  align-self: center;
 }

@@ -5,7 +5,8 @@ let gameRound = {
 
   resetGame: function () {
     const roundChoices = document.querySelectorAll(".result-section > img");
-
+    const resultBox = document.querySelector('[class^="box-message-"]');
+    addEventToPlayerHand()
     this.round = 1;
     this.playerScore = 0;
     this.computerScore = 0;
@@ -13,16 +14,35 @@ let gameRound = {
       img.src = "./img/question-mark.svg";
       img.style.backgroundColor = "";
     })
+    if (resultBox !== null) {
+      resultBox.parentElement.removeChild(resultBox);
+    }
   },
 
   displayGameState: function () {
     const roundCounter = document.getElementById("round-counter");
     const playerResult = document.getElementById("player-result");
     const computerResult = document.getElementById("computer-result");
-
     computerResult.innerText = this.computerScore;
     playerResult.innerText = this.playerScore;
     roundCounter.innerText = "Round " + this.round;
+  },
+
+  checkWinner: function () {
+    if (this.playerScore > 4 || this.computerScore > 4) {
+      let message = (this.playerScore > 4)? "You Win" : "You Loose";
+      this.displayEndGame(message);
+      removeEventToPlayerHand()
+    }
+  },
+
+  displayEndGame: function (message) {
+      const newMessageBox = document.createElement("p");
+      const gameSection = document.getElementById("game-section");
+      const messageClass = message.includes("Win")? "box-message-win": "box-message-loose";
+      newMessageBox.innerText = message;
+      newMessageBox.classList.add(messageClass);
+      gameSection.appendChild(newMessageBox)
   }
 };
 
@@ -30,11 +50,10 @@ function playRound(playerOption) {
   const options = ["paper", "scissors", "rock"];
   const computerChoice = getComputerChoice(options)
   let roundResult = getRoundResult(playerOption, computerChoice)
-
   displayResult(roundResult, playerOption, computerChoice, options);
   updateScores();
   gameRound.displayGameState();
-  checkWinner();
+  gameRound.checkWinner();
 }
 
 function getComputerChoice(options) {
@@ -51,7 +70,6 @@ function getRoundResult(playerOption, computerOption) {
     ["You Won!, Scissors beats Paper", "draw",                               "You Loose!, Scissors lost to Rock"],
     ["You Loose!, Rock lost to Paper", "You Won! Rock Beats Scissors",        "draw"]
   ]
-
   return arrayOfResults[playerPositionInArray][computerPositionInArray];
 }
 
@@ -105,27 +123,4 @@ function updateScores() {
     computer.style.backgroundColor = "yellow";
     player.style.backgroundColor = "yellow";
   }
-}
-
-function checkWinner() {
-  if (gameRound.computerScore === 5) {
-    gameRound.resultScreen("You Loose!!");
-  } else if (gameRound.playerScore === 5) {
-    gameRound.resultScreen("You Won!!")
-  }
-}
-
-function showWinner(text) {
-  const gameSection = document.querySelector("#game-section");
-  const paragraph = document.createElement("p");
-  paragraph.innerText = text;
-  if (text.includes("Won")) {
-    paragraph.classList.add("result-win");
-    paragraph.id = "result";
-  } else {
-    paragraph.classList.add("result-loose");
-    paragraph.id = "result";
-  }
-  paragraph.classList.add("margin");
-  gameSection.insertBefore(paragraph, gameSection.firstChild);
 }

@@ -163,6 +163,14 @@ h2 {
   font-size: 38px;
 }
 
+#quote-text::after {
+  content: close-quote;
+}
+
+#quote-text::before {
+  content: open-quote;
+}
+
 #quote-author {
   font-size: 20px;
   font-weight: bold;

@@ -14,7 +14,11 @@ body {
 
 /* Navbar */
 nav {
+  width: 100%;
   padding: 20px;
+  position: sticky;
+  z-index: 1;
+  top: 0;
   background-color: #1F2937;
   color: white;
   font-weight: bold;

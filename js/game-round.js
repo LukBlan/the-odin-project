@@ -4,6 +4,7 @@ let gameRound = {
   computerScore: 0,
 
   resetGame: function () {
+    changeResultBoxYoYellow()
     deleteResultBoxMessage();
     addEventToPlayerHand();
     resetImageContent();
@@ -45,6 +46,11 @@ function resetImageContent() {
     img.src = "./img/question-mark.svg";
     img.style.backgroundColor = "";
   })
+}
+
+function changeResultBoxYoYellow() {
+  const resultBoxes = document.getElementsByClassName("result-box");
+  Array.from(resultBoxes).forEach(element => element.style.backgroundColor = "yellow")
 }
 
 function deleteResultBoxMessage() {

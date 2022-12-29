@@ -72,13 +72,17 @@ h1 {
   height: 250px;
 }
 
-#section-info {
+#info-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
   color: white;
+}
+
+#info-section p {
+  font-size: min(calc(0.75rem + 1vw), 1.5rem);
 }
 
 .blue-button {

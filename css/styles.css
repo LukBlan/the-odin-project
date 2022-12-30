@@ -37,7 +37,7 @@ nav {
 
 #links li {
   border-bottom: 1px #1F2937 solid;
-  font-size: Clamp(1.7rem, 1rem + 1vw, 3rem)
+  font-size: Clamp(1.5rem, 1rem + 1vw, 3rem)
 }
 
 #links li:hover {
@@ -112,7 +112,7 @@ h1 {
 
 h2 {
   color: #1F2937;
-  font-size: 36px;
+  font-size: Clamp(2rem, 1rem + 3vw, 3rem);
   font-family: Hero, sans-serif;
   font-weight: 800;
 }
@@ -151,7 +151,7 @@ h2 {
 
 #fact-boxes div p {
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: Clamp(1rem, 0.5rem + 1vw, 2rem);
   font-weight: bold;
   color: #6a6a72;
 }

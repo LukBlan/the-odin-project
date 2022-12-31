@@ -6,7 +6,6 @@ randomColor()
 diplayGridValue()
 addCleanEventToButton();
 addCreateEventToButton();
-addBombEventToButton();
 moveBall();
 addSwitchButtonTuRainbow()
 
@@ -61,11 +60,6 @@ function addCreateEventToButton() {
     replaceSketchArea();
     createDivs(gridSize);
   })
-}
-
-function addBombEventToButton() {
-  const createButton = document.querySelector("#bomb");
-  createButton.addEventListener("click", replaceSketchArea);
 }
 
 function moveBall() {

@@ -63,8 +63,6 @@ h2 {
 }
 
 .innerDiv {
-  border: 0.25px solid gray;
-  border-radius: 5px;
   flex-grow: 1;
 }
 

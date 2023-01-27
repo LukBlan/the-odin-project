@@ -1,4 +1,6 @@
-/* General Selectors */
+/* ===============
+    Global Styles
+   =============== */
 :root {
   --main-page: #0C121D;
   --background: #C6CCD2;
@@ -21,25 +23,38 @@ body {
   user-select: none;
 }
 
-header {
+/* ============
+    Typography
+   ============ */
 
+h1 {
+  margin: 0 auto;
+  color: white;
+  font-family: Hero, sans-serif;
+  align-self: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+/* ========
+    Layout
+   ======== */
+    /* --------
+        Header
+       -------- */
+
+header {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100px;
   background-color: var(--main-page);
 }
-
-#new-game-button {
-  background-color: white;
-  padding: 4px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-#new-game-button:active {
-  transform: scale(0.9);
-}
+    /* --------------
+        Game Section
+       -------------- */
 
 #game-section {
   display: flex;
@@ -48,35 +63,9 @@ header {
   margin: 20px 15%;
 }
 
-.player-image {
-  width: 90px;
-  height: 90px;
-}
-
-.card-img {
-  border: 2px solid black;
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.75);
-}
-
-.card-img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 16px rgba(0,0,0,0.25);;
-}
-
-#computer-hand .card-img:hover {
-  cursor: not-allowed;
-}
-
-#player-hand .card-img:hover {
-  cursor: pointer;
-}
-
-h2 {
-  text-align: center;
-}
+    /* ------------------
+        Computer Section
+       ------------------ */
 
 #computer {
   display: flex;
@@ -85,15 +74,24 @@ h2 {
   justify-content: center;
 }
 
-#player {
-  display: flex;
-  align-items: center;
+#computer-hand .card-img:hover {
+  cursor: not-allowed;
 }
 
 #computer-hand, #player-hand {
   display: flex;
   gap: 20px;
   padding: 30px 0;
+}
+
+    /* ----------------
+        Result Section
+       ---------------- */
+
+.result-section {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .result-screen {
@@ -105,11 +103,12 @@ h2 {
   width: 130px;
 }
 
-#round-state {
-  display: flex;
-  background-color: #e6e6e6;
-  border: black solid 1px;
-  align-items: center;
+.result-box {
+  flex-grow: 1;
+  border: solid 1px black;
+  background-color: white;
+  padding: 9px;
+  font-weight: bold;
 }
 
 #round-counter {
@@ -121,36 +120,31 @@ h2 {
   flex-grow: 1;
 }
 
-.result-box {
-  flex-grow: 1;
-  border: solid 1px black;
-  background-color: white;
-  padding: 9px;
-  font-weight: bold;
+    /* ----------------
+        Player Section
+       ---------------- */
+
+#player {
+  display: flex;
+  align-items: center;
 }
 
-h1 {
-  margin: 0 auto;
-  color: white;
-  font-family: Hero, sans-serif;
-  align-self: center;
+.player-image {
+  width: 90px;
+  height: 90px;
+}
+
+#player-hand .card-img:hover {
+  cursor: pointer;
 }
 
 .mouseOverCard {
   transform: scale(1.1);
 }
 
-footer {
-  background-color: #0f0f0f;
-  margin-top: auto;
-  height: 50px;
-}
-
-.result-section {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
+    /* ---------------
+        Pop Up Result
+       --------------- */
 
 .box-message-loose, .box-message-win {
   position: absolute;
@@ -166,4 +160,49 @@ footer {
 
 .box-message-win {
   background-color: green;
+}
+
+    /* --------
+        Footer
+       -------- */
+
+footer {
+  background-color: #0f0f0f;
+  margin-top: auto;
+  height: 50px;
+}
+
+/* ============
+    Components
+   ============ */
+    /* ---------
+        Buttons
+       --------- */
+
+#new-game-button {
+  background-color: white;
+  padding: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#new-game-button:active {
+  transform: scale(0.9);
+}
+
+    /* -------
+        Cards
+       ------- */
+
+.card-img {
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.75);
+}
+
+.card-img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(0,0,0,0.25);;
 }

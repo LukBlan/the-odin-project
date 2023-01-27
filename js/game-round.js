@@ -3,17 +3,17 @@ let gameRound = {
   playerScore: 0,
   computerScore: 0,
 
-  resetGame: function () {
-    changeResultBoxYoYellow()
-    deleteResultBoxMessage();
+  startNewGame: function () {
+    changeResultBoxToYellow()
+    deletePopUpBox();
     addEventToPlayerHand();
-    resetImageContent();
+    resetPlayersChoice();
     this.round = 1;
     this.playerScore = 0;
     this.computerScore = 0;
   },
 
-  displayGameState: function () {
+  updateResultBox: function () {
     const roundCounter = document.getElementById("round-counter");
     const playerResult = document.getElementById("player-result");
     const computerResult = document.getElementById("computer-result");
@@ -24,23 +24,23 @@ let gameRound = {
 
   checkWinner: function () {
     if (this.playerScore > 4 || this.computerScore > 4) {
-      let message = (this.playerScore > 4)? "You Win" : "You Loose";
-      this.displayEndGame(message);
+      let result = (this.playerScore > 4)? "You Win" : "You Loose";
+      this.displayGameFinalResult(result);
       removeEventToPlayerHand()
     }
   },
 
-  displayEndGame: function (message) {
+  displayGameFinalResult: function (result) {
       const newMessageBox = document.createElement("p");
       const gameSection = document.getElementById("game-section");
-      const messageClass = message.includes("Win")? "box-message-win": "box-message-loose";
-      newMessageBox.innerText = message;
+      const messageClass = result.includes("Win")? "box-message-win": "box-message-loose";
+      newMessageBox.innerText = result;
       newMessageBox.classList.add(messageClass);
       gameSection.appendChild(newMessageBox)
   }
 };
 
-function resetImageContent() {
+function resetPlayersChoice() {
   const roundChoices = document.querySelectorAll(".result-section > img");
   Array.from(roundChoices).forEach(img => {
     img.src = "./img/question-mark.svg";
@@ -48,12 +48,12 @@ function resetImageContent() {
   })
 }
 
-function changeResultBoxYoYellow() {
+function changeResultBoxToYellow() {
   const resultBoxes = document.getElementsByClassName("result-box");
   Array.from(resultBoxes).forEach(element => element.style.backgroundColor = "yellow")
 }
 
-function deleteResultBoxMessage() {
+function deletePopUpBox() {
   const resultBox = document.querySelector('[class^="box-message-"]');
   if (resultBox !== null) {
     resultBox.parentElement.removeChild(resultBox);
@@ -66,7 +66,7 @@ function playRound(playerOption) {
   let roundResult = getRoundResult(playerOption, computerChoice)
   displayResult(roundResult, playerOption, computerChoice, options);
   updateScores();
-  gameRound.displayGameState();
+  gameRound.updateResultBox();
   gameRound.checkWinner();
 }
 

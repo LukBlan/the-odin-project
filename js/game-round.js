@@ -24,7 +24,7 @@ let gameRound = {
   computerScore: 0,
 
   startNewGame: function () {
-    changeResultBoxToYellow()
+    changeResultBoxToYellow();
     hideResultBox();
     addEventToPlayerHand();
     resetPlayersChoice();
@@ -71,8 +71,8 @@ function resetPlayersChoice() {
 }
 
 function changeResultBoxToYellow() {
-  const resultBoxes = document.getElementsByClassName("result-box");
-  Array.from(resultBoxes).forEach(element => element.style.backgroundColor = "yellow")
+  const resultScreen = document.getElementsByClassName("score");
+  Array.from(resultScreen).forEach(element => element.style.backgroundColor = "yellow")
 }
 
 function hideResultBox() {

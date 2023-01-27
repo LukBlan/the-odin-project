@@ -70,8 +70,7 @@ h3 {
   gap: 10px;
 }
 
-.computer-score,
-.player-score {
+.score {
   background-color: yellow;
   border: solid 1px black;
   padding: 12px 20px;

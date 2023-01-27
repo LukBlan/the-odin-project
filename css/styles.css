@@ -43,6 +43,10 @@ h2 {
   white-space: nowrap;
 }
 
+h3 {
+  font-size: 1.7rem;
+}
+
 /* ========
     Layout
    ======== */
@@ -50,18 +54,17 @@ h2 {
         Navbar
        -------- */
 nav {
-  width: 100%;
+  background-color: var(--main-blue);
+  color: white;
+  border-bottom: 1px solid white;
   padding: 20px;
   position: sticky;
   z-index: 1;
   top: 0;
-  background-color: var(--main-blue);
-  color: white;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid white;
 }
 
 .nav-logo {
@@ -71,7 +74,6 @@ nav {
 
 nav ul {
   display: flex;
-  align-items: flex-end;
   gap: 30px;
   list-style: none;
 }
@@ -141,30 +143,21 @@ nav li:hover {
         Quote Section
        --------------- */
 
-#quote {
+.quote {
   background-color: var(--light-cyan-blue);
   color: var(--main-blue);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 20px;
   padding: 50px 20% 50px 20%;
 }
 
-#quote-text {
+.quote-text {
   font-family: light-italic, sans-serif;
   font-size: 38px;
 }
 
-#quote-text::after {
-  content: close-quote;
-}
-
-#quote-text::before {
-  content: open-quote;
-}
-
-#quote-author {
+.quote-author {
   font-size: 20px;
   font-weight: bold;
   align-self: flex-end;
@@ -174,7 +167,7 @@ nav li:hover {
         Adopt Bar
        ----------- */
 
-#adopt-bar {
+.adopt-bar-section {
   background-color: var(--light-blue);
   border-radius: 10px;
   display: flex;
@@ -183,19 +176,14 @@ nav li:hover {
   padding: 10px;
   margin: 50px 20% 50px 20%;
   gap: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.75);
+  box-shadow: 0 0 3px rgb(0 0 0 / 50%);
 }
 
-#adopt-text {
+.adopt-bar-info {
   color: white;
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-#adopt-bar-title {
-  font-size: 25px;
-  font-weight: bold;
 }
 
     /* --------
@@ -242,6 +230,7 @@ footer {
   font-weight: bold;
   padding: 8px 14px;
   border-radius: 5px;
+  box-shadow: 0 0 4px rgb(255 255 255 / 50%);
 }
 
 .blue-button:hover {

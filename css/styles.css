@@ -1,4 +1,7 @@
-/* General Selectors */
+/* ===============
+    Global Styles
+   =============== */
+
 :root {
   --main-blue: #1F2937;
   --light-cyan-blue: #E5E7EB;
@@ -21,7 +24,30 @@ body {
   margin: auto;
 }
 
-/* Navbar */
+/* ============
+    Typography
+   ============ */
+
+h1 {
+  color: #F9FAF8;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 45px;
+}
+
+h2 {
+  color: var(--main-blue);
+  font-size: Clamp(2rem, 1rem + 3vw, 3rem);
+  font-family: Hero, sans-serif;
+  font-weight: 800;
+}
+
+/* ========
+    Layout
+   ======== */
+    /* --------
+        Navbar
+       -------- */
 nav {
   width: 100%;
   padding: 20px;
@@ -37,7 +63,12 @@ nav {
   border-bottom: 1px solid white;
 }
 
-nav ul{
+.nav-logo {
+  width: 75px;
+  height: 75px;
+}
+
+nav ul {
   display: flex;
   align-items: flex-end;
   gap: 30px;
@@ -54,13 +85,11 @@ nav li:hover {
   border-bottom-color: white;
 }
 
-.nav-logo {
-  width: 75px;
-  height: 75px;
-}
+    /* --------------
+        Main Section
+       -------------- */
 
-/* Main Section  */
-#main-section {
+.main-section {
   background-color: var(--main-blue);
   display: flex;
   justify-content: center;
@@ -68,20 +97,7 @@ nav li:hover {
   gap: 60px;
 }
 
-h1 {
-  color: #F9FAF8;
-  font-family: sans-serif;
-  font-weight: 700;
-  font-size: 45px;
-}
-
-.main-image {
-  border-radius: 31px;
-  width: 250px;
-  height: 250px;
-}
-
-#info-section {
+.main-section-info {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,39 +106,26 @@ h1 {
   color: white;
 }
 
-#info-section p {
+.main-section p {
   font-size: Clamp(1rem, 1rem + 1vw, 2rem);
 }
 
-.blue-button {
-  background-color: var(--light-blue);
-  border: 1px solid var(--light-blue);
-  color: white;
-  font-weight: bold;
-  padding: 8px 14px;
-  border-radius: 5px;
+.main-section-image {
+  border-radius: 31px;
+  width: 250px;
+  height: 250px;
 }
 
-.blue-button:hover {
-  background-color: var(--main-blue);
-  border-color: white;
-  cursor: pointer;
-}
+    /* ---------
+        Gallery
+       --------- */
 
-/* Website - Gallery */
 #gallery {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   padding: 50px;
-}
-
-h2 {
-  color: var(--main-blue);
-  font-size: Clamp(2rem, 1rem + 3vw, 3rem);
-  font-family: Hero, sans-serif;
-  font-weight: 800;
 }
 
 .no-wrap {
@@ -170,7 +173,10 @@ h2 {
   color: black;
 }
 
-/* Website - Quote */
+    /* ---------------
+        Quote Section
+       --------------- */
+
 #quote {
   background-color: var(--light-cyan-blue);
   color: var(--main-blue);
@@ -200,7 +206,10 @@ h2 {
   align-self: flex-end;
 }
 
-/* Website - Adopt bar */
+    /* -----------
+        Adopt Bar
+       ----------- */
+
 #adopt-bar {
   background-color: var(--light-blue);
   border-radius: 10px;
@@ -225,6 +234,27 @@ h2 {
   font-weight: bold;
 }
 
+    /* --------
+        Footer
+       -------- */
+
+footer {
+  background-color: var(--main-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  margin-top: auto;
+}
+
+/* ============
+    Components
+   ============ */
+    /* --------
+        Button
+       -------- */
+
 .white-border-button {
   background-color: var(--light-blue);
   color: white;
@@ -241,12 +271,17 @@ h2 {
   cursor: pointer;
 }
 
-footer {
-  background-color: var(--main-blue);
+.blue-button {
+  background-color: var(--light-blue);
+  border: 1px solid var(--light-blue);
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70px;
-  margin-top: auto;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 5px;
+}
+
+.blue-button:hover {
+  background-color: var(--main-blue);
+  border-color: white;
+  cursor: pointer;
 }

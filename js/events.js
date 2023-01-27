@@ -7,13 +7,14 @@ function addEventToNewGameButton() {
 }
 
 function addEventToPlayerHand() {
-  const playerButton = document.getElementById("player-hand");
+  const playerButton = document.querySelector(".player-hand");
   playerButton.childNodes.forEach(element => element.addEventListener("click", playCurrenRound))
 }
 
 function playCurrenRound(event) {
   let stringOption = event.target.src.match(/(?:[a-z])+.png/);
-  playRound(stringOption.join("").split(".")[0])
+  const playerChoice = stringOption.join("").split(".")[0]
+  playRound(playerChoice)
 }
 
 function removeEventToPlayerHand() {

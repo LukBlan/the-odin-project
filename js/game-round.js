@@ -1,3 +1,17 @@
+let roundResult = {
+  "paper-paper": "draw",
+  "paper-scissors": "You Loose!, Paper Lost to Scissors",
+  "paper-rock": "You Won!, Paper beats Rock",
+
+  "rock-rock": "draw",
+  "rock-paper": "You Loose!, Paper Lost to Scissors",
+  "rock-scissors": "You Won! Rock Beats Scissors",
+
+  "scissors-scissors": "draw",
+  "scissors-paper": "You Won!, Scissors beats Paper",
+  "scissors-rock": "You Loose!, Scissors lost to Rock",
+}
+
 let gameRound = {
   round: 1,
   playerScore: 0,
@@ -60,45 +74,31 @@ function deletePopUpBox() {
   }
 }
 
-function playRound(playerOption) {
-  const options = ["paper", "scissors", "rock"];
-  const computerChoice = getComputerChoice(options)
-  let roundResult = getRoundResult(playerOption, computerChoice)
-  displayResult(roundResult, playerOption, computerChoice, options);
+function playRound(playerChoice) {
+  const computerChoice = getComputerChoice()
+  displayResult(playerChoice, computerChoice);
   updateScores();
   gameRound.updateResultBox();
   gameRound.checkWinner();
 }
 
-function getComputerChoice(options) {
+function getComputerChoice() {
+  const options = ["paper", "scissors", "rock"];
   return options[Math.round(Math.random() * (options.length - 1))];
 }
 
 function getRoundResult(playerOption, computerOption) {
-  const playerPositionInArray = getPositionInArray(playerOption);
-  const computerPositionInArray = getPositionInArray(computerOption);
-  // Player:Row  Computer:Column
-  const arrayOfResults =
-  [//Paper                            Scissors                              Rock
-    [                          "draw", "You Loose!, Paper Lost to Scissors", "You Won!, Paper beats Rock"],
-    ["You Won!, Scissors beats Paper", "draw",                               "You Loose!, Scissors lost to Rock"],
-    ["You Loose!, Rock lost to Paper", "You Won! Rock Beats Scissors",        "draw"]
-  ]
-  return arrayOfResults[playerPositionInArray][computerPositionInArray];
+  return roundResult[playerOption + "-" + computerOption];
 }
 
-// Returns a number based on word length 0:Paper  1:Scissors  2:Rock, that is used in above array
-function getPositionInArray(option) {
-  return Math.round(option.length / 2) % 3;
-}
-
-function displayResult(text, playerOption, computerChoice, options) {
-  changeImage(computerChoice,options,"computer-choice");
-  changeImage(playerOption,options,"player-choice");
-  if (text.includes("Won")) {
+function displayResult(playerChoice, computerChoice) {
+  const roundResult = getRoundResult(playerChoice, computerChoice)
+  changeImage(computerChoice,"computer-choice");
+  changeImage(playerChoice,"player-choice");
+  if (roundResult.includes("Won")) {
     gameRound.playerScore++;
     changeColorImage("green", "red");
-  } else if (text.includes("Loose")) {
+  } else if (roundResult.includes("Loose")) {
     gameRound.computerScore++;
     changeColorImage("red", "green");
   } else {
@@ -113,12 +113,12 @@ function changeColorImage(playerColor, computerColor) {
   computerImage.style.backgroundColor = computerColor;
 }
 
-function changeImage(playerOption, options, idSelector) {
+function changeImage(playerOption, idSelector) {
   let currentImage = document.getElementById(idSelector);
   let imgChoice = document.createElement("img");
-  imgChoice.src="./img/" + options[getPositionInArray(playerOption)] + ".png";
+  imgChoice.src="./img/" + playerOption + ".png";
   imgChoice.id = idSelector;
-  imgChoice.classList.add("card-img");
+  imgChoice.classList.add("card");
   currentImage.parentElement.replaceChild(imgChoice, currentImage);
 }
 

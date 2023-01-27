@@ -97,6 +97,7 @@ h3 {
 .game-over-box {
   display: flex;
   flex-direction: column;
+  font-weight: bold;
   gap: 5px;
   position: absolute;
   top: 20%;
@@ -117,7 +118,13 @@ h3 {
   transition: 1s;
 }
 
+.you-win-result {
+  color: green;
+}
 
+.you-loose-result {
+  color: red;
+}
 
 /* ============
     Components
@@ -145,6 +152,10 @@ h3 {
   height: 100px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.75);
+}
+
+.hide-card {
+  z-index: -1;
 }
 
 .card:hover {

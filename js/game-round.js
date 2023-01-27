@@ -48,11 +48,16 @@ let gameRound = {
       let result = (this.playerScore > 4)? "You Win" : "You Loose";
       this.displayGameOver(result);
       removeEventToPlayerHand()
+      hideCardInGameOver()
     }
   },
 
-  displayGameOver: function () {
+  displayGameOver: function (result) {
     const gameOverBox = document.querySelector(".game-over-box");
+    const gameOverText = document.querySelector(".game-over-box > p");
+
+    gameOverText.innerText = result;
+    gameOverText.className = (result.includes("Win"))? "you-win-result" : "you-loose-result";
     gameOverBox.classList.add("make-visible")
   }
 };

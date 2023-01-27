@@ -3,6 +3,7 @@ function addEventToNewGameButton() {
   newGameButton.addEventListener("click", () => {
     gameRound.startNewGame();
     gameRound.updateResultBox();
+    unHideCardsInNewGame();
   })
 }
 
@@ -19,5 +20,16 @@ function playCurrenRound(event) {
 
 function removeEventToPlayerHand() {
   const playerHand = document.querySelector(".player-hand");
-  playerHand.childNodes.forEach(element => element.removeEventListener("click", playCurrenRound))
+  const allPlayerCards = playerHand.childNodes;
+  allPlayerCards.forEach(element => element.removeEventListener("click", playCurrenRound))
+}
+
+function hideCardInGameOver() {
+  const cards = document.querySelectorAll(".card:not([class*='choice'])")
+  cards.forEach(card => card.classList.add("hide-card"))
+}
+
+function unHideCardsInNewGame() {
+  const cards = document.querySelectorAll(".card:not([class*='choice'])")
+  cards.forEach(card => card.classList.remove("hide-card"))
 }

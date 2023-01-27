@@ -94,8 +94,8 @@ function getRoundResult(playerOption, computerOption) {
 
 function displayResult(playerChoice, computerChoice) {
   const roundResult = getRoundResult(playerChoice, computerChoice)
-  changeImage(computerChoice,"computer-choice");
-  changeImage(playerChoice,"player-choice");
+  changeImage(computerChoice, "computer-choice");
+  changeImage(playerChoice, "player-choice");
   if (roundResult.includes("Won")) {
     gameRound.playerScore++;
     changeColorImage("green", "red");
@@ -108,18 +108,18 @@ function displayResult(playerChoice, computerChoice) {
 }
 
 function changeColorImage(playerColor, computerColor) {
-  let playerImage = document.querySelector("#player-choice");
-  let computerImage = document.querySelector("#computer-choice");
+  let playerImage = document.querySelector(".player-choice");
+  let computerImage = document.querySelector(".computer-choice");
   playerImage.style.backgroundColor = playerColor;
   computerImage.style.backgroundColor = computerColor;
 }
 
-function changeImage(playerOption, idSelector) {
-  let currentImage = document.getElementById(idSelector);
+function changeImage(playerOption, classSelector) {
+  let currentImage = document.querySelector("." + classSelector);
   let imgChoice = document.createElement("img");
   imgChoice.src="./img/" + playerOption + ".png";
-  imgChoice.id = idSelector;
   imgChoice.classList.add("card");
+  imgChoice.classList.add(classSelector);
   currentImage.parentElement.replaceChild(imgChoice, currentImage);
 }
 

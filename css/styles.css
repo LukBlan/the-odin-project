@@ -16,7 +16,6 @@ body {
   background-color: var(--background);
   display: flex;
   position: relative;
-  flex-direction: row-reverse;
   justify-content: space-around;
   align-items: center;
   user-select: none;
@@ -41,9 +40,9 @@ h2 {
 /* ========
     Layout
    ======== */
-    /* ------------------
-        Computer Section
-       ------------------ */
+    /* ----------------
+        Result Section
+       ---------------- */
 
 .hand-cards {
   display: flex;
@@ -51,6 +50,11 @@ h2 {
   align-items: center;
   justify-content: center;
   gap: 80px;
+}
+
+.character-image {
+  width: 90px;
+  height: 90px;
 }
 
     /* ----------------
@@ -66,7 +70,6 @@ h2 {
 .result-screen {
   margin: 10px 20px;
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
   text-align: center;
   gap: 10px;
@@ -88,15 +91,6 @@ h2 {
   border-bottom: 2px solid black;
   font-size: 30px;
   flex-grow: 1;
-}
-
-    /* ----------------
-        Player Section
-       ---------------- */
-
-.player-image {
-  width: 90px;
-  height: 90px;
 }
 
     /* ---------------
@@ -126,15 +120,11 @@ h2 {
         Buttons
        --------- */
 
-#new-game-button {
+.new-game-button {
   background-color: white;
   padding: 4px;
   margin-right: 10px;
   cursor: pointer;
-}
-
-#new-game-button:active {
-  transform: scale(0.9);
 }
 
     /* -------

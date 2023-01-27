@@ -15,6 +15,7 @@
 body {
   background-color: var(--background);
   display: flex;
+  position: relative;
   flex-direction: row-reverse;
   justify-content: space-around;
   align-items: center;
@@ -65,13 +66,14 @@ h2 {
 .result-screen {
   margin: 10px 20px;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   text-align: center;
   gap: 10px;
 }
 
-.computer-score-box,
-.player-score-box {
+.computer-score,
+.player-score {
   background-color: yellow;
   border: solid 1px black;
   padding: 12px 20px;
@@ -79,7 +81,7 @@ h2 {
   box-shadow: 0 0 3px rgba(0,0,0,0.5);
 }
 
-#round-counter {
+.round-counter {
   background-color: black;
   color: white;
   font-weight: bold;
@@ -104,13 +106,13 @@ h2 {
 .box-message-loose, .box-message-win {
   position: absolute;
   background-color: red;
+  top: 10%;
   color: white;
   border: 1px solid black;
   padding: 5px;
   align-self: center;
   font-weight: bold;
-  top: 0;
-  box-shadow: 0 0 0 100vh rgba(0,0,0,0.75);
+  box-shadow: 0 0 0 110vh rgba(0,0,0,0.75);
 }
 
 .box-message-win {

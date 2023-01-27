@@ -28,29 +28,30 @@ let gameRound = {
   },
 
   updateResultBox: function () {
-    const roundCounter = document.getElementById("round-counter");
-    const playerResult = document.getElementById("player-result");
-    const computerResult = document.getElementById("computer-result");
-    computerResult.innerText = this.computerScore;
-    playerResult.innerText = this.playerScore;
+    const roundCounter = document.querySelector(".round-counter");
+    const playerResult = document.querySelector(".player-score");
+    const computerResult = document.querySelector(".computer-score");
+
     roundCounter.innerText = "Round " + this.round;
+    playerResult.innerText = this.playerScore;
+    computerResult.innerText = this.computerScore;
   },
 
   checkWinner: function () {
     if (this.playerScore > 4 || this.computerScore > 4) {
       let result = (this.playerScore > 4)? "You Win" : "You Loose";
-      this.displayGameFinalResult(result);
+      this.displayGameOver(result);
       removeEventToPlayerHand()
     }
   },
 
-  displayGameFinalResult: function (result) {
-      const newMessageBox = document.createElement("p");
-      const gameSection = document.getElementById("game-section");
-      const messageClass = result.includes("Win")? "box-message-win": "box-message-loose";
-      newMessageBox.innerText = result;
-      newMessageBox.classList.add(messageClass);
-      gameSection.appendChild(newMessageBox)
+  displayGameOver: function (result) {
+    const body = document.querySelector("body");
+    const newMessageBox = document.createElement("p");
+    const messageClass = result.includes("Win")? "box-message-win": "box-message-loose";
+    newMessageBox.innerText = result;
+    newMessageBox.classList.add(messageClass);
+    body.appendChild(newMessageBox)
   }
 };
 
@@ -123,8 +124,8 @@ function changeImage(playerOption, idSelector) {
 }
 
 function updateScores() {
-  const computer = document.getElementById("computer-result");
-  const player = document.getElementById("player-result");
+  const computer = document.querySelector(".computer-score");
+  const player = document.querySelector(".player-score");
   if (gameRound.computerScore > gameRound.playerScore) {
     computer.style.backgroundColor = "green";
     player.style.backgroundColor = "red";

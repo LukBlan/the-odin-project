@@ -7,8 +7,8 @@ function addEventToNewGameButton() {
 }
 
 function addEventToPlayerHand() {
-  const playerButton = document.querySelector(".player-hand");
-  playerButton.childNodes.forEach(element => element.addEventListener("click", playCurrenRound))
+  const playerHand = document.querySelector(".player-hand");
+  playerHand.childNodes.forEach(element => element.addEventListener("click", playCurrenRound))
 }
 
 function playCurrenRound(event) {
@@ -18,6 +18,6 @@ function playCurrenRound(event) {
 }
 
 function removeEventToPlayerHand() {
-  const playerButton = document.getElementById("player-hand");
-  playerButton.childNodes.forEach(element => element.removeEventListener("click", playCurrenRound))
+  const playerHand = document.querySelector(".player-hand");
+  playerHand.childNodes.forEach(element => element.removeEventListener("click", playCurrenRound))
 }

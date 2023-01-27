@@ -19,7 +19,7 @@ let gameRound = {
 
   startNewGame: function () {
     changeResultBoxToYellow()
-    deletePopUpBox();
+    hideResultBox();
     addEventToPlayerHand();
     resetPlayersChoice();
     this.round = 1;
@@ -45,13 +45,9 @@ let gameRound = {
     }
   },
 
-  displayGameOver: function (result) {
-    const body = document.querySelector("body");
-    const newMessageBox = document.createElement("p");
-    const messageClass = result.includes("Win")? "box-message-win": "box-message-loose";
-    newMessageBox.innerText = result;
-    newMessageBox.classList.add(messageClass);
-    body.appendChild(newMessageBox)
+  displayGameOver: function () {
+    const gameOverBox = document.querySelector(".game-over-box");
+    gameOverBox.classList.add("make-visible")
   }
 };
 
@@ -68,11 +64,9 @@ function changeResultBoxToYellow() {
   Array.from(resultBoxes).forEach(element => element.style.backgroundColor = "yellow")
 }
 
-function deletePopUpBox() {
-  const resultBox = document.querySelector('[class^="box-message-"]');
-  if (resultBox !== null) {
-    resultBox.parentElement.removeChild(resultBox);
-  }
+function hideResultBox() {
+  const gameResultBox = document.querySelector(".game-over-box");
+  gameResultBox.classList.remove("make-visible");
 }
 
 function playRound(playerChoice) {
@@ -116,10 +110,10 @@ function changeColorImage(playerColor, computerColor) {
   computerImage.style.backgroundColor = computerColor;
 }
 
-function changeImage(playerOption, classSelector) {
+function changeImage(playerChoice, classSelector) {
   let currentImage = document.querySelector("." + classSelector);
   let imgChoice = document.createElement("img");
-  imgChoice.src="./img/" + playerOption + ".png";
+  imgChoice.src="./img/" + playerChoice + ".png";
   imgChoice.classList.add("card");
   imgChoice.classList.add(classSelector);
   currentImage.parentElement.replaceChild(imgChoice, currentImage);

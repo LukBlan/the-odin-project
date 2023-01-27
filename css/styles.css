@@ -36,7 +36,7 @@ h3 {
     Layout
    ======== */
     /* ----------------
-        Result Section
+        Game Section
        ---------------- */
 
 .hand-cards {
@@ -51,7 +51,6 @@ h3 {
   width: 90px;
   height: 90px;
 }
-
     /* ----------------
         Result Section
        ---------------- */
@@ -60,6 +59,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .result-screen {
@@ -87,27 +87,37 @@ h3 {
   font-weight: bold;
   font-size: 2rem;
   box-shadow: 0 0 4px rgba(0,0,0,0.5);
+  z-index: 1;
 }
 
     /* ---------------
         Pop Up Result
        --------------- */
 
-.box-message-loose, .box-message-win {
+.game-over-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   position: absolute;
-  background-color: red;
-  top: 10%;
-  color: white;
-  border: 1px solid black;
+  top: 20%;
+  justify-self: center;
+  align-items: center;
+  background-color: white;
   padding: 5px;
-  align-self: center;
-  font-weight: bold;
-  box-shadow: 0 0 0 110vh rgba(0,0,0,0.75);
+  transform: scale(0);
 }
 
-.box-message-win {
-  background-color: green;
+.game-over-box h2 {
+  padding: 10px;
 }
+
+.make-visible {
+  box-shadow: 0 0 0 110vh black;
+  transform: scale(1);
+  transition: 1s;
+}
+
+
 
 /* ============
     Components
@@ -117,9 +127,11 @@ h3 {
        --------- */
 
 .new-game-button {
-  background-color: white;
-  padding: 4px;
-  margin-right: 10px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  align-self: center;
+  padding: 2px 5px;
   cursor: pointer;
 }
 
@@ -144,3 +156,4 @@ h3 {
 .computer-card:hover {
   cursor: not-allowed;
 }
+

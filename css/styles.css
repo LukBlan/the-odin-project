@@ -96,7 +96,7 @@ nav li:hover {
   background-color: var(--main-blue);
   display: flex;
   justify-content: center;
-  padding: 60px 20% 60px 20%;
+  padding: 5% 15%;
   gap: 60px;
 }
 
@@ -105,8 +105,9 @@ nav li:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
   color: white;
+  text-align: center;
 }
 
 .main-section p {
@@ -149,7 +150,7 @@ nav li:hover {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 50px 20% 50px 20%;
+  padding: 50px 20%;
 }
 
 .quote-text {
@@ -174,7 +175,7 @@ nav li:hover {
   justify-content: space-around;
   align-items: center;
   padding: 10px;
-  margin: 50px 20% 50px 20%;
+  margin: 50px 20%;
   gap: 10px;
   box-shadow: 0 0 3px rgb(0 0 0 / 50%);
 }
@@ -196,7 +197,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
+  padding: 20px;
   margin-top: auto;
 }
 

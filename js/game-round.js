@@ -28,11 +28,11 @@ let gameRound = {
   },
 
   updateResultBox: function () {
-    const roundCounter = document.querySelector(".round-counter");
+    const roundCounter = document.querySelector(".round-number");
     const playerResult = document.querySelector(".player-score");
     const computerResult = document.querySelector(".computer-score");
 
-    roundCounter.innerText = "Round " + this.round;
+    roundCounter.innerText = this.round;
     playerResult.innerText = this.playerScore;
     computerResult.innerText = this.computerScore;
   },
@@ -79,8 +79,10 @@ function playRound(playerChoice) {
   const computerChoice = getComputerChoice()
   displayResult(playerChoice, computerChoice);
   updateScores();
+  gameRound.round++;
   gameRound.updateResultBox();
   gameRound.checkWinner();
+
 }
 
 function getComputerChoice() {

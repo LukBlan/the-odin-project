@@ -26,15 +26,10 @@ body {
     Typography
    ============ */
 
-h1 {
-  margin: 0 auto;
+h3 {
+  background-color: black;
   color: white;
-  font-family: Hero, sans-serif;
-  align-self: center;
-}
-
-h2 {
-  text-align: center;
+  padding: 5px 10px;
 }
 
 /* ========
@@ -85,12 +80,13 @@ h2 {
 }
 
 .round-counter {
-  background-color: black;
-  color: white;
+  background-color: white;
+  position: absolute;
+  text-align: center;
+  top: 3%;
   font-weight: bold;
-  border-bottom: 2px solid black;
-  font-size: 30px;
-  flex-grow: 1;
+  font-size: 2rem;
+  box-shadow: 0 0 4px rgba(0,0,0,0.5);
 }
 
     /* ---------------

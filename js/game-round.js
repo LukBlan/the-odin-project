@@ -1,16 +1,22 @@
-let roundResult = {
-  "paper-paper": "draw",
-  "paper-scissors": "You Loose!, Paper Lost to Scissors",
-  "paper-rock": "You Won!, Paper beats Rock",
+let changeColor = {
+  "paper-paper": function () {
+    changeColorImage("yellow", "yellow");
+  },
 
-  "rock-rock": "draw",
-  "rock-paper": "You Loose!, Paper Lost to Scissors",
-  "rock-scissors": "You Won! Rock Beats Scissors",
+  "paper-scissors": function () {
+    gameRound.computerScore++;
+    changeColorImage("red", "green");
+  },
 
-  "scissors-scissors": "draw",
-  "scissors-paper": "You Won!, Scissors beats Paper",
-  "scissors-rock": "You Loose!, Scissors lost to Rock",
+  "paper-rock": function () {
+    gameRound.playerScore++;
+    changeColorImage("green", "red");
+  },
 }
+
+changeColor["scissors-scissors"] =  changeColor["rock-rock"] = changeColor["paper-paper"];
+changeColor["scissors-rock"] =  changeColor["rock-paper"] = changeColor["paper-scissors"];
+changeColor["scissors-paper"] =  changeColor["rock-scissors"] = changeColor["paper-rock"];
 
 let gameRound = {
   round: 1,
@@ -71,8 +77,8 @@ function hideResultBox() {
 
 function playRound(playerChoice) {
   const computerChoice = getComputerChoice()
-  displayResult(playerChoice, computerChoice);
-  updateScores();
+  updateImages(playerChoice, computerChoice);
+  changeScoresColor();
   gameRound.round++;
   gameRound.updateResultBox();
   gameRound.checkWinner();
@@ -84,23 +90,10 @@ function getComputerChoice() {
   return options[Math.round(Math.random() * (options.length - 1))];
 }
 
-function getRoundResult(playerOption, computerOption) {
-  return roundResult[playerOption + "-" + computerOption];
-}
-
-function displayResult(playerChoice, computerChoice) {
-  const roundResult = getRoundResult(playerChoice, computerChoice)
+function updateImages(playerChoice, computerChoice) {
   changeImage(computerChoice, "computer-choice");
   changeImage(playerChoice, "player-choice");
-  if (roundResult.includes("Won")) {
-    gameRound.playerScore++;
-    changeColorImage("green", "red");
-  } else if (roundResult.includes("Loose")) {
-    gameRound.computerScore++;
-    changeColorImage("red", "green");
-  } else {
-    changeColorImage("yellow", "yellow");
-  }
+  changeColor[playerChoice + "-" + computerChoice]()
 }
 
 function changeColorImage(playerColor, computerColor) {
@@ -119,7 +112,7 @@ function changeImage(playerChoice, classSelector) {
   currentImage.parentElement.replaceChild(imgChoice, currentImage);
 }
 
-function updateScores() {
+function changeScoresColor() {
   const computer = document.querySelector(".computer-score");
   const player = document.querySelector(".player-score");
   if (gameRound.computerScore > gameRound.playerScore) {

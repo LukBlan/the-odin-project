@@ -1,6 +1,7 @@
 /* ===============
     Global Styles
    =============== */
+
 :root {
   --main-page: #0C121D;
   --background: #C6CCD2;
@@ -51,6 +52,7 @@ h3 {
   width: 90px;
   height: 90px;
 }
+
     /* ----------------
         Result Section
        ---------------- */

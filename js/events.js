@@ -8,7 +8,7 @@ function addEventGenerateGridInRangeMove() {
 }
 
 function addEventToToggleRainbowColor() {
-  const rainbowButton = document.getElementById("rainbow");
+  const rainbowButton = document.querySelector(".rainbow");
   rainbowButton.addEventListener("click", toggleRainbow)
 }
 

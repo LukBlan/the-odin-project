@@ -39,7 +39,7 @@ function createInnerDiv() {
 }
 
 function addCleanEventToButton() {
-  const cleanButton = document.querySelector("#eraser");
+  const cleanButton = document.querySelector(".clean-button");
   cleanButton.addEventListener("click", () => {
     replaceSketchArea()
     createDivs(grid.gridInputRange.value);
@@ -47,7 +47,7 @@ function addCleanEventToButton() {
 }
 
 function toggleRainbow() {
-  if (this.classList.length === 2) {
+  if (this.classList.value.includes("active-button")) {
     this.classList.remove("active-button")
     grid.currentColorFunction = changeToColorPicker;
   } else {

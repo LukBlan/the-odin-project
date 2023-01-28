@@ -11,11 +11,12 @@
 body {
   min-height: 100vh;
   user-select: none;
-  background-color: #dcdada;
-  display: flex;
-  justify-content: center;
-  gap: 100px;
-  padding: 20px;
+  background-color: black;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  justify-items: center;
+  padding: 10px;
+  gap: 20px;
 }
 
 /* ============
@@ -31,25 +32,19 @@ h2 {
     Layout
    ======== */
 
-#sketch-area {
+.sketch-area {
   background-color: white;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
   border-radius: 10px;
-  width: 500px;
-  height: 500px;
+  width: 50%;
+  height: 100%;
 }
 
-#config-section {
-  background-color: black;
-  border: 1px solid black;
-  border-radius: 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: center;
-  padding-top: 70px;
+.innerDiv {
+  flex-grow: 1;
+  border: 1px solid #e7e7e7;
 }
 
 .newDiv {
@@ -57,26 +52,27 @@ h2 {
   flex-grow: 1;
 }
 
-.innerDiv {
+.sketch-area > div > div {
   flex-grow: 1;
 }
 
-label {
+.options-bar {
+  background-color: black;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.grid-selector {
   background-color: black;
   color: white;
   font-weight: bold;
-  border: 2px solid black;
-}
-
-.active {
-  background-color: #338BC1;
-}
-
-#options {
-  padding: 10px;
-  gap: 6px;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 /* ============
@@ -86,21 +82,16 @@ label {
         Button
        -------- */
 
-img {
+.button {
   background-color: white;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 7px;
   width: 50px;
   height: 50px;
-  box-shadow: 2px 1px 1px white;
+  box-shadow: 0 2px 1px white;
 }
 
-img:hover {
-  cursor: pointer;
-  transform: scale(0.95);
-}
-
-img:active {
+.button:active {
   box-shadow: 0 0 0 white;
-  transform: scale(0.90);
+  transform: scale(0.95);
 }

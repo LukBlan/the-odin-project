@@ -1,18 +1,12 @@
-let gridSize = 32;
-let currentPosition;
-
-
-randomColor()
-diplayGridValue()
-addCleanEventToButton();
-addCreateEventToButton();
-moveBall();
-addSwitchButtonTuRainbow()
+let grid = {
+  gridSize: 32,
+  gridInputRange: document.getElementById("grid-size"),
+};
 
 function createDivs(number) {
   const rainbowReference = document.getElementById("rainbow");
   let rainBowIsActive = rainbowReference.classList.contains("active");
-  const sketchArea = document.querySelector("#sketch-area");
+  const sketchArea = document.querySelector(".sketch-area");
 
   for (let i = 0; i < number; i++) {
     let newDiv = document.createElement("div");
@@ -40,9 +34,9 @@ function createInnerDiv(rainBowIsActive) {
 }
 
 function replaceSketchArea() {
-  const sketchArea = document.querySelector("#sketch-area");
+  const sketchArea = document.querySelector(".sketch-area");
   const newSketchArea = document.createElement("div");
-  newSketchArea.id = "sketch-area";
+  newSketchArea.classList.add("sketch-area");
   sketchArea.parentElement.replaceChild(newSketchArea,sketchArea);
 }
 
@@ -50,44 +44,15 @@ function addCleanEventToButton() {
   const cleanButton = document.querySelector("#eraser");
   cleanButton.addEventListener("click", () => {
     replaceSketchArea()
-    createDivs(gridSize);
+    createDivs(grid.gridSize);
   });
 }
 
-function addCreateEventToButton() {
-  const createButton = document.querySelector("#new");
-  createButton.addEventListener("click", () => {
-    replaceSketchArea();
-    createDivs(gridSize);
-  })
-}
 
-function moveBall() {
-  const ball = document.getElementById("ball");
-  ball.addEventListener("mousedown", (event) => {
-    currentPosition = event.clientX;
-    ball.addEventListener("mousemove", changeBallPosition)
-    window.addEventListener("mouseup", () => {
-      ball.removeEventListener("mousemove", changeBallPosition)
-    })
-  })
-}
-
-function changeBallPosition(event) {
-  let dist = event.clientX - currentPosition;
-  currentPosition = event.clientX;
-  let barMaxWidth = this.parentElement.getBoundingClientRect().left + this.parentElement.offsetWidth;
-  let ballRightPosition = Math.min(this.getBoundingClientRect().left + dist, barMaxWidth);
-  let ballLeftPosition = Math.max(ballRightPosition, this.parentElement.getBoundingClientRect().left)
-  this.style.left = ballLeftPosition + "px";
-  let number = (currentPosition - this.parentElement.getBoundingClientRect().left) / (this.parentElement.offsetWidth / 64)
-  gridSize = Math.max(Math.min(Math.round(number), 64), 2);
-  diplayGridValue()
-}
 
 function diplayGridValue() {
-  const textDiv = document.getElementById("grid-size-display");
-  textDiv.innerText = gridSize.toString() + "x" + gridSize.toString();
+  const gridDisplay = document.querySelector(".grid-size-display");
+  gridDisplay.innerText = grid.gridSize.toString() + "x" + grid.gridSize.toString();
 }
 
 function addSwitchButtonTuRainbow() {

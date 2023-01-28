@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <title>Etch a Sketch</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/events.js" defer></script>
     <script src="./js/script.js" defer></script>
+    <script src="./js/main.js" defer></script>
   </head>
 
   <body>
-    <div id="config-section">
-      <h2>Settings</h2>
-
-      <div id="options">
-        <img src="./img/new.svg" alt="new icon" id="new">
-        <img src="./img/eraser.svg" alt="Eraser icon" id="eraser">
-        <img src="./img/rainbow.svg" alt="rainbow icon" id="rainbow">
-      </div>
+    <div class="options-bar">
+      <input class="button" type="color">
+      <img class="button" src="./img/eraser.svg" alt="Eraser icon" id="eraser">
+      <img class="button" src="./img/rainbow.svg" alt="rainbow icon" id="rainbow">
     </div>
-
-    <div id="sketch-area">
+    <div class="sketch-area">
+    </div>
+    <div class="grid-selector">
+      <label class="grid-size-display" for="grid-size" >32x32</label>
+      <input id="grid-size" type="range" min="32" max="64">
     </div>
   </body>
 </html>

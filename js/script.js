@@ -1,8 +1,7 @@
 const grid = {
-  gridSize: 32,
   gridInputRange: document.getElementById("grid-size"),
-  currentColor: "black",
-  currentColorFunction: changeToBlackColor,
+  currentColorFunction: changeToColorPicker,
+  colorPicker: "black",
 };
 
 function generateGrid() {
@@ -34,8 +33,7 @@ function createDivs() {
 function createInnerDiv() {
   const innerDiv = document.createElement("div");
     innerDiv.addEventListener("mouseover", (event) => {
-      grid.currentColor = grid.currentColorFunction()
-      event.target.style.backgroundColor = grid.currentColor
+      event.target.style.backgroundColor = grid.currentColorFunction()
     })
   return innerDiv;
 }
@@ -44,27 +42,22 @@ function addCleanEventToButton() {
   const cleanButton = document.querySelector("#eraser");
   cleanButton.addEventListener("click", () => {
     replaceSketchArea()
-    createDivs(grid.gridSize);
+    createDivs(grid.gridInputRange.value);
   });
-}
-
-function displayGridValue() {
-  const gridDisplay = document.querySelector(".grid-size-display");
-  gridDisplay.innerText = grid.gridSize.toString() + "x" + grid.gridSize.toString();
 }
 
 function toggleRainbow() {
   if (this.classList.length === 2) {
-    this.classList.remove("active")
-    grid.currentColorFunction = changeToBlackColor;
+    this.classList.remove("active-button")
+    grid.currentColorFunction = changeToColorPicker;
   } else {
-    this.classList.add("active")
+    this.classList.add("active-button")
     grid.currentColorFunction = randomColor;
   }
 }
 
-function changeToBlackColor() {
-  return "black";
+function changeToColorPicker() {
+  return grid.colorPicker;
 }
 
 function randomColor() {

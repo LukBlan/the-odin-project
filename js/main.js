@@ -1,4 +1,5 @@
-displayGridValue()
 addCleanEventToButton();
 addEventGenerateGridInRangeMove();
 addEventToToggleRainbowColor()
+addEventWhenSelectColorWithColorPicker()
+addEventChangeGridSizeDisplay()

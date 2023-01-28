@@ -11,3 +11,17 @@ function addEventToToggleRainbowColor() {
   const rainbowButton = document.getElementById("rainbow");
   rainbowButton.addEventListener("click", toggleRainbow)
 }
+
+function addEventWhenSelectColorWithColorPicker() {
+  const colorPicker = document.getElementById("color-picker");
+  colorPicker.addEventListener("input", () => {
+    grid.colorPicker = colorPicker.value;
+  })
+}
+
+function addEventChangeGridSizeDisplay() {
+  const gridDisplay = document.querySelector(".grid-size-display");
+  grid.gridInputRange.addEventListener("input", () => {
+    gridDisplay.innerText = grid.gridInputRange.value.toString() + "x" + grid.gridInputRange.value
+  })
+}

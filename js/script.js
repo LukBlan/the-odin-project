@@ -1,36 +1,12 @@
-let grid = {
+const grid = {
   gridSize: 32,
   gridInputRange: document.getElementById("grid-size"),
+  currentColor: "black",
 };
 
-function createDivs(number) {
-  const rainbowReference = document.getElementById("rainbow");
-  let rainBowIsActive = rainbowReference.classList.contains("active");
-  const sketchArea = document.querySelector(".sketch-area");
-
-  for (let i = 0; i < number; i++) {
-    let newDiv = document.createElement("div");
-    newDiv.classList.add("newDiv");
-    for (let j = 0; j < number; j++) {
-      let innerDiv = createInnerDiv(rainBowIsActive);
-      newDiv.append(innerDiv);
-    }
-    sketchArea.append(newDiv);
-  }
-}
-
-function createInnerDiv(rainBowIsActive) {
-  const innerDiv = document.createElement("div");
-  innerDiv.classList.add("innerDiv");
-  if (rainBowIsActive) {
-    addRandomColorEventToElement(innerDiv, randomColor());
-  } else {
-    innerDiv.addEventListener("mouseover", () => {
-      innerDiv.style.backgroundColor = "black";
-    })
-    removeEventColorEventToElement(innerDiv)
-  }
-  return innerDiv;
+function generateGrid() {
+  replaceSketchArea();
+  createDivs();
 }
 
 function replaceSketchArea() {
@@ -38,6 +14,28 @@ function replaceSketchArea() {
   const newSketchArea = document.createElement("div");
   newSketchArea.classList.add("sketch-area");
   sketchArea.parentElement.replaceChild(newSketchArea,sketchArea);
+}
+
+function createDivs() {
+  const sketchArea = document.querySelector(".sketch-area");
+  const gridSize = grid.gridInputRange.value;
+
+  for (let i = 0; i < gridSize; i++) {
+    let newDiv = document.createElement("div");
+    for (let j = 0; j < gridSize; j++) {
+      let innerDiv = createInnerDiv();
+      newDiv.append(innerDiv);
+    }
+    sketchArea.append(newDiv);
+  }
+}
+
+function createInnerDiv() {
+  const innerDiv = document.createElement("div");
+    innerDiv.addEventListener("mouseover", (event) => {
+      event.target.style.backgroundColor = grid.currentColor
+    })
+  return innerDiv;
 }
 
 function addCleanEventToButton() {

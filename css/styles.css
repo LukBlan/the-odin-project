@@ -42,17 +42,8 @@ h2 {
   height: 100%;
 }
 
-.innerDiv {
-  flex-grow: 1;
-  border: 1px solid #e7e7e7;
-}
-
-.newDiv {
+.sketch-area div {
   display: flex;
-  flex-grow: 1;
-}
-
-.sketch-area > div > div {
   flex-grow: 1;
 }
 

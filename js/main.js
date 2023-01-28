@@ -1,5 +1,5 @@
 randomColor()
 diplayGridValue()
 addCleanEventToButton();
-addCreateEventToButton();
+addEventGenerateGridInRangeMove();
 addSwitchButtonTuRainbow()

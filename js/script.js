@@ -64,5 +64,3 @@ function randomColor() {
   let number = (Math.floor(Math.random() * 16777214)).toString(16);
   return "#" + number;
 }
-
-

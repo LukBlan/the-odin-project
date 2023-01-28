@@ -67,6 +67,13 @@ h2 {
   padding: 10px;
 }
 
+#grid-size {
+  appearance: none;
+  border: 1px solid black;
+  border-radius: 25px;
+  box-shadow: 0 0 12px white;
+}
+
 /* ============
     Components
    ============ */

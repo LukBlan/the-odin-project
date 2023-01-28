@@ -1,3 +1,4 @@
+generateGrid()
 addCleanEventToButton();
 addEventGenerateGridInRangeMove();
 addEventToToggleRainbowColor()

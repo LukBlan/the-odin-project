@@ -1,5 +1,4 @@
-randomColor()
-diplayGridValue()
+displayGridValue()
 addCleanEventToButton();
 addEventGenerateGridInRangeMove();
-addSwitchButtonTuRainbow()
+addEventToToggleRainbowColor()

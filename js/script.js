@@ -2,6 +2,7 @@ const grid = {
   gridSize: 32,
   gridInputRange: document.getElementById("grid-size"),
   currentColor: "black",
+  currentColorFunction: changeToBlackColor,
 };
 
 function generateGrid() {
@@ -33,6 +34,7 @@ function createDivs() {
 function createInnerDiv() {
   const innerDiv = document.createElement("div");
     innerDiv.addEventListener("mouseover", (event) => {
+      grid.currentColor = grid.currentColorFunction()
       event.target.style.backgroundColor = grid.currentColor
     })
   return innerDiv;
@@ -46,57 +48,23 @@ function addCleanEventToButton() {
   });
 }
 
-
-
-function diplayGridValue() {
+function displayGridValue() {
   const gridDisplay = document.querySelector(".grid-size-display");
   gridDisplay.innerText = grid.gridSize.toString() + "x" + grid.gridSize.toString();
 }
 
-function addSwitchButtonTuRainbow() {
-  const rainbowButton = document.getElementById("rainbow");
-  rainbowButton.addEventListener("click", switchRainbow)
-}
-
-function switchRainbow() {
-  if (this.classList.length) {
+function toggleRainbow() {
+  if (this.classList.length === 2) {
     this.classList.remove("active")
-    removeRandomColorEvent()
-    changeColorToBlackToAllElements();
+    grid.currentColorFunction = changeToBlackColor;
   } else {
     this.classList.add("active")
-    addRainbowColorToDiv(this);
+    grid.currentColorFunction = randomColor;
   }
 }
 
-function addRainbowColorToDiv() {
-  const sketchArea = document.querySelector("#sketch-area");
-  sketchArea.childNodes.forEach(element => {
-    element.childNodes.forEach(innerElement => addRandomColorEventToElement(innerElement, randomColor()))
-  })
-}
-
-function removeRandomColorEvent() {
-  const sketchArea = document.querySelector("#sketch-area");
-  sketchArea.childNodes.forEach(element => {
-    element.childNodes.forEach(innerElement => innerElement.removeEventListener("mouseover", changeToRandomColor))
-  })
-}
-
-function addRandomColorEventToElement(element) {
-  element.addEventListener("mouseover", changeToRandomColor);
-}
-
-function removeEventColorEventToElement(element) {
-  element.removeEventListener("mouseover", changeToRandomColor);
-}
-
-function changeToRandomColor(event) {
-  event.target.style.backgroundColor = randomColor();
-}
-
-function changeToBlack(event) {
-  event.target.style.backgroundColor = "black";
+function changeToBlackColor() {
+  return "black";
 }
 
 function randomColor() {
@@ -104,10 +72,4 @@ function randomColor() {
   return "#" + number;
 }
 
-function changeColorToBlackToAllElements() {
-  const sketchArea = document.querySelector("#sketch-area");
-  sketchArea.childNodes.forEach(element => {
-    element.childNodes.forEach(innerElement => innerElement.addEventListener("mouseover", changeToBlack))
-  })
-}
 

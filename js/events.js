@@ -6,3 +6,8 @@ function addEventGenerateGridInRangeMove() {
     grid.gridInputRange.removeEventListener("mousemove", generateGrid)
   })
 }
+
+function addEventToToggleRainbowColor() {
+  const rainbowButton = document.getElementById("rainbow");
+  rainbowButton.addEventListener("click", toggleRainbow)
+}

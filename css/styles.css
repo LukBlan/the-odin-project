@@ -31,22 +31,9 @@ h2 {
 /* ========
     Layout
    ======== */
-
-.sketch-area {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 50%;
-  height: 100%;
-  box-shadow: 0 0 15px white;
-}
-
-.sketch-area div {
-  display: flex;
-  flex-grow: 1;
-}
+    /* ------------
+        Option Bar
+       ------------ */
 
 .options-bar {
   background-color: black;
@@ -72,6 +59,26 @@ h2 {
   border: 1px solid black;
   border-radius: 25px;
   box-shadow: 0 0 12px white;
+}
+
+    /* -------------
+        Sketch Area
+       ------------- */
+
+.sketch-area {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 50%;
+  height: 100%;
+  box-shadow: 0 0 15px white;
+}
+
+.sketch-area div {
+  display: flex;
+  flex-grow: 1;
 }
 
 /* ============

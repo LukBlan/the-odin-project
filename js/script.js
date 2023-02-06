@@ -7,6 +7,7 @@ const grid = {
 function generateGrid() {
   replaceSketchArea();
   createDivs();
+  ApplyColorOnSketchAreaOnClick()
 }
 
 function replaceSketchArea() {
@@ -23,26 +24,38 @@ function createDivs() {
   for (let i = 0; i < gridSize; i++) {
     let newDiv = document.createElement("div");
     for (let j = 0; j < gridSize; j++) {
-      let innerDiv = createInnerDiv();
+      let innerDiv = document.createElement("div");
+      innerDiv.classList.add("inner-div");
       newDiv.append(innerDiv);
     }
     sketchArea.append(newDiv);
   }
 }
 
-function createInnerDiv() {
-  const innerDiv = document.createElement("div");
-    innerDiv.addEventListener("mouseover", (event) => {
-      event.target.style.backgroundColor = grid.currentColorFunction()
-    })
-  return innerDiv;
+function ApplyColorOnSketchAreaOnClick() {
+  const sketchArea = document.querySelector(".sketch-area");
+  sketchArea.addEventListener("mousedown", applyColorOnCells);
+  sketchArea.addEventListener("mouseup", removeColorOnCells);
+}
+
+function removeColorOnCells() {
+  const innersDiv = document.getElementsByClassName("inner-div");
+  Array.from(innersDiv).forEach(cell => cell.removeEventListener("mouseover", applyColor))
+}
+
+function applyColorOnCells() {
+  const innersDiv = document.getElementsByClassName("inner-div");
+  Array.from(innersDiv).forEach(cell => cell.addEventListener("mouseover", applyColor))
+}
+
+function applyColor(event) {
+  event.target.style.backgroundColor = grid.currentColorFunction()
 }
 
 function addCleanEventToButton() {
   const cleanButton = document.querySelector(".clean-button");
   cleanButton.addEventListener("click", () => {
-    replaceSketchArea()
-    createDivs(grid.gridInputRange.value);
+    generateGrid();
   });
 }
 

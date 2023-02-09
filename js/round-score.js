@@ -44,7 +44,7 @@
   }
 
   function getClassListByScore(subject, score, rivalScore) {
-    return `score ${subject}-score ${getBackgroundColorByScore(score, rivalScore)}`;
+    return `round-score ${subject}-round-score ${getBackgroundColorByScore(score, rivalScore)}`;
   }
 
   function getBackgroundColorByScore(score, rivalScore) {

@@ -59,20 +59,13 @@ h3 {
 
 .result-section {
   display: flex;
+  gap: 10px;
   justify-content: center;
   align-items: center;
   z-index: 1;
 }
 
-.result-screen {
-  margin: 10px 20px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
-}
-
-.score {
+.round-score {
   background-color: yellow;
   border: solid 1px black;
   padding: 12px 20px;

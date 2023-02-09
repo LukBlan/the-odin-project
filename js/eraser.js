@@ -1,5 +1,4 @@
 (function eraser() {
-
   // Cache DOM
   const eraser = document.querySelector(".eraser");
 

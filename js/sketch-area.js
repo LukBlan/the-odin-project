@@ -11,6 +11,20 @@
   pubSub.subscribe("newGridSize", render);
   pubSub.subscribe("newDefaultColor", setDefaultColor);
   pubSub.subscribe("eraser", eraseSketchArea);
+  pubSub.subscribe("toggleRainbowColor", toggleRainbowColor);
+
+  function toggleRainbowColor(rainbowIsActive) {
+    if (rainbowIsActive) {
+      currentFunction = randomColor;
+    } else {
+      currentFunction = applyCurrentColor;
+    }
+  }
+
+  function randomColor() {
+    let number = (Math.floor(Math.random() * 16777214)).toString(16);
+    return "#" + number;
+  }
 
   function eraseSketchArea() {
     Array.from(sketchArea.children).forEach(

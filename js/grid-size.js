@@ -1,19 +1,24 @@
 (function gridSize() {
+  let newGridSize = 48;
 
   // Cache DOM
   const gridSizeDisplay = document.querySelector(".grid-size-display");
   const gridSizeRange = document.getElementById("grid-size")
 
   // Bind Events
-  gridSizeRange.addEventListener("input", resizeGrid);
+  gridSizeRange.addEventListener("input", displayNewSize);
+  gridSizeRange.addEventListener("mouseup", emitNewSizeEvent);
 
-  function resizeGrid(event) {
-    const newSize = event.target.value;
-    pubSub.emit("newGridSize", newSize);
-    render(newSize);
+  function displayNewSize(event) {
+    newGridSize = event.target.value;
+    render();
   }
 
-  function render(newSize) {
-    gridSizeDisplay.innerText = `${newSize} x ${newSize}`
+  function emitNewSizeEvent() {
+    pubSub.emit("newGridSize", newGridSize);
+  }
+
+  function render() {
+    gridSizeDisplay.innerText = `${newGridSize} x ${newGridSize}`
   }
 })()

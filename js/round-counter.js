@@ -1,10 +1,20 @@
 (function roundCounter() {
-  let roundNumber = 1;
+  let roundNumber = "";
 
   // Cache DOM
   const roundCounter = document.querySelector(".round-number");
 
+  pubSub.subscribe("newGame", resetCounter);
+
+  function resetCounter() {
+    roundNumber = "";
+    render();
+  }
+
   function setRoundNumber() {
+    if (roundNumber === "") {
+      roundNumber = 0;
+    }
     roundNumber++;
     render();
   }

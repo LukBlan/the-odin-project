@@ -91,6 +91,10 @@ h3 {
   z-index: 1;
 }
 
+.round-number {
+  min-height: 2.4rem;
+}
+
 .green-background {
   background-color: green;
 }

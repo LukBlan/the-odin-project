@@ -49,6 +49,7 @@
 
   function render() {
     if (document.body === gameOverScreen.parentElement) {
+      gameOverScreen.classList.remove("make-visible");
       document.body.removeChild(gameOverScreen);
     } else {
       gameOverFinalResult.innerText = `You ${finalResult}`;

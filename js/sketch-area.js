@@ -1,9 +1,20 @@
 (function sketchArea() {
   // Cache DOM
   const sketchArea = document.querySelector(".sketch-area");
+  let currentFunction = applyCurrentColor;
+  let currentColor = "black"
+
+  // Bind Events
+  sketchArea.addEventListener("mousemove", applyColorToCellOnGrid);
 
   // Subscribe Events
   pubSub.subscribe("newGridSize", render);
+
+  function applyColorToCellOnGrid(event) {
+    if (event.target.nodeName === "DIV") {
+      event.target.style.backgroundColor = currentFunction();
+    }
+  }
 
   function render(gridSize) {
     sketchArea.innerHTML = ""
@@ -20,4 +31,10 @@
       sketchArea.append(newDiv);
     }
   }
+
+  function applyCurrentColor() {
+    return (function() {return currentColor})();
+  }
+
+  render(48);
 })()

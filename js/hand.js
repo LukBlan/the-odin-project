@@ -1,9 +1,17 @@
 (function hand() {
   // Cache DOM
   const playerHand = document.querySelector(".player-hand");
+  const allHandCards = document.querySelectorAll(".card:not([class*='choice'])");
 
   // Bind Events
-  playerHand.addEventListener("click", playRound);
+  function bindPlayRoundToPlayerHand() {
+    playerHand.addEventListener("click", playRound);
+  }
+  bindPlayRoundToPlayerHand();
+
+
+  // Subscribe Events
+  pubSub.subscribe("gameOver", disableHands)
 
   function playRound(event) {
     if (event.target.nodeName === "IMG") {
@@ -21,5 +29,10 @@
   function generateComputerChoice() {
     const options = ["paper", "scissors", "rock"];
     return options[Math.round(Math.random() * (options.length - 1))];
+  }
+
+  function disableHands() {
+    playerHand.removeEventListener("click", playRound);
+    allHandCards.forEach(handCard => handCard.classList.add("hide-card"));
   }
 })()

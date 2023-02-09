@@ -14,7 +14,8 @@
   }
 
   function getPlayerChoice(event) {
-
+    const regExp = /(\w+)\.png/;
+    return event.target.src.match(regExp)[1];
   }
 
   function generateComputerChoice() {

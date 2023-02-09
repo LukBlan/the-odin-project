@@ -9,6 +9,11 @@
 
   // Subscribe Events
   pubSub.subscribe("newGridSize", render);
+  pubSub.subscribe("newDefaultColor", setDefaultColor);
+
+  function setDefaultColor(newDefaultColor) {
+    currentColor = newDefaultColor;
+  }
 
   function applyColorToCellOnGrid(event) {
     if (event.target.nodeName === "DIV") {

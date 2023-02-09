@@ -1,5 +1,5 @@
-(function resultSection() {
-  const backgroundColor = {
+(function choices() {
+  const roundResult = {
     "paper-rock": "Win",
     "paper-paper": "Tie",
     "paper-scissors": "Lose",
@@ -31,9 +31,8 @@
   }
 
   function getBackgroundColorClass(choice, rivalChoice) {
-    const result = backgroundColor[choice + "-" + rivalChoice];
-    return (result === "Win")? "green-background":
-              (result === "Lose")? "red-background": "yellow-background";
+    const result = roundResult[choice + "-" + rivalChoice];
+    return backgroundColor.getBackgroundClassBy(result)
   }
 
   function generateSourceByChoice(choice) {

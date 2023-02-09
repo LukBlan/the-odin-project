@@ -1,4 +1,5 @@
 (function choices() {
+  let newGame = false;
   const roundResult = {
     "paper-rock": "Win",
     "paper-paper": "Tie",
@@ -19,6 +20,12 @@
 
   // Event Subscribe
   pubSub.subscribe("newRound", getChoices)
+  pubSub.subscribe("newGame", resetImages)
+
+  function resetImages() {
+    newGame = true;
+    render();
+  }
 
   function getChoices(choiceObject) {
     const playerChoice = choiceObject.playerChoice;
@@ -38,14 +45,22 @@
   }
 
   function render(player, computer) {
-    playerChoiceImg.src = generateSourceByChoice(player.choice);
-    computerChoiceImg.src = generateSourceByChoice(computer.choice);
-    playerChoiceImg.className = getClassListBySubject(player)
-    computerChoiceImg.className = getClassListBySubject(computer)
+    if (newGame) {
+      playerChoiceImg.src = generateSourceByChoice("question-mark", ".svg");
+      computerChoiceImg.src = generateSourceByChoice("question-mark", ".svg");
+      playerChoiceImg.className = "card player-choice";
+      computerChoiceImg.className = "card computer-choice";
+      newGame = false;
+    } else {
+      playerChoiceImg.src = generateSourceByChoice(player.choice, ".png");
+      computerChoiceImg.src = generateSourceByChoice(computer.choice, ".png");
+      playerChoiceImg.className = getClassListBySubject(player)
+      computerChoiceImg.className = getClassListBySubject(computer)
+    }
   }
 
-  function generateSourceByChoice(choice) {
-    return "./img/" + choice + ".png";
+  function generateSourceByChoice(choice, extension) {
+    return "./img/" + choice + extension;
   }
 
   function getClassListBySubject(subject) {

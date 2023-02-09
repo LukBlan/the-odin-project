@@ -11,6 +11,7 @@
 
   function getResults(roundResult) {
     computeResult(roundResult);
+    checkGameOver();
     render();
   }
 
@@ -19,6 +20,12 @@
       playerScore++;
     } else {
       computerScore++;
+    }
+  }
+
+  function checkGameOver() {
+    if (playerScore > 4 || computerScore > 4) {
+      pubSub.emit("gameOver", {player: playerScore, computer: computerScore});
     }
   }
 

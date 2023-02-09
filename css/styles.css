@@ -107,7 +107,7 @@ h3 {
         Pop Up Result
        --------------- */
 
-.game-over-box {
+.game-over-screen {
   display: flex;
   flex-direction: column;
   font-weight: bold;
@@ -118,10 +118,9 @@ h3 {
   align-items: center;
   background-color: white;
   padding: 5px;
-  transform: scale(0);
 }
 
-.game-over-box h2 {
+.game-over-screen h2 {
   padding: 10px;
 }
 
@@ -131,11 +130,11 @@ h3 {
   transition: 1s;
 }
 
-.you-win-result {
+.win-result {
   color: green;
 }
 
-.you-loose-result {
+.lose-result {
   color: red;
 }
 

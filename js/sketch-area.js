@@ -10,6 +10,15 @@
   // Subscribe Events
   pubSub.subscribe("newGridSize", render);
   pubSub.subscribe("newDefaultColor", setDefaultColor);
+  pubSub.subscribe("eraser", eraseSketchArea);
+
+  function eraseSketchArea() {
+    Array.from(sketchArea.children).forEach(
+      div => Array.from(div.children).forEach(
+        innerDiv => innerDiv.removeAttribute("style")
+      )
+    );
+  }
 
   function setDefaultColor(newDefaultColor) {
     currentColor = newDefaultColor;

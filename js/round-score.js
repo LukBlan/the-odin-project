@@ -6,6 +6,9 @@
   const playerScoreBox = document.querySelector(".player-score");
   const computerScoreBox = document.querySelector(".computer-score");
 
+  // Event Subscribe
+  pubSub.subscribe("scoreChange", getResults);
+
   function getResults(roundResult) {
     computeResult(roundResult);
     render();
@@ -21,8 +24,8 @@
 
   function render() {
     playerScoreBox.innerText = playerScore;
-    playerScoreBox.className = getClassListByScore("player", playerScore, computerScore);
     computerScoreBox.innerText = computerScore;
+    playerScoreBox.className = getClassListByScore("player", playerScore, computerScore);
     computerScoreBox.className = getClassListByScore("computer", computerScore, playerScore);
   }
 
@@ -34,6 +37,4 @@
     const result = (score > rivalScore)? "Win": (score < rivalScore)? "Lose": "Tie";
     return backgroundColor.getBackgroundClassBy(result);
   }
-
-  pubSub.subscribe("scoreChange", getResults);
 })()

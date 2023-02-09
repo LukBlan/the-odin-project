@@ -17,13 +17,18 @@
   const playerChoiceImg = document.querySelector(".player-choice");
   const computerChoiceImg = document.querySelector(".computer-choice");
 
+  // Event Subscribe
+  pubSub.subscribe("newRound", getChoices)
+
   function getChoices(choiceObject) {
     const playerChoice = choiceObject.playerChoice;
     const computerChoice = choiceObject.computerChoice;
     const playerResult = roundResult[playerChoice + "-" + computerChoice];
     const computerResult = roundResult[computerChoice + "-" + playerChoice];
     emitEvent(playerResult);
-    render({playerResult, playerChoice}, {computerResult, computerChoice})
+    render(
+      {name:"player", result: playerResult, choice: playerChoice},
+      {name: "computer", result: computerResult, choice: computerChoice})
   }
 
   function emitEvent(playerResult) {
@@ -32,20 +37,22 @@
     }
   }
 
-  function getBackgroundColorClass(result) {
-    return backgroundColor.getBackgroundClassBy(result)
+  function render(player, computer) {
+    playerChoiceImg.src = generateSourceByChoice(player.choice);
+    computerChoiceImg.src = generateSourceByChoice(computer.choice);
+    playerChoiceImg.className = getClassListBySubject(player)
+    computerChoiceImg.className = getClassListBySubject(computer)
   }
 
   function generateSourceByChoice(choice) {
     return "./img/" + choice + ".png";
   }
 
-  function render(player, computer) {
-    playerChoiceImg.src = generateSourceByChoice(player.playerChoice);
-    playerChoiceImg.className = `card player-choice ${getBackgroundColorClass(player.playerResult)}`;
-    computerChoiceImg.src = generateSourceByChoice(computer.computerChoice);
-    computerChoiceImg.className = `card computer-choice ${getBackgroundColorClass(computer.computerResult)}`;
+  function getClassListBySubject(subject) {
+    return `card ${subject.name}-choice ${getBackgroundColorClass(subject.result)}`;
   }
 
-  pubSub.subscribe("newRound", getChoices)
+  function getBackgroundColorClass(result) {
+    return backgroundColor.getBackgroundClassBy(result)
+  }
 })()

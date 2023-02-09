@@ -1,4 +1,6 @@
 (function hand() {
+  let playerHandHasListener = true;
+
   // Cache DOM
   const playerHand = document.querySelector(".player-hand");
   const allHandCards = document.querySelectorAll(".card:not([class*='choice'])");
@@ -9,9 +11,9 @@
   }
   bindPlayRoundToPlayerHand();
 
-
   // Subscribe Events
-  pubSub.subscribe("gameOver", disableHands)
+  pubSub.subscribe("gameOver", render)
+  pubSub.subscribe("newGame", render)
 
   function playRound(event) {
     if (event.target.nodeName === "IMG") {
@@ -31,8 +33,15 @@
     return options[Math.round(Math.random() * (options.length - 1))];
   }
 
-  function disableHands() {
-    playerHand.removeEventListener("click", playRound);
-    allHandCards.forEach(handCard => handCard.classList.add("hide-card"));
+  function render() {
+   if (playerHandHasListener) {
+     playerHand.removeEventListener("click", playRound);
+     allHandCards.forEach(handCard => handCard.classList.add("hide-card"));
+     playerHandHasListener = false;
+   } else {
+     bindPlayRoundToPlayerHand();
+     allHandCards.forEach(handCard => handCard.classList.remove("hide-card"));
+     playerHandHasListener = true;
+   }
   }
 })()

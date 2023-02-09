@@ -8,6 +8,13 @@
 
   // Event Subscribe
   pubSub.subscribe("scoreChange", getResults);
+  pubSub.subscribe("newGame", resetScore)
+
+  function resetScore() {
+    computerScore = 0;
+    playerScore = 0;
+    render();
+  }
 
   function getResults(roundResult) {
     computeResult(roundResult);

@@ -20,23 +20,31 @@
   function getChoices(choiceObject) {
     const playerChoice = choiceObject.playerChoice;
     const computerChoice = choiceObject.computerChoice;
-    render(playerChoice, computerChoice)
+    const playerResult = roundResult[playerChoice + "-" + computerChoice];
+    const computerResult = roundResult[computerChoice + "-" + playerChoice];
+    emitEvent(playerResult);
+    render({playerResult, playerChoice}, {computerResult, computerChoice})
   }
 
-  function render(playerChoice, computerChoice) {
-    playerChoiceImg.src = generateSourceByChoice(playerChoice);
-    playerChoiceImg.className = `card player-choice ${getBackgroundColorClass(playerChoice, computerChoice)}`;
-    computerChoiceImg.src = generateSourceByChoice(computerChoice);
-    computerChoiceImg.className = `card computer-choice ${getBackgroundColorClass(computerChoice, playerChoice)}`;
+  function emitEvent(playerResult) {
+    if (playerResult === "Win" || playerResult === "Lose") {
+      pubSub.emit("scoreChange", playerResult);
+    }
   }
 
-  function getBackgroundColorClass(choice, rivalChoice) {
-    const result = roundResult[choice + "-" + rivalChoice];
+  function getBackgroundColorClass(result) {
     return backgroundColor.getBackgroundClassBy(result)
   }
 
   function generateSourceByChoice(choice) {
     return "./img/" + choice + ".png";
+  }
+
+  function render(player, computer) {
+    playerChoiceImg.src = generateSourceByChoice(player.playerChoice);
+    playerChoiceImg.className = `card player-choice ${getBackgroundColorClass(player.playerResult)}`;
+    computerChoiceImg.src = generateSourceByChoice(computer.computerChoice);
+    computerChoiceImg.className = `card computer-choice ${getBackgroundColorClass(computer.computerResult)}`;
   }
 
   pubSub.subscribe("newRound", getChoices)

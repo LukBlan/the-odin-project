@@ -6,20 +6,21 @@
   rainbowColorButton.addEventListener("click", emitRandomColor);
 
   // Subscribe Events
-  pubSub.subscribe("newFunctionColor", disableRainbow)
+  pubSub.subscribe("colorPickerIsActive", disableRainbow);
 
   function emitRandomColor() {
-    if (rainbowColorButton.classList.value.includes("active")) {
-      rainbowColorButton.classList.remove("active");
-    } else {
+    if (!rainbowColorButton.classList.value.includes("active")) {
       rainbowColorButton.classList.add("active");
-      pubSub.emit("newFunctionColor", {name: "randomColor", handler: randomColor});
+      pubSub.emit("rainbowColorIsActive", randomColor);
+    } else {
+      disableRainbow()
+      pubSub.emit("rainbowColorIsDisable", null);
     }
   }
 
-  function disableRainbow(functionObject) {
-    if (functionObject.name !== "randomColor") {
-      rainbowColorButton.className = "button rainbow";
+  function disableRainbow() {
+    if (rainbowColorButton.className.includes("active")) {
+      rainbowColorButton.classList.remove("active");
     }
   }
 

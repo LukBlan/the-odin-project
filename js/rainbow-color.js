@@ -3,17 +3,29 @@
   const rainbowColorButton = document.querySelector(".rainbow");
 
   // Bind Events
-  rainbowColorButton.addEventListener("click", emitToggleRainbowColorEvent);
+  rainbowColorButton.addEventListener("click", emitRandomColor);
 
-  function emitToggleRainbowColorEvent() {
-    let rainbowIsActive;
+  // Subscribe Events
+  pubSub.subscribe("newFunctionColor", disableRainbow)
+
+  function emitRandomColor() {
     if (rainbowColorButton.classList.value.includes("active")) {
       rainbowColorButton.classList.remove("active");
-      rainbowIsActive = false;
     } else {
       rainbowColorButton.classList.add("active");
-      rainbowIsActive = true;
+      pubSub.emit("newFunctionColor", {name: "randomColor", handler: randomColor});
     }
-    pubSub.emit("toggleRainbowColor", rainbowIsActive);
+  }
+
+  function disableRainbow(functionObject) {
+    if (functionObject.name !== "randomColor") {
+      rainbowColorButton.className = "button rainbow";
+    }
+  }
+
+  function randomColor() {
+    let number = (Math.floor(Math.random() * 16777214)).toString(16);
+    return "#" + number;
   }
 })()
+

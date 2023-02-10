@@ -1,30 +1,15 @@
 (function sketchArea() {
   // Cache DOM
   const sketchArea = document.querySelector(".sketch-area");
-  let currentFunction = applyCurrentColor;
-  let currentColor = "black"
+  let functionColor = () => {return "black"};
 
   // Bind Events
   sketchArea.addEventListener("mousedown", applyColorToCellOnGrid);
 
   // Subscribe Events
   pubSub.subscribe("newGridSize", render);
-  pubSub.subscribe("newDefaultColor", setDefaultColor);
+  pubSub.subscribe("newFunctionColor", setFunctionColor);
   pubSub.subscribe("eraser", eraseSketchArea);
-  pubSub.subscribe("toggleRainbowColor", toggleRainbowColor);
-
-  function toggleRainbowColor(rainbowIsActive) {
-    if (rainbowIsActive) {
-      currentFunction = randomColor;
-    } else {
-      currentFunction = applyCurrentColor;
-    }
-  }
-
-  function randomColor() {
-    let number = (Math.floor(Math.random() * 16777214)).toString(16);
-    return "#" + number;
-  }
 
   function eraseSketchArea() {
     Array.from(sketchArea.children).forEach(
@@ -34,8 +19,8 @@
     );
   }
 
-  function setDefaultColor(newDefaultColor) {
-    currentColor = newDefaultColor;
+  function setFunctionColor(functionObject) {
+    functionColor = functionObject.handler;
   }
 
   function applyColorToCellOnGrid() {
@@ -45,7 +30,7 @@
 
   function applyColor(event) {
     if (event.target.nodeName === "DIV") {
-      event.target.style.backgroundColor = currentFunction();
+      event.target.style.backgroundColor = functionColor();
     }
   }
 
@@ -63,10 +48,6 @@
       }
       sketchArea.append(newDiv);
     }
-  }
-
-  function applyCurrentColor() {
-    return (function() {return currentColor})();
   }
 
   render(48);

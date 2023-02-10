@@ -5,7 +5,7 @@
   let currentColor = "black"
 
   // Bind Events
-  sketchArea.addEventListener("mousemove", applyColorToCellOnGrid);
+  sketchArea.addEventListener("mousedown", applyColorToCellOnGrid);
 
   // Subscribe Events
   pubSub.subscribe("newGridSize", render);
@@ -38,7 +38,12 @@
     currentColor = newDefaultColor;
   }
 
-  function applyColorToCellOnGrid(event) {
+  function applyColorToCellOnGrid() {
+    sketchArea.addEventListener("mousemove", applyColor)
+    sketchArea.addEventListener("mouseup", () => {sketchArea.removeEventListener("mousemove", applyColor)});
+  }
+
+  function applyColor(event) {
     if (event.target.nodeName === "DIV") {
       event.target.style.backgroundColor = currentFunction();
     }

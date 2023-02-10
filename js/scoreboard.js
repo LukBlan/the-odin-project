@@ -1,8 +1,8 @@
-(function roundScore() {
+(function scoreboard() {
   let playerScore = 0;
   let computerScore = 0;
-  let currentPlayerBg = "yellow-background";
-  let currentComputerBg = "yellow-background";
+  let currentPlayerBg = backgroundColor.INITIAL_STATE;
+  let currentComputerBg = backgroundColor.INITIAL_STATE;
 
   //Cache DOM
   const playerScoreBox = document.querySelector(".player-score");
@@ -15,10 +15,10 @@
   function resetScore() {
     computerScore = 0;
     playerScore = 0;
-    const playerBg = createBackgroundObject(playerScoreBox, currentPlayerBg, "yellow-background");
-    const computerBg = createBackgroundObject(computerScoreBox, currentComputerBg, "yellow-background");
-    currentPlayerBg = "yellow-background";
-    currentComputerBg = "yellow-background";
+    const playerBg = createBackgroundObject(playerScoreBox, currentPlayerBg, null);
+    const computerBg = createBackgroundObject(computerScoreBox, currentComputerBg, null);
+    currentPlayerBg = backgroundColor.INITIAL_STATE;
+    currentComputerBg = backgroundColor.INITIAL_STATE;
     render(playerBg, computerBg);
   }
 
@@ -40,7 +40,7 @@
   function computeResult(roundResult) {
     if (roundResult === "Win") {
       playerScore++;
-    } else {
+    } else if (roundResult === "Lose") {
       computerScore++;
     }
   }

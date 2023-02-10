@@ -1,6 +1,8 @@
 (function roundScore() {
   let playerScore = 0;
   let computerScore = 0;
+  let currentPlayerBg = "yellow-background";
+  let currentComputerBg = "yellow-background";
 
   //Cache DOM
   const playerScoreBox = document.querySelector(".player-score");
@@ -13,13 +15,26 @@
   function resetScore() {
     computerScore = 0;
     playerScore = 0;
-    render();
+    const playerBg = createBackgroundObject(playerScoreBox, currentPlayerBg, "yellow-background");
+    const computerBg = createBackgroundObject(computerScoreBox, currentComputerBg, "yellow-background");
+    currentPlayerBg = "yellow-background";
+    currentComputerBg = "yellow-background";
+    render(playerBg, computerBg);
   }
 
   function getResults(roundResult) {
     computeResult(roundResult);
+    const backgrounds = getBackgroundColorsByScore();
+    const playerBg = createBackgroundObject(playerScoreBox, currentPlayerBg, backgrounds.player);
+    const computerBg = createBackgroundObject(computerScoreBox, currentComputerBg, backgrounds.computer);
+    render(playerBg, computerBg);
+    currentPlayerBg = playerBg.newBg;
+    currentComputerBg = computerBg.newBg;
     checkGameOver();
-    render();
+  }
+
+  function createBackgroundObject(elementReference, currentBg, newBg) {
+    return {elementReference: elementReference, currentBg: currentBg, newBg: newBg};
   }
 
   function computeResult(roundResult) {
@@ -36,19 +51,21 @@
     }
   }
 
-  function render() {
+  function render(playerBackground, computerBackground) {
     playerScoreBox.innerText = playerScore;
     computerScoreBox.innerText = computerScore;
-    playerScoreBox.className = getClassListByScore("player", playerScore, computerScore);
-    computerScoreBox.className = getClassListByScore("computer", computerScore, playerScore);
+    if (playerBackground.newBg !== playerBackground.currentBg) {
+    emitBackgroundChangeEvent(playerBackground)
+    emitBackgroundChangeEvent(computerBackground)
+    }
   }
 
-  function getClassListByScore(subject, score, rivalScore) {
-    return `round-score ${subject}-round-score ${getBackgroundColorByScore(score, rivalScore)}`;
+  function emitBackgroundChangeEvent(changeBackgroundObject) {
+    pubSub.emit("backgroundChange", changeBackgroundObject)
   }
 
-  function getBackgroundColorByScore(score, rivalScore) {
-    const result = (score > rivalScore)? "Win": (score < rivalScore)? "Lose": "Tie";
-    return backgroundColor.getBackgroundClassBy(result);
+  function getBackgroundColorsByScore() {
+    const result = (playerScore > computerScore)? "Win": (playerScore < computerScore)? "Lose": "Tie";
+    return backgroundColor.getBackgroundColor(result);
   }
 })()

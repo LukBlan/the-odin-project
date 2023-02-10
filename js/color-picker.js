@@ -6,16 +6,17 @@
   colorPicker.addEventListener("input", emitNewDefaultColor);
 
   // Subscribe Events
-  pubSub.subscribe("newFunctionColor", disableColorPicker)
+  pubSub.subscribe("rainbowColorIsActive", disableColorPicker);
+  pubSub.subscribe("rainbowColorIsDisable", emitNewDefaultColor);
 
-  function emitNewDefaultColor(event) {
+  function emitNewDefaultColor() {
     colorPicker.classList.add("active");
-    pubSub.emit("newFunctionColor",{name: "applyCurrentColor", handler: applyCurrentColor(event.target.value)});
+    pubSub.emit("colorPickerIsActive", applyCurrentColor(colorPicker.value));
   }
 
-  function disableColorPicker(functionObject) {
-    if (functionObject.name !== "applyCurrentColor") {
-      colorPicker.className = "button";
+  function disableColorPicker() {
+    if (colorPicker.className.includes("active")) {
+      colorPicker.classList.remove("active");
     }
   }
 

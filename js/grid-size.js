@@ -3,7 +3,7 @@
 
   // Cache DOM
   const gridSizeDisplay = document.querySelector(".grid-size-display");
-  const gridSizeRange = document.getElementById("grid-size")
+  const gridSizeRange = document.getElementById("grid-size-input")
 
   // Bind Events
   gridSizeRange.addEventListener("input", displayNewSize);

@@ -35,26 +35,24 @@ h2 {
         Option Bar
        ------------ */
 
-.options-bar {
+.option-bar {
   background-color: black;
-  border: 1px solid black;
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.grid-selector {
+.grid-display {
   background-color: black;
   color: white;
   font-weight: bold;
-  display: flex;
+  display: grid;
   align-items: center;
-  flex-direction: column;
-  border-radius: 10px;
-  padding: 10px;
+  justify-items: center;
+  gap: 5px;
 }
 
-#grid-size {
+#grid-size-input {
   cursor: pointer;
   appearance: none;
   border: 1px solid black;

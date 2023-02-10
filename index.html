@@ -14,15 +14,18 @@
   </head>
 
   <body>
-    <div class="options-bar">
-      <div class="grid-selector">
-        <label class="grid-size-display" for="grid-size">48 x 48</label>
-        <input id="grid-size" type="range" min="32" max="64">
+    <div class="option-bar">
+      <div class="grid-display">
+        <label class="grid-size-display" for="grid-size-input">48 x 48</label>
+        <input id="grid-size-input" type="range" min="32" max="64">
       </div>
 
-      <label for="color-picker"></label>
-      <input class="button active" id="color-picker" type="color">
+      <label>
+        <input class="button active" id="color-picker" type="color">
+      </label>
+
       <img class="button eraser" src="./img/eraser.svg" alt="Eraser icon">
+
       <img class="button rainbow" src="./img/rainbow.svg" alt="rainbow icon">
     </div>
 

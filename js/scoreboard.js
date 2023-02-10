@@ -15,8 +15,8 @@
   function resetScore() {
     computerScore = 0;
     playerScore = 0;
-    const playerBg = createBackgroundObject(playerScoreBox, currentPlayerBg, null);
-    const computerBg = createBackgroundObject(computerScoreBox, currentComputerBg, null);
+    const playerBg = backgroundFactory.createBgObject(playerScoreBox, currentPlayerBg, null);
+    const computerBg = backgroundFactory.createBgObject(computerScoreBox, currentComputerBg, null);
     currentPlayerBg = backgroundColor.INITIAL_STATE;
     currentComputerBg = backgroundColor.INITIAL_STATE;
     render(playerBg, computerBg);
@@ -24,17 +24,13 @@
 
   function getResults(roundResult) {
     computeResult(roundResult);
-    const backgrounds = getBackgroundColorsByScore();
-    const playerBg = createBackgroundObject(playerScoreBox, currentPlayerBg, backgrounds.player);
-    const computerBg = createBackgroundObject(computerScoreBox, currentComputerBg, backgrounds.computer);
+    const bgs = getBackgroundColorsByScore();
+    const playerBg = backgroundFactory.createBgObject(playerScoreBox, currentPlayerBg, bgs.player);
+    const computerBg = backgroundFactory.createBgObject(computerScoreBox, currentComputerBg, bgs.computer);
     render(playerBg, computerBg);
     currentPlayerBg = playerBg.newBg;
     currentComputerBg = computerBg.newBg;
     checkGameOver();
-  }
-
-  function createBackgroundObject(elementReference, currentBg, newBg) {
-    return {elementReference: elementReference, currentBg: currentBg, newBg: newBg};
   }
 
   function computeResult(roundResult) {

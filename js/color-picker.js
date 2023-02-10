@@ -5,6 +5,7 @@
   // Bind Event
   colorPicker.addEventListener("input", emitNewDefaultColor);
 
+  // Subscribe Events
   pubSub.subscribe("newFunctionColor", disableColorPicker)
 
   function emitNewDefaultColor(event) {

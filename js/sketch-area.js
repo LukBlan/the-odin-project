@@ -1,14 +1,15 @@
 (function sketchArea() {
   // Cache DOM
   const sketchArea = document.querySelector(".sketch-area");
-  let functionColor = () => {return "black"};
+  let currenFunctionColor = () => {return "black"};
 
   // Bind Events
   sketchArea.addEventListener("mousedown", applyColorToCellOnGrid);
 
   // Subscribe Events
   pubSub.subscribe("newGridSize", render);
-  pubSub.subscribe("newFunctionColor", setFunctionColor);
+  pubSub.subscribe("colorPickerIsActive", setFunctionColor);
+  pubSub.subscribe("rainbowColorIsActive", setFunctionColor);
   pubSub.subscribe("eraser", eraseSketchArea);
 
   function eraseSketchArea() {
@@ -19,8 +20,8 @@
     );
   }
 
-  function setFunctionColor(functionObject) {
-    functionColor = functionObject.handler;
+  function setFunctionColor(newFunctionColor) {
+    currenFunctionColor = newFunctionColor;
   }
 
   function applyColorToCellOnGrid() {
@@ -30,7 +31,7 @@
 
   function applyColor(event) {
     if (event.target.nodeName === "DIV") {
-      event.target.style.backgroundColor = functionColor();
+      event.target.style.backgroundColor = currenFunctionColor();
     }
   }
 

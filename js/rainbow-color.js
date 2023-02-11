@@ -25,8 +25,14 @@
   }
 
   function randomColor() {
-    let number = (Math.floor(Math.random() * 16777214)).toString(16);
-    return "#" + number;
+    const r = randomNumberUntil(255);
+    const g = randomNumberUntil(255);
+    const b = randomNumberUntil(255);
+    return `rgb(${r}, ${g}, ${b})`
+  }
+
+  function randomNumberUntil(number) {
+    return Math.floor(Math.random() * (number + 1));
   }
 })()
 

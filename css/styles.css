@@ -60,6 +60,14 @@ h2 {
   box-shadow: 0 0 12px white;
 }
 
+.grid-size-display {
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  padding: 3px;
+  border: 5px ridge white;
+}
+
     /* -------------
         Sketch Area
        ------------- */

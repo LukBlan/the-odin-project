@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: var(--background);
+  background-color: black;
   display: flex;
   position: relative;
   justify-content: space-around;
@@ -50,6 +50,7 @@ h3 {
 }
 
 .character-image {
+  background-color: white;
   width: 90px;
   height: 90px;
   border: 5px outset white;
@@ -61,7 +62,7 @@ h3 {
        ---------------- */
 
 .result-section {
-  background-color: rgb(227, 227, 227);;
+  background-color: white;
   border: 15px ridge white;
   display: flex;
   gap: 10px;
@@ -93,7 +94,7 @@ h3 {
   top: 3%;
   font-weight: bold;
   font-size: 2rem;
-  box-shadow: 0 0 4px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px white;
   z-index: 1;
 }
 

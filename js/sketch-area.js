@@ -10,9 +10,9 @@
   pubSub.subscribe("newGridSize", render);
   pubSub.subscribe("colorPickerIsActive", setFunctionColor);
   pubSub.subscribe("rainbowColorIsActive", setFunctionColor);
-  pubSub.subscribe("eraser", eraseSketchArea);
+  pubSub.subscribe("bomb", bombSketchArea);
 
-  function eraseSketchArea() {
+  function bombSketchArea() {
     Array.from(sketchArea.children).forEach(
       div => Array.from(div.children).forEach(
         innerDiv => innerDiv.removeAttribute("style")

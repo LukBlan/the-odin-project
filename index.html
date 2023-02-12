@@ -9,27 +9,29 @@
     <script src="./js/grid-size.js" defer></script>
     <script src="./js/sketch-area.js" defer></script>
     <script src="./js/color-picker.js" defer></script>
-    <script src="./js/eraser.js" defer></script>
+    <script src="js/bomb.js" defer></script>
     <script src="./js/rainbow-color.js" defer></script>
   </head>
 
   <body>
     <div class="option-bar">
+      <label>
+        <input class="button active" id="color-picker" type="color">
+      </label>
+
+      <img class="button rainbow" src="./img/rainbow.svg" alt="rainbow icon">
+
       <div class="grid-display">
         <label class="grid-size-display" for="grid-size-input">48 x 48</label>
         <input id="grid-size-input" type="range" min="32" max="64">
       </div>
 
-      <label>
-        <input class="button active" id="color-picker" type="color">
-      </label>
-
       <img class="button eraser" src="./img/eraser.svg" alt="Eraser icon">
-
-      <img class="button rainbow" src="./img/rainbow.svg" alt="rainbow icon">
+      <img class="button bomb" src="./img/bomb.svg" alt="Bomb icon">
+      <img class="button grid" src="./img/grid.svg" alt="grid icon">
     </div>
 
-    <section class="sketch-area">
+    <section class="sketch-area pen-cursor">
     </section>
   </body>
 </html>

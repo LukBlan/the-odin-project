@@ -70,6 +70,7 @@ h3 {
   align-items: center;
   z-index: 1;
   padding: 10px;
+  box-shadow: 0 0 7px white;
 }
 
 .player {
@@ -77,6 +78,7 @@ h3 {
   display: flex;
   align-items: center;
   border: 5px inset white;
+  box-shadow: 0 0 7px white;
 }
 
 .scoreboard {

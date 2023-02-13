@@ -1,3 +1,12 @@
+/* =============
+    Font Import
+   ============= */
+
+@import url('https://fonts.googleapis.com/css2?family=Tourney:wght@200&display=swap');
+
+/* Press Start 2P */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 /* ===============
     Global Styles
    =============== */
@@ -101,6 +110,7 @@ h3 {
 }
 
 .round-number {
+  font-family: 'Tourney', cursive;
   min-height: 2.4rem;
 }
 
@@ -135,6 +145,8 @@ h3 {
 }
 
 .game-over-screen h2 {
+  font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;
   padding: 10px;
 }
 

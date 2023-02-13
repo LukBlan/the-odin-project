@@ -94,6 +94,10 @@ h2 {
   cursor: url(./../img/pen.svg) 3 25, auto;
 }
 
+.show-grid {
+  border: 1px solid rgb(215, 215, 215);
+}
+
 /* ============
     Components
    ============ */

@@ -3,6 +3,7 @@
   const sketchArea = document.querySelector(".sketch-area");
   let currentCursorIcon = "pen-cursor";
   let currenFunctionColor = () => {return "black"};
+  let gridEnabled = false;
 
   // Bind Events
   sketchArea.addEventListener("mousedown", applyColorToCellOnGrid);
@@ -14,6 +15,18 @@
   pubSub.subscribe("eraserIsActive", setFunctionColor);
   pubSub.subscribe("bomb", bombSketchArea);
   pubSub.subscribe("changeCursorIcon", changeCursorIcon);
+  pubSub.subscribe("toggleGrid", toggleGrid);
+
+  function toggleGrid() {
+    const allElements = getAllChild();
+    if (gridEnabled) {
+      gridEnabled = false;
+      allElements.forEach(innerDiv => innerDiv.classList.remove("show-grid"));
+    } else {
+      allElements.forEach(innerDiv => innerDiv.classList.add("show-grid"));
+      gridEnabled = true;
+    }
+  }
 
   function changeCursorIcon(newCursorIcon) {
     sketchArea.classList.remove(currentCursorIcon);
@@ -22,11 +35,12 @@
   }
 
   function bombSketchArea() {
-    Array.from(sketchArea.children).forEach(
-      div => Array.from(div.children).forEach(
-        innerDiv => innerDiv.removeAttribute("style")
-      )
-    );
+    const allElements = getAllChild();
+    allElements.forEach(element => element.removeAttribute("style"));
+  }
+
+  function getAllChild() {
+    return Array.from(sketchArea.children).map(div => Array.from(div.children)).flat();
   }
 
   function setFunctionColor(newFunctionColor) {
@@ -54,6 +68,9 @@
       let newDiv = document.createElement("div");
       for (let j = 0; j < gridSize; j++) {
         let innerDiv = document.createElement("div");
+        if (gridEnabled) {
+          innerDiv.classList.add("show-grid");
+        }
         newDiv.append(innerDiv);
       }
       sketchArea.append(newDiv);

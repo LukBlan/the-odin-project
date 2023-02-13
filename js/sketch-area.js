@@ -1,6 +1,7 @@
 (function sketchArea() {
   // Cache DOM
   const sketchArea = document.querySelector(".sketch-area");
+  let currentCursorIcon = "pen-cursor";
   let currenFunctionColor = () => {return "black"};
 
   // Bind Events
@@ -10,7 +11,15 @@
   pubSub.subscribe("newGridSize", render);
   pubSub.subscribe("colorPickerIsActive", setFunctionColor);
   pubSub.subscribe("rainbowColorIsActive", setFunctionColor);
+  pubSub.subscribe("eraserIsActive", setFunctionColor);
   pubSub.subscribe("bomb", bombSketchArea);
+  pubSub.subscribe("changeCursorIcon", changeCursorIcon);
+
+  function changeCursorIcon(newCursorIcon) {
+    sketchArea.classList.remove(currentCursorIcon);
+    sketchArea.classList.add(newCursorIcon);
+    currentCursorIcon = newCursorIcon;
+  }
 
   function bombSketchArea() {
     Array.from(sketchArea.children).forEach(

@@ -3,24 +3,27 @@
   const colorPicker = document.getElementById("color-picker");
 
   // Bind Event
-  colorPicker.addEventListener("input", emitNewDefaultColor);
+  colorPicker.addEventListener("input", toggleColorPicker);
+  pubSub.subscribe("removeColorPicker",removeColorPiker);
+  pubSub.subscribe("activeColorPicker",toggleColorPicker);
 
-  // Subscribe Events
-  pubSub.subscribe("rainbowColorIsActive", disableColorPicker);
-  pubSub.subscribe("rainbowColorIsDisable", emitNewDefaultColor);
-
-  function emitNewDefaultColor() {
-    colorPicker.classList.add("active");
+  function toggleColorPicker() {
+    if (!colorPicker.className.includes("active")) {
+      colorPicker.classList.add("active");
+    }
+    pubSub.emit("removeRainbowColor", null);
+    pubSub.emit("removeEraser", null);
+    pubSub.emit("changeCursorIcon", "pen-cursor");
     pubSub.emit("colorPickerIsActive", applyCurrentColor(colorPicker.value));
   }
 
-  function disableColorPicker() {
+  function removeColorPiker() {
     if (colorPicker.className.includes("active")) {
       colorPicker.classList.remove("active");
     }
   }
 
   function applyCurrentColor(currentColor) {
-    return function() {return currentColor};
+    return () => {return currentColor};
   }
 })()

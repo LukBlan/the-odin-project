@@ -76,7 +76,6 @@ h2 {
   background-color: white;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
   width: 50%;
   height: 100%;
   box-shadow: 0 0 10px white;
@@ -88,7 +87,7 @@ h2 {
 }
 
 .eraser-cursor {
-  cursor: url(./../img/eraser.svg) 10 10, auto;
+  cursor: url(./../img/eraser.svg) 3 19, auto;
 }
 
 .pen-cursor {

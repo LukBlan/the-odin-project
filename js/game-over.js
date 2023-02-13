@@ -24,7 +24,7 @@
   // Create GameOverScreen with only final result missing
   function createGameOverScreen() {
     const gameOverScreen = createOwnElement("div", null, "game-over-screen");
-    const h2 = createOwnElement("h2","Game Over", null);
+    const h2 = createOwnElement("h2","Game Over!", null);
     const gameResult = createOwnElement("p", null, "finalResult")
     const newGameButton = createOwnElement("button", "New Game", "new-game-button");
     gameOverScreen.append(h2);

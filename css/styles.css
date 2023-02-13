@@ -2,6 +2,9 @@
     Font Import
    ============= */
 
+/* Share Tech Mono */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Tourney:wght@200&display=swap');
 
 /* Press Start 2P */
@@ -91,6 +94,7 @@ h3 {
 }
 
 .scoreboard {
+  font-family: 'Share Tech Mono', monospace;
   background-color: white;
   font-size: 2rem;
   padding: 8px 14px;
@@ -112,6 +116,13 @@ h3 {
 .round-number {
   font-family: 'Tourney', cursive;
   min-height: 2.4rem;
+}
+
+.green-background,
+.yellow-background,
+.red-background {
+  color: white;
+  text-shadow: 0 0 3px black;
 }
 
 .green-background {

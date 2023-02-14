@@ -14,7 +14,7 @@
       eraser.classList.add("active")
       pubSub.emit("removeColorPicker",null);
       pubSub.emit("removeRainbowColor",null);
-      pubSub.emit("newOptionSelected+", eraseCell);
+      pubSub.emit("newOptionSelected", eraseCell);
       pubSub.emit("changeCursorIcon", "eraser-cursor");
     }
   }

@@ -6,7 +6,10 @@
   let gridEnabled = false;
 
   // Bind Events
-  sketchArea.addEventListener("mousedown", applyColorToCellOnGrid);
+  sketchArea.addEventListener("mousedown", (event) => {
+    applyColorToCellOnGrid()
+    applyColor(event)
+  });
 
   // Subscribe Events
   pubSub.subscribe("newGridSize", render);

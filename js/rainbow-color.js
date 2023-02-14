@@ -15,7 +15,7 @@
       pubSub.emit("changeCursorIcon", "pen-cursor");
       pubSub.emit("removeColorPicker",null);
       pubSub.emit("removeEraser",null);
-      pubSub.emit("rainbowColorIsActive", randomColor);
+      pubSub.emit("newOptionSelected", randomColor);
     }
   }
 

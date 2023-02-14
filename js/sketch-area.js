@@ -8,14 +8,12 @@
   // Bind Events
   sketchArea.addEventListener("mousedown", (event) => {
     applyColorToCellOnGrid()
-    applyColor(event)
+    renderColorOnCell(event)
   });
 
   // Subscribe Events
-  pubSub.subscribe("newGridSize", render);
-  pubSub.subscribe("colorPickerIsActive", setFunctionColor);
-  pubSub.subscribe("rainbowColorIsActive", setFunctionColor);
-  pubSub.subscribe("eraserIsActive", setFunctionColor);
+  pubSub.subscribe("newGridSize", renderGrid);
+  pubSub.subscribe("newOptionSelected", setFunctionOption);
   pubSub.subscribe("bomb", bombSketchArea);
   pubSub.subscribe("changeCursorIcon", changeCursorIcon);
   pubSub.subscribe("toggleGrid", toggleGrid);
@@ -46,22 +44,22 @@
     return Array.from(sketchArea.children).map(div => Array.from(div.children)).flat();
   }
 
-  function setFunctionColor(newFunctionColor) {
+  function setFunctionOption(newFunctionColor) {
     currenFunctionColor = newFunctionColor;
   }
 
   function applyColorToCellOnGrid() {
-    sketchArea.addEventListener("mousemove", applyColor)
-    sketchArea.addEventListener("mouseup", () => {sketchArea.removeEventListener("mousemove", applyColor)});
+    sketchArea.addEventListener("mousemove", renderColorOnCell)
+    sketchArea.addEventListener("mouseup", () => {sketchArea.removeEventListener("mousemove", renderColorOnCell)});
   }
 
-  function applyColor(event) {
+  function renderColorOnCell(event) {
     if (event.target.nodeName === "DIV") {
       event.target.style.backgroundColor = currenFunctionColor();
     }
   }
 
-  function render(gridSize) {
+  function renderGrid(gridSize) {
     sketchArea.innerHTML = ""
     createDivs(gridSize)
   }
@@ -80,5 +78,5 @@
     }
   }
 
-  render(48);
+  renderGrid(48);
 })()

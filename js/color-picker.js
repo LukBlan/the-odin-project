@@ -14,7 +14,7 @@
     pubSub.emit("removeRainbowColor", null);
     pubSub.emit("removeEraser", null);
     pubSub.emit("changeCursorIcon", "pen-cursor");
-    pubSub.emit("colorPickerIsActive", applyCurrentColor(colorPicker.value));
+    pubSub.emit("newOptionSelected", applyCurrentColor(colorPicker.value));
   }
 
   function removeColorPiker() {

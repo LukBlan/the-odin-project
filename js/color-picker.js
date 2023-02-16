@@ -8,9 +8,7 @@
   pubSub.subscribe("activeColorPicker",toggleColorPicker);
 
   function toggleColorPicker() {
-    if (!colorPicker.className.includes("active")) {
-      colorPicker.classList.add("active");
-    }
+    colorPicker.classList.add("active");
     pubSub.emit("removeRainbowColor", null);
     pubSub.emit("removeEraser", null);
     pubSub.emit("changeCursorIcon", "pen-cursor");
@@ -18,9 +16,7 @@
   }
 
   function removeColorPiker() {
-    if (colorPicker.className.includes("active")) {
-      colorPicker.classList.remove("active");
-    }
+    colorPicker.classList.remove("active");
   }
 
   function applyCurrentColor(currentColor) {

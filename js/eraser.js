@@ -20,9 +20,7 @@
   }
 
   function removeEraser() {
-    if (eraser.className.includes("active")) {
-      eraser.classList.remove("active")
-    }
+    eraser.classList.remove("active")
   }
 
 

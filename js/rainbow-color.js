@@ -20,9 +20,7 @@
   }
 
   function removeRainbowColor() {
-    if (rainbowColorButton.className.includes("active")) {
-      rainbowColorButton.classList.remove("active");
-    }
+    rainbowColorButton.classList.remove("active");
   }
 
   function randomColor() {

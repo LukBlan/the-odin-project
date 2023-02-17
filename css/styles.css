@@ -119,7 +119,8 @@ h3 {
 
 .round-number {
   font-family: 'Tourney', cursive;
-  min-height: 2.4rem;
+  min-height: 2.8rem;
+  line-height: 45px;
 }
 
 .green-background,

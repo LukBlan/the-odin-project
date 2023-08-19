@@ -110,6 +110,7 @@ h2 {
        -------- */
 
 .button {
+  position: relative;
   cursor: pointer;
   background-color: white;
   border: 1px solid black;
@@ -121,8 +122,8 @@ h2 {
 }
 
 .button:active {
+  top: 2px;
   box-shadow: 0 1px 0 white, 0 2px 9px 1px rgb(255 255 255 / 50%);
-  transform: scale(0.97);
 }
 
 .active {

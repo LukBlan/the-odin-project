@@ -207,7 +207,8 @@ h3 {
   height: 100px;
   border-radius: 20px;
   box-shadow: 0 0 5px rgb(0 0 0 / 50%);
-  border: 5px outset white;
+  border: 5px outset rgba(0,0,0,0.2);
+  scale: 0.9;
 }
 
 .player-card {
@@ -216,7 +217,7 @@ h3 {
 }
 
 .player-card:hover {
-  box-shadow: 0 0 16px rgba(0,0,0,0.25);
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.25);
   transform: scale(1.05);
 }
 

@@ -50,7 +50,16 @@ h2 {
   display: grid;
   align-items: center;
   justify-items: center;
-  gap: 5px;
+  gap: 8px;
+}
+
+.grid-size-display {
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  padding: 3px;
+  border: 1px solid rgba(0,0,0,0.3);
+  outline: 4px outset white;
 }
 
 #grid-size-input {
@@ -61,25 +70,19 @@ h2 {
   box-shadow: 0 0 4px white;
 }
 
-.grid-size-display {
-  font-weight: bold;
-  background-color: white;
-  color: black;
-  padding: 3px;
-  border: 5px ridge white;
-}
-
     /* -------------
         Sketch Area
        ------------- */
 
 .sketch-area {
+  border-radius: 5px;
   background-color: white;
   display: flex;
   flex-direction: column;
   width: 50%;
   height: 100%;
-  box-shadow: 0 0 6px white;
+  border: 1px solid black;
+  box-shadow: 3px 3px 1px white;
 }
 
 .sketch-area div {

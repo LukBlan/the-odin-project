@@ -22,12 +22,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: auto;
 }
-
-/* ============
-    Typography
-   ============ */
 
 h1 {
   color: #F9FAF8;
@@ -48,16 +43,11 @@ h3 {
   font-size: 1.7rem;
 }
 
-/* ========
-    Layout
-   ======== */
-    /* --------
-        Navbar
-       -------- */
 nav {
   background-color: var(--main-blue);
+  box-shadow: 0 2px 1px rgba(0,0,0,0.4);
   color: white;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
   padding: 20px;
   position: sticky;
   z-index: 1;
@@ -69,8 +59,7 @@ nav {
 }
 
 .nav-logo {
-  width: 75px;
-  height: 75px;
+  height: auto;
 }
 
 nav ul {
@@ -81,17 +70,13 @@ nav ul {
 
 nav li {
   border-bottom: 1px solid var(--main-blue);
-  font-size: Clamp(1.5rem, 1rem + 1vw, 3rem)
+  white-space: nowrap;
 }
 
 nav li:hover {
   cursor: pointer;
   border-bottom-color: white;
 }
-
-    /* --------------
-        Main Section
-       -------------- */
 
 .main-section {
   background-color: var(--main-blue);
@@ -121,10 +106,6 @@ nav li:hover {
   height: 250px;
 }
 
-    /* ---------
-        Gallery
-       --------- */
-
 .gallery {
   display: flex;
   flex-direction: column;
@@ -140,10 +121,6 @@ nav li:hover {
   align-items: center;
   gap: 50px;
 }
-
-    /* ---------------
-        Quote Section
-       --------------- */
 
 .quote {
   background-color: var(--light-cyan-blue);
@@ -165,10 +142,6 @@ nav li:hover {
   align-self: flex-end;
 }
 
-    /* -----------
-        Adopt Bar
-       ----------- */
-
 .adopt-bar-section {
   background-color: var(--light-blue);
   border-radius: 10px;
@@ -188,10 +161,6 @@ nav li:hover {
   gap: 10px;
 }
 
-    /* --------
-        Footer
-       -------- */
-
 footer {
   background-color: var(--main-blue);
   color: white;
@@ -201,13 +170,6 @@ footer {
   padding: 20px;
   margin-top: auto;
 }
-
-/* ============
-    Components
-   ============ */
-    /* --------
-        Button
-       -------- */
 
 .white-border-button {
   background-color: var(--light-blue);
@@ -241,10 +203,6 @@ footer {
   cursor: pointer;
 }
 
-    /* -------
-        Cards
-       ------- */
-
 .card {
   display: flex;
   align-items: center;
@@ -275,4 +233,66 @@ footer {
 .card p:hover {
   cursor: pointer;
   color: black;
+}
+
+@media (max-width: 640px) {
+  .nav-logo {
+    width: 3rem;
+  }
+
+  nav {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  nav li {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 640px) {
+  .nav-logo {
+    width: 3.5rem;
+  }
+
+  nav {
+    padding: 0.5rem 2rem;
+  }
+
+  nav li {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-logo {
+    width: 4rem;
+  }
+
+  nav ul {
+    gap: 3rem;
+  }
+
+  nav li {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .nav-logo {
+    width: 6rem;
+  }
+
+  nav ul {
+    gap: 3rem;
+  }
+
+  nav li {
+    font-size: 3rem;
+  }
 }

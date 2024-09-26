@@ -128,17 +128,19 @@ nav li:hover {
   color: var(--main-blue);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 50px 20%;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 0.5rem;
+  min-height: calc(100vh - var(--nav-size));
 }
 
 .quote-text {
   font-family: light-italic, sans-serif;
-  font-size: 38px;
+  font-size: 2.5rem;
 }
 
 .quote-author {
-  font-size: 20px;
+  font-size: 0.7rem;
   font-weight: bold;
   align-self: flex-end;
 }
@@ -297,11 +299,24 @@ footer {
   }
 
   h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .card p {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .quote {
+    padding: 2rem;
+  }
+
+  .quote-text {
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+
+  .quote-author {
+    font-size: 1rem;
   }
 }
 
@@ -335,6 +350,15 @@ footer {
 
   .card img {
     border-radius: 5rem;
+  }
+
+  .quote-text {
+    font-size: 3.5rem;
+    line-height: 5rem;
+  }
+
+  .quote-author {
+    font-size: 1rem;
   }
 }
 
@@ -373,12 +397,33 @@ footer {
     font-size: 3rem;
   }
 
+  h2 {
+    font-size: 3rem;
+  }
+
   .dog-cards {
     gap: 5rem;
     padding: 5rem;
   }
 
+  .card p {
+    font-size: 2rem;
+  }
+
   .card img {
     box-shadow: 3px 2px 3px 0 rgba(0,0,0,0.4);
+  }
+
+  .quote {
+    padding: 4rem;
+  }
+
+  .quote-text {
+    font-size: 7rem;
+    line-height: 9rem;
+  }
+
+  .quote-author {
+    font-size: 1.5rem;
   }
 }

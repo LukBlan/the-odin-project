@@ -35,10 +35,11 @@ h1 {
 
 h2 {
   color: var(--main-blue);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-family: Hero, sans-serif;
   font-weight: 800;
   white-space: nowrap;
+  text-align: center;
 }
 
 h3 {
@@ -109,19 +110,17 @@ nav li:hover {
 }
 
 .gallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 50px;
+  display: grid;
+  min-height: calc(100vh - var(--nav-size));
+  grid-template-rows: min-content 1fr;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .dog-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 50px;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
 }
 
 .quote {
@@ -214,27 +213,28 @@ footer {
   gap: 5px;
 }
 
-.card img {
-  border: 3px solid var(--light-blue);
-  border-radius: 15px;
-  width: 150px;
-  height: 150px;
+.card:hover {
+  cursor: pointer;
 }
 
-.card img:hover {
-  transform: scale(1.03);
-  cursor: pointer;
-  box-shadow: 0 0 3px rgba(0,0,0,.5);
+.card img {
+  border-radius: 2.5rem;
+  height: 0;
+  min-height: 90%;
+  width: 0;
+  min-width: 100%;
+  box-shadow: 1px 1px 0 1px rgba(0,0,0,0.3);
 }
 
 .card p {
   font-family: sans-serif;
-  font-size: Clamp(1rem, 0.5rem + 1vw, 2rem);
   font-weight: bold;
   color: #6a6a72;
+  font-size: 0.7rem;
+  transition: color 0.3s;
 }
 
-.card p:hover {
+.card:hover p {
   cursor: pointer;
   color: black;
 }
@@ -290,6 +290,19 @@ footer {
   .main-section-info {
     flex: 0 1 60%;
   }
+
+  .dog-cards {
+    gap: 3rem;
+    padding: 0 2rem ;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  .card p {
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -313,6 +326,16 @@ footer {
   nav li {
     font-size: 1.8rem;
   }
+
+  .dog-cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  .card img {
+    border-radius: 5rem;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -322,6 +345,10 @@ footer {
 
   .main-section-image {
     padding: 5rem;
+  }
+
+  .dog-cards {
+    gap: 3rem;
   }
 }
 
@@ -344,5 +371,14 @@ footer {
 
   nav li {
     font-size: 3rem;
+  }
+
+  .dog-cards {
+    gap: 5rem;
+    padding: 5rem;
+  }
+
+  .card img {
+    box-shadow: 3px 2px 3px 0 rgba(0,0,0,0.4);
   }
 }

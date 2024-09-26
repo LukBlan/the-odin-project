@@ -3,6 +3,9 @@
    =============== */
 
 :root {
+  --nav-padding: 0rem;
+  --nav-logo-size: 0rem;
+  --nav-size: calc(calc(var(--nav-padding-y) * 2) + var(--nav-logo-size));
   --main-blue: #1F2937;
   --light-cyan-blue: #E5E7EB;
   --light-blue: #3882F6;
@@ -28,12 +31,11 @@ h1 {
   color: #F9FAF8;
   font-family: sans-serif;
   font-weight: 700;
-  font-size: 45px;
 }
 
 h2 {
   color: var(--main-blue);
-  font-size: Clamp(2rem, 1rem + 3vw, 3rem);
+  font-size: 1rem;
   font-family: Hero, sans-serif;
   font-weight: 800;
   white-space: nowrap;
@@ -48,7 +50,6 @@ nav {
   box-shadow: 0 2px 1px rgba(0,0,0,0.4);
   color: white;
   border-bottom: 1px solid rgba(255,255,255,0.5);
-  padding: 20px;
   position: sticky;
   z-index: 1;
   top: 0;
@@ -59,6 +60,7 @@ nav {
 }
 
 .nav-logo {
+  width: var(--nav-logo-size);
   height: auto;
 }
 
@@ -79,11 +81,11 @@ nav li:hover {
 }
 
 .main-section {
+  min-height: calc(100vh - var(--nav-size));
   background-color: var(--main-blue);
   display: flex;
   justify-content: center;
-  padding: 5% 15%;
-  gap: 60px;
+  align-items: center;
 }
 
 .main-section-info {
@@ -91,9 +93,10 @@ nav li:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 2rem;
   color: white;
   text-align: center;
+  padding: 1rem;
 }
 
 .main-section p {
@@ -102,8 +105,7 @@ nav li:hover {
 
 .main-section-image {
   border-radius: 31px;
-  width: 250px;
-  height: 250px;
+  flex: 0 1 40%;
 }
 
 .gallery {
@@ -190,11 +192,13 @@ footer {
 .blue-button {
   background-color: var(--light-blue);
   border: 1px solid var(--light-blue);
+  font-size: 1.5rem;
   color: white;
   font-weight: bold;
   padding: 8px 14px;
   border-radius: 5px;
   box-shadow: 0 0 4px rgb(255 255 255 / 50%);
+  transition: background-color 0.2s;
 }
 
 .blue-button:hover {
@@ -236,12 +240,13 @@ footer {
 }
 
 @media (max-width: 640px) {
-  .nav-logo {
-    width: 3rem;
+  :root {
+    --nav-padding-y: 0.5rem;
+    --nav-logo-size: 3rem;
   }
 
   nav {
-    padding: 0.5rem;
+    padding: var(--nav-padding-y);
     gap: 1rem;
   }
 
@@ -253,25 +258,52 @@ footer {
     font-size: 0.8rem;
     white-space: nowrap;
   }
+
+  .main-section-image {
+    display: none;
+  }
+
+  h1 {
+    font-size: 2.3rem;
+  }
 }
 
 @media (min-width: 640px) {
-  .nav-logo {
-    width: 3.5rem;
+  :root {
+    --nav-padding-y: 0.5rem;
+    --nav-logo-size: 3.5rem;
+  }
+
+  .main-section-image {
+    width: 0;
+    padding: 1rem;
   }
 
   nav {
-    padding: 0.5rem 2rem;
+    padding: var(--nav-padding-y) 2rem;
   }
 
   nav li {
     font-size: 1.4rem;
   }
+
+  .main-section-info {
+    flex: 0 1 60%;
+  }
 }
 
 @media (min-width: 1024px) {
-  .nav-logo {
-    width: 4rem;
+  :root {
+    --nav-padding-y: 0.5rem;
+    --nav-logo-size: 4rem;
+  }
+
+  .main-section-image {
+    padding: 3rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
   }
 
   nav ul {
@@ -283,9 +315,27 @@ footer {
   }
 }
 
+@media (min-width: 1280px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  .main-section-image {
+    padding: 5rem;
+  }
+}
+
 @media (min-width: 1536px) {
-  .nav-logo {
-    width: 6rem;
+  :root {
+    --nav-logo-size: 6rem;
+  }
+
+  .main-section-image {
+    padding: 6rem;
+  }
+
+  h1 {
+    font-size: 5rem;
   }
 
   nav ul {

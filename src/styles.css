@@ -147,6 +147,7 @@ nav li:hover span {
 .quote-text {
   font-family: light-italic, sans-serif;
   font-size: 2.5rem;
+  text-align: center;
 }
 
 .quote-author {

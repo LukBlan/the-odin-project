@@ -1,25 +1,29 @@
 import './styles.css'
 
-const navSize = document.querySelector("nav")!.offsetHeight;
-const info: HTMLElement = document.querySelector(".info-label")!;
-const fact: HTMLElement = document.querySelector(".fact-label")!;
-const quote: HTMLElement = document.querySelector(".quote-label")!;
+type CssClassMap = { navElementTag: string, sectionCssClass: string }
 
-const mainSection: HTMLElement = document.querySelector(".main-section")!;
-const gallerySection: HTMLElement = document.querySelector(".gallery")!;
-const quoteSection: HTMLElement = document.querySelector(".quote")!;
+const navElement = document.querySelector("nav")!;
 
-const labels: HTMLElement[] = [info, fact, quote]
-const elements: HTMLElement[] = [mainSection, gallerySection, quoteSection]
+const cssClassMaps: CssClassMap[] = [
+  {navElementTag: "info-label", sectionCssClass: "main-section"},
+  {navElementTag: "facts-label", sectionCssClass: "gallery"},
+  {navElementTag: "quote-label", sectionCssClass: "quote"}
+]
 
-labels.forEach(
-  (element, index) => element.addEventListener("click", () => {
-    const htmlElement: HTMLElement = elements[index]
-    scrollToTopElement(htmlElement)
-  })
-)
-
-function scrollToTopElement(element: HTMLElement) {
-  window.scroll({top: element.offsetTop - navSize, behavior: "smooth"})
+function addScrollToElement(section: HTMLElement) {
+  return () => {
+    const navSize: number = navElement.offsetHeight;
+    window.scroll({top: section.offsetTop - navSize, behavior: "smooth"})
+  }
 }
+
+cssClassMaps.forEach(cssMap => {
+  const navElementCssClass: string = cssMap.navElementTag
+  const sectionCssClass: string = cssMap.sectionCssClass
+  const element: HTMLElement = document.querySelector(`.${navElementCssClass}`)!
+  const section: HTMLElement = document.querySelector(`.${sectionCssClass}`)!
+  element.addEventListener("click", addScrollToElement(section))
+})
+
+
 

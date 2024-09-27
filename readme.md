@@ -1,6 +1,7 @@
 # The Odin Project projects
 
-## Landing Page
+## Landing Page - [Website](https://landing-page-86c.pages.dev/)
+![landing-page.png](images/landing-page.png)
 
 ## Rock Paper and Scissors
 

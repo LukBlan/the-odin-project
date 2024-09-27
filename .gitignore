@@ -1,2 +1,4 @@
 # Jetabrains folder
 .idea
+dist
+node_modules

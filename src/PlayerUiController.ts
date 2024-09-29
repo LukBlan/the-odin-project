@@ -1,15 +1,22 @@
-import {choiceExtractor, colorPicker} from "./utils/choice-extractor.ts";
+import { choiceExtractor } from "./utils/choice-extractor.ts";
+import { colorPicker } from "./utils/color-picker.ts";
 import {Round} from "./round.ts";
 import {RoundResult} from "./round-result.ts";
+import {getChoiceImgSourceUrl} from "./utils/choice-url.ts";
 
 class PlayerUiController {
   cards: HTMLImageElement[];
-  scoreDisplay: HTMLImageElement;
+  choiceDisplay: HTMLImageElement;
+  scoreDisplay: HTMLElement;
 
-
-  constructor(playerHandCssClassName: string, selectedChoiceClassName: string) {
+  constructor(
+    playerHandCssClassName: string,
+    selectedChoiceClassName: string,
+    scoreDisplayClassName: string
+  ) {
     this.cards = Array.from(document.querySelectorAll(`.${playerHandCssClassName}`));
-    this.scoreDisplay = document.querySelector(`.${selectedChoiceClassName}`)!;
+    this.choiceDisplay = document.querySelector(`.${selectedChoiceClassName}`)!;
+    this.scoreDisplay = document.querySelector(`.${scoreDisplayClassName}`)!
   }
 
   waitForPlayerMove(round: Round) {
@@ -28,8 +35,10 @@ class PlayerUiController {
     }
   }
 
-  processRoundResult(result: RoundResult, playerChoice: string) {
-    this.scoreDisplay.style.backgroundColor = colorPicker(result)
+  processRoundResult(result: RoundResult, playerChoice: string, playerScore: number) {
+    this.choiceDisplay.style.backgroundColor = colorPicker(result)
+    this.choiceDisplay.src = getChoiceImgSourceUrl(playerChoice)
+    this.scoreDisplay.textContent = `${playerScore}`;
   }
 }
 

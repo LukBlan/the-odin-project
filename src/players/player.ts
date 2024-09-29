@@ -6,16 +6,32 @@ abstract class Player {
   score: number;
   playerUiController: PlayerUiController
 
-  constructor(playerHandCssClassName: string, scoreCssClassName: string) {
-    this.playerUiController = new PlayerUiController(playerHandCssClassName, scoreCssClassName)
+  constructor(
+    playerHandCssClassName: string,
+    playerChoiceDisplayCssClass: string,
+    scoreCssClassName: string,
+
+  )
+  {
+    this.playerUiController = new PlayerUiController(
+      playerHandCssClassName,
+      playerChoiceDisplayCssClass,
+      scoreCssClassName,
+    )
     this.score = 0;
   }
 
   abstract makeChoice(round: Round): void;
 
   processResult(result: RoundResult, playerChoice: string): void {
-    this.score += 1
-    this.playerUiController.processRoundResult(result, playerChoice)
+    this.computeScore(result)
+    this.playerUiController.processRoundResult(result, playerChoice, this.score)
+  }
+
+  computeScore(result: RoundResult): void {
+    if (result === "WIN") {
+      this.score += 1
+    }
   }
 }
 

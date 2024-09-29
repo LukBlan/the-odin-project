@@ -49,9 +49,9 @@ h3 {
 /* ========
     Layout
    ======== */
-    /* ----------------
-        Game Section
-       ---------------- */
+/* ----------------
+    Game Section
+   ---------------- */
 
 .hand-cards {
   display: flex;
@@ -70,9 +70,9 @@ h3 {
   margin: 5px;
 }
 
-    /* ----------------
-        Result Section
-       ---------------- */
+/* ----------------
+    Result Section
+   ---------------- */
 
 .result-section {
   background-color: white;
@@ -142,9 +142,9 @@ h3 {
   background-color: red !important;
 }
 
-    /* ---------------
-        Pop Up Result
-       --------------- */
+/* ---------------
+    Pop Up Result
+   --------------- */
 
 .game-over-screen {
   background-color: white;
@@ -184,9 +184,9 @@ h3 {
 /* ============
     Components
    ============ */
-    /* ---------
-        Buttons
-       --------- */
+/* ---------
+    Buttons
+   --------- */
 
 .new-game-button {
   background-color: black;
@@ -197,9 +197,9 @@ h3 {
   cursor: pointer;
 }
 
-    /* -------
-        Cards
-       ------- */
+/* -------
+    Cards
+   ------- */
 
 .card {
   background-color: white;

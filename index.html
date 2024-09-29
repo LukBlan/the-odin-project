@@ -4,17 +4,7 @@
     <meta charset="UTF-8">
     <title>Rock Paper Scissors Game</title>
 
-    <link rel="stylesheet" href="./css/styles.css">
-    <script src="./js/background-factory.js" defer></script>
-    <script src="./js/pub-sub.js" defer></script>
-    <script src="js/background-color.js" defer></script>
-    <script src="./js/round-counter.js" defer></script>
-    <script src="./js/hand.js" defer></script>
-    <script src="./js/choices.js" defer></script>
-    <script src="js/scoreboard.js" defer></script>
-    <!-- Game Over Screen Link -->
-    <script src="js/game-over/game-over-factory.js" defer></script>
-    <script src="js/game-over/game-over-display.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
   <body>
@@ -24,30 +14,32 @@
     </div>
 
     <div class="player">
-      <img src="./img/user.svg" alt="User Icon" class="character-image">
+      <img src="/user.svg" alt="User Icon" class="character-image">
 
       <div class="hand-cards player-hand">
-        <img src="./img/rock.png" alt="rock image" class="card player-card">
-        <img src="./img/paper.png" alt="paper image" class="card player-card">
-        <img src="img/scissors.png" alt="scissor image" class="card player-card">
+        <img src="/rock.png" alt="rock image" class="card player-card">
+        <img src="/paper.png" alt="paper image" class="card player-card">
+        <img src="/scissors.png" alt="scissor image" class="card player-card">
       </div>
     </div>
 
     <div class="result-section">
-      <img src="./img/question-mark.svg" alt="Question Mark" class="card player-choice">
+      <img src="/question-mark.svg" alt="Question Mark" class="card player-choice">
       <p class="scoreboard player-score">0</p>
       <p class="scoreboard computer-score">0</p>
-      <img src="./img/question-mark.svg" alt="Question Mark" class="card computer-choice">
+      <img src="/question-mark.svg" alt="Question Mark" class="card computer-choice">
     </div>
 
     <div class="player">
       <div class="hand-cards">
-        <img src="./img/rock.png" alt="rock image" class="card computer-card">
-        <img src="./img/paper.png" alt="paper image" class="card computer-card">
-        <img src="img/scissors.png" alt="scissor image" class="card computer-card">
+        <img src="/rock.png" alt="rock image" class="card computer-card">
+        <img src="/paper.png" alt="paper image" class="card computer-card">
+        <img src="/scissors.png" alt="scissor image" class="card computer-card">
       </div>
 
-      <img src="./img/robot.svg" alt="Robot Icon" class="character-image">
+      <img src="/robot.svg" alt="Robot Icon" class="character-image">
     </div>
+
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

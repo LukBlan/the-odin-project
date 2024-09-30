@@ -33,6 +33,10 @@ abstract class Player {
       this.score += 1
     }
   }
+
+  getScore(): number {
+    return this.score
+  }
 }
 
 export { Player }

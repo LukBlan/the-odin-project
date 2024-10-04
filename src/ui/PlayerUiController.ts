@@ -1,8 +1,9 @@
-import { choiceExtractor } from "./utils/choice-extractor.ts";
-import { colorPicker } from "./utils/color-picker.ts";
-import {Round} from "./round.ts";
-import {RoundResult} from "./round-result.ts";
-import {getChoiceImgSourceUrl} from "./utils/choice-url.ts";
+import { choiceExtractor } from "../utils/choice-extractor.ts";
+import { colorPicker } from "../utils/color-picker.ts";
+import { Round } from "../round.ts";
+import { RoundResult } from "../round-result.ts";
+import { getChoiceImgSourceUrl } from "../utils/choice-url.ts";
+import { getQuestionMarkImgUrl } from "../utils/question-mark-choice.ts";
 
 class PlayerUiController {
   cards: HTMLImageElement[];
@@ -39,6 +40,12 @@ class PlayerUiController {
     this.choiceDisplay.style.backgroundColor = colorPicker(result)
     this.choiceDisplay.src = getChoiceImgSourceUrl(playerChoice)
     this.scoreDisplay.textContent = `${playerScore}`;
+  }
+
+  resetScreen() {
+    this.scoreDisplay.textContent = "0";
+    this.choiceDisplay.style.backgroundColor = ""
+    this.choiceDisplay.src = getQuestionMarkImgUrl()
   }
 }
 

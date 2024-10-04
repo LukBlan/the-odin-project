@@ -1,6 +1,6 @@
 import {Round} from "./round.ts";
 import {Player} from "./players/player.ts";
-import {GameUiController} from "./game-ui-controller.ts";
+import { GameUiController } from "./ui/GameUiController.ts";
 
 class Game {
   gameUiController: GameUiController;
@@ -36,7 +36,15 @@ class Game {
   }
 
   endCurrentGame() {
-    this.gameUiController.displayGameOverScreen()
+    this.gameUiController.displayGameOverScreen(this.resetGame.bind(this))
+  }
+
+  resetGame(): void {
+    this.currentRound = 1;
+    this.player.resetScore();
+    this.computer.resetScore()
+    this.gameUiController.resetRound()
+    this.playRound()
   }
 
   updateRound() {

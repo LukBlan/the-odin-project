@@ -1,4 +1,4 @@
-import {GameOverScreen} from "./components/GameOverScreen.ts";
+import { GameOverScreen } from "../components/GameOverScreen.ts";
 
 class GameUiController {
   roundDisplay: HTMLElement;
@@ -11,9 +11,13 @@ class GameUiController {
     this.roundDisplay.textContent = `${currentRound}`;
   }
 
-  displayGameOverScreen() {
-    const gameOverScreen: HTMLElement = GameOverScreen("You Win")
+  displayGameOverScreen(callback: () => void) {
+    const gameOverScreen: HTMLElement = GameOverScreen("You Win", callback)
     document.body.append(gameOverScreen)
+  }
+
+  resetRound() {
+    this.roundDisplay.textContent = "1"
   }
 }
 

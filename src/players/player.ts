@@ -1,6 +1,6 @@
 import {Round} from "../round.ts";
 import {RoundResult} from "../round-result.ts";
-import {PlayerUiController} from "../PlayerUiController.ts";
+import { PlayerUiController } from "../ui/PlayerUiController.ts";
 
 abstract class Player {
   score: number;
@@ -36,6 +36,11 @@ abstract class Player {
 
   getScore(): number {
     return this.score
+  }
+
+  resetScore() {
+    this.score = 0;
+    this.playerUiController.resetScreen();
   }
 }
 

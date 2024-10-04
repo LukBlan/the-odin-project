@@ -36,7 +36,7 @@ class Game {
   }
 
   endCurrentGame() {
-
+    this.gameUiController.displayGameOverScreen()
   }
 
   updateRound() {

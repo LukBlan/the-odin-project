@@ -36,7 +36,8 @@ class Game {
   }
 
   endCurrentGame() {
-    this.gameUiController.displayGameOverScreen(this.resetGame.bind(this))
+    const result = this.getGameResult()
+    this.gameUiController.displayGameOverScreen(this.resetGame.bind(this), result)
   }
 
   resetGame(): void {
@@ -50,6 +51,12 @@ class Game {
   updateRound() {
     this.currentRound += 1;
     this.gameUiController.updateRound(this.currentRound)
+  }
+
+  getGameResult() {
+    const playerScore: number = this.player.getScore();
+    const computerScore: number = this.computer.getScore();
+    return (playerScore > computerScore) ? "You Win" : "You Lose"
   }
 }
 

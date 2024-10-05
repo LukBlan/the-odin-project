@@ -11,8 +11,8 @@ class GameUiController {
     this.roundDisplay.textContent = `${currentRound}`;
   }
 
-  displayGameOverScreen(callback: () => void) {
-    const gameOverScreen: HTMLElement = GameOverScreen("You Win", callback)
+  displayGameOverScreen(callback: () => void, result: string) {
+    const gameOverScreen: HTMLElement = GameOverScreen(result, callback)
     document.body.append(gameOverScreen)
   }
 

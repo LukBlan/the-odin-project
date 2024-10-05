@@ -1,10 +1,10 @@
 import './styles.css'
 
-type CssClassMap = { navElementTag: string, sectionCssClass: string }
+type CssClassMap = Readonly<{ navElementTag: string, sectionCssClass: string }>
 
-const navElement = document.querySelector("nav")!;
+const navElement: HTMLElement = document.querySelector("nav")!;
 
-const cssClassMaps: CssClassMap[] = [
+const cssClassMaps: readonly CssClassMap[] = [
   {navElementTag: "info-label", sectionCssClass: "main-section"},
   {navElementTag: "facts-label", sectionCssClass: "gallery"},
   {navElementTag: "quote-label", sectionCssClass: "quote"}

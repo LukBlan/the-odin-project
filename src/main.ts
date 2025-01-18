@@ -1,13 +1,12 @@
 import './styles.css'
 
-type CssClassMap = Readonly<{ navElementTag: string, sectionCssClass: string }>
-
+type ScrollElementMap = Readonly<{ originTag: string, destinationTag: string }>
 const navElement: HTMLElement = document.querySelector("nav")!;
 
-const cssClassMaps: readonly CssClassMap[] = [
-  {navElementTag: "info-label", sectionCssClass: "main-section"},
-  {navElementTag: "facts-label", sectionCssClass: "gallery"},
-  {navElementTag: "quote-label", sectionCssClass: "quote"}
+const scrollElementMap: readonly ScrollElementMap[] = [
+  {originTag: "info-label", destinationTag: "main-section"},
+  {originTag: "facts-label", destinationTag: "gallery"},
+  {originTag: "quote-label", destinationTag: "quote"}
 ]
 
 function addScrollToElement(section: HTMLElement) {
@@ -17,11 +16,11 @@ function addScrollToElement(section: HTMLElement) {
   }
 }
 
-cssClassMaps.forEach(cssMap => {
-  const navElementCssClass: string = cssMap.navElementTag
-  const sectionCssClass: string = cssMap.sectionCssClass
-  const element: HTMLElement = document.querySelector(`.${navElementCssClass}`)!
-  const section: HTMLElement = document.querySelector(`.${sectionCssClass}`)!
+scrollElementMap.forEach(scrollElementsMap => {
+  const navElementName: string = scrollElementsMap.originTag
+  const sectionName: string = scrollElementsMap.destinationTag
+  const element: HTMLElement = document.querySelector(`.${navElementName}`)!
+  const section: HTMLElement = document.querySelector(`.${sectionName}`)!
   element.addEventListener("click", addScrollToElement(section))
 })
 
